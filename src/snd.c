@@ -571,6 +571,15 @@ static gint write_samples(gfloat *buf, gint count)
 
 gint sound_read(gfloat **buffer, gint *count)
 {
+	static float phase = 0;
+	*count = 100;
+	int i;
+	for(i=0;i<(*count);i++){
+		snd_buffer[i] = 0.1*cos(phase);
+		phase += 2*M_PI*10000.0/48000.0;
+		if(phase > 2*M_PI) phase -= 2*M_PI;
+	}
+	*buffer = snd_buffer;
 //	struct timespec ts;
 //	gint n;
 //
