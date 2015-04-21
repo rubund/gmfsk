@@ -52,8 +52,8 @@
 #define	SRC_BUF_LEN		(8*SND_BUF_LEN)
 #define	SND_VOL			0.5
 
-static snd_config_t config;
-static snd_config_t newconfig;
+static gmfsk_snd_config_t config;
+static gmfsk_snd_config_t newconfig;
 
 static gint snd_fd = -1;
 static gint snd_dir = 0;
@@ -77,7 +77,7 @@ static gint read_samples(gfloat *buf, gint count);
 
 /* ---------------------------------------------------------------------- */
 
-void sound_set_conf(snd_config_t *cfg)
+void sound_set_conf(gmfsk_snd_config_t *cfg)
 {
 	g_free(newconfig.device);
 

@@ -480,7 +480,7 @@ static gboolean druid_create_dir(gchar *dirname)
 
 static void druid_test_sound(const gchar *path, gboolean eb, gboolean st)
 {
-	snd_config_t cfg;
+	gmfsk_snd_config_t cfg;
 	guint flags = 0;
 	gfloat buf[BUFSIZE], *p;
 	gdouble f, phi = 0.0;

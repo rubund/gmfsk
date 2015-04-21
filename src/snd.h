@@ -43,9 +43,9 @@ typedef struct {
 	gint		txoffset;
 	gint		rxoffset;
 	guint		flags;
-} snd_config_t;
+} gmfsk_snd_config_t;
 
-extern void sound_set_conf(snd_config_t *cfg);
+extern void sound_set_conf(gmfsk_snd_config_t *cfg);
 
 extern void sound_set_flags(guint);
 extern void sound_get_flags(guint *);

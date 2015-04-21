@@ -492,7 +492,7 @@ void conf_set_hamlib_config(void)
 
 void conf_set_sound_config(void)
 {
-	snd_config_t cfg;
+	gmfsk_snd_config_t cfg;
 	guint flags;
 
 	cfg.device = conf_get_filename("sound/dev");
