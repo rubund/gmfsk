@@ -580,15 +580,6 @@ gint sound_read(gfloat **buffer, gint *count)
 
 	*count = MIN(*count, SND_BUF_LEN);
 
-// To remove:
-	static float phase = 0;
-	for(n=0;n<(*count);n++){
-		snd_buffer[n] = 0.1*cos(phase);
-		phase += 2*M_PI*10000.0/48000.0;
-		if(phase > 2*M_PI) phase -= 2*M_PI;
-	}
-	*buffer = snd_buffer;
-//
 
 	if ((config.flags & SND_FLAG_TESTMODE_MASK) == SND_FLAG_TESTMODE_TX) {
 		ts.tv_sec = 0;
@@ -615,8 +606,8 @@ gint sound_read(gfloat **buffer, gint *count)
 //	}
 //
 //	n = floor(*count / rx_src_data->src_ratio / 512 + 0.5) * 512;
-//
-//	n = read_samples(src_buffer, n);
+	n = *count; //FIXME
+	n = read_samples(src_buffer, n);
 //
 //	rx_src_data->data_in = src_buffer;
 //	rx_src_data->input_frames = n;
@@ -630,7 +621,8 @@ gint sound_read(gfloat **buffer, gint *count)
 //	}
 //
 //	*count = rx_src_data->output_frames_gen;
-//	*buffer = snd_buffer;
+	*count = n; //FIXME
+	*buffer = snd_buffer;
 //
 //	return 0;
 	return 0;
@@ -638,22 +630,22 @@ gint sound_read(gfloat **buffer, gint *count)
 
 static gint read_samples(gfloat *buf, gint count)
 {
-//	gint len, i, j;
-//
-//#if SND_DEBUG > 1
-//	dprintf("read_samples(%d)\n", count);
-//#endif
-//
-//	if (count <= 0) {
-//		snderr(_("read_samples: count <= 0 (%d)"), count);
-//		return -1;
-//	}
-//
-//	if (count > SND_BUF_LEN) {
-//		snderr(_("read_samples: count > SND_BUF_LEN (%d)"), count);
-//		return -1;
-//	}
-//
+	gint len, i, j;
+
+#if SND_DEBUG > 1
+	dprintf("read_samples(%d)\n", count);
+#endif
+
+	if (count <= 0) {
+		snderr(_("read_samples: count <= 0 (%d)"), count);
+		return -1;
+	}
+
+	if (count > SND_BUF_LEN) {
+		snderr(_("read_samples: count > SND_BUF_LEN (%d)"), count);
+		return -1;
+	}
+
 //	if (cwirc_extension_mode)
 //		return cwirc_sound_read(buf, count);
 //
@@ -693,14 +685,25 @@ static gint read_samples(gfloat *buf, gint count)
 //				j++;
 //		}
 //	}
+
+// To remove:
+	static float phase = 0;
+	int n;
+	for(n=0;n<(count);n++){
+		snd_buffer[n] = 0.1*cos(phase);
+		phase += 2*M_PI*10000.0/48000.0;
+		if(phase > 2*M_PI) phase -= 2*M_PI;
+	}
+	len = count;
 //
-//	return len;
-//
-//error:
-//	if (errno != EAGAIN)
-//		snderr(_("sound_read: read: %m"));
-//	return len;
-	return count;
+
+
+	return len;
+
+error:
+	if (errno != EAGAIN)
+		snderr(_("sound_read: read: %m"));
+	return len;
 }
 
 /* ---------------------------------------------------------------------- */
