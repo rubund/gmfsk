@@ -1,0 +1,237 @@
+gMFSK v0.6 - The Gnome MFSK terminal program
+============================================
+
+gMFSK is a multi-mode soundcard terminal program for HF amateur
+communications. Originally the program was written for compatibility with
+the IZ8BLY Stream program in MFSK16 mode. Currently the program supports
+the following amateur digital communications modes: MFSK16, MFSK8, RTTY,
+THROB, PSK31, MT63 and FELDHELL.
+
+MFSK
+====
+
+The MFSK modem supports two modes:
+
+ MFSK16	- 16 tones, 15.625 symbols per second
+ MFSK8	- 32 tones, 7.8125 symbols per second
+
+Both modes use convolutional encoding (R=1/2, K=7, NASA standard
+polynomials) and viterbi decoding.
+
+MFSK16 also supports sending small pictures in analog FM mode. This is
+compatible with MixW (http://www.mixw.net/). Receiving pictures is
+automatic. Sending is triggered with the macros $pic and $picc (see
+below).
+
+RTTY
+====
+
+RTTY support in gMFSK should be considered experimental. I have tried a
+few decoding algorithms and the one currently in use is not necessarily
+the best one.
+
+All the parameters (shift, baudrate, number of bits, parity, number of
+stopbits) are almost freely configurable. There is also a separate
+"reverse" setting for RTTY which you probably want to enable if you want
+to use USB to work RTTY.
+
+The "MSB first" option is needed for the ASCII modes. Or at least when I
+tested the modem against MMTTY (http://www.qsl.net/mmhamsoft/mmtty/) it
+was.
+
+THROB
+=====
+
+Throb support is also to be considered experimental. There is a working
+automatic sync method now but it may not be as good as it should be
+(feedback welcome).
+
+For more information about THROB please check Lionel's web page
+(http://www.lsear.freeserve.co.uk/page3.html).
+
+PSK31
+=====
+
+PSK31 support in gMFSK borrows heavily from the C++ modem classes written
+by Hansi Reiser DL9RDZ (which in turn is partly derived from the work of
+Andrew Senior G0TJZ and Peter Martinez G3PLX). While I have not used any
+code directly, much of the architecture and algorithms are almost directly
+copied from there. As a result I think the PSK31 support is pretty mature.
+
+MT63
+====
+
+The MT63 modem uses source code written by Pawel Jalocha SP9VRC. I have
+only written a few lines of glue code to integrate Pawel's code to my
+framework. The modem should be pretty mature. I haven't done much testing
+but it does decode real life signals. There is no support for the IZ8BLY
+style secondary channel. 8 bit characters are supported using the escape
+127 encoding.
+
+FELDHELL
+========
+
+Both Feldhell RX and TX work now, but the mode still needs some work. The
+AGC parameter adjustments don't work yet. Also TX uses antialiased fonts
+which is probably not the optimal solution.
+
+Operating
+=========
+
+Operating gMFSK should be easy to learn even without much help if you have
+any experience in operating with other modern soundcard digital modes. The
+MFSK web site (http://www.qsl.net/zl1bpu/MFSK/) is suggested reading for
+background information. Also the help in IZ8BLY Stream program could prove
+useful. Note however that tuning in gMFSK works a little different to that
+in Stream.
+
+Setting audio levels is very important. The scope display should prove a
+nice tool for setting the incoming audio level. However be aware that the
+amplifier stages before the sound card mixer can also be overdriven
+without showing signs on the scope display.
+
+On transmit you should be just as careful. Overdriving MFSK or RTTY
+doesn't produce intermodulation products as there is only one tone
+transmitted at a time but harmonic products (of the audio) are always
+present when overdriving. THROB, PSK and MT63 on the other hand do produce
+intermodulation products if overdriven. FELDHELL produces key clicks is
+overdriven.
+
+The GUI
+=======
+
+The graphical user interface should for the most part be self explanatory.
+From top to bottom there are the Menubar, Toolbar, QSO data area, Received
+text, Transmitted text, Preconfigured messages buttons and the Waterfall
+indicator area. In addition to the obvious there are a few additional
+tricks:
+
+As with any Gnome application the Menubar and Toolbar areas are dockable,
+ie. you can drag them around the desktop or the application window.
+
+The received text and the QSO data area are of course subject to the
+normal X Window Selection system: dragging with the left button selects
+text and the middle button pastes the selected text. However the received
+text area also implements an additional trick with the right button.
+Clicking the right button over a word selects the word and opens a context
+menu where you can select where you want the selected data to be pasted.
+
+The waterfall can be paused from the popup menu that opens if you right
+click over it. The waterfall config dialog can also be activated from the
+popup menu.
+
+The status bar shows modem state, transmission mode and UTC time. Clicking
+the mode label is a shortcut to the mode config dialog.
+
+The "Log entry" button sends the QSO data to logging program using inter
+process communication (IPC). Currently only xlog
+(http://savannah.gnu.org/projects/Xlog) supports this feature.
+
+The "New entry" button clears all the QSO data fields and resets the QSO
+time (the first change after a reset on any of the QSO data fields sets
+the time).
+
+The most used functions now have keyboard accelerators. Fixtext buttons
+show the associated function keys in their labels and the other buttons
+tell you the accelerator in their tooltips ie. when you hover the mouse
+pointer above the button (be sure to enable tooltips in gnome config).
+
+All in all, I recommend experimenting with the GUI before having real
+contacts.
+
+Macros
+======
+
+The predefined text buttons can contain macros. Macros start with the
+letter $. A standard macro is of the form $text. A list of available
+standard macros is here:
+
+  $$		- The letter '$'
+  $tx		- Push the TX button.
+  $rx		- Push the RX button.
+  $pause	- Push the Pause button.
+  $abort	- Push the Abort button (this is probably of no use to anyone).
+  $mycall	- Callsign as defined in preferences.
+  $myname	- Name as defined in preferences.
+  $myqth	- QTH as defined in preferences.
+  $myloc  	- Locator as defined in preferences.
+  $myemail	- Email address as defined in preferences.
+  $time		- Local time.
+  $utctime	- Universal Coordinated Time.
+  $date		- Local date.
+  $utcdate	- UTC date.
+  $call		- Other partys callsign taken from QSO data.
+  $band		- Band taken from QSO data.
+  $rxrst	- Received RST taken from QSO data.
+  $txrst	- Transmitted RST taken from QSO data.
+  $name		- Other partys name taken from QSO data.
+  $qth		- Other partys QTH taken from QSO data.
+  $notes	- Notes taken from QSO data.
+  $soft		- Software version.
+  $mode		- Currently active mode name.
+  $pic		- Grayscale picture
+  $picc		- Color picture
+
+The macro name can also be enclosed in curly braces. This can be useful if
+you need to avoid any spaces between the macro and some text. The macro
+can also have an optional argument separated by a colon. This only works
+in conjunction with curly braces. Currently this argument is only useful
+with the picture macros where you can supply a filename that way. A
+typical picture macro might be:
+
+  ${picc:/home/joe/joe.jpg}
+
+In addition to standard macros you can use so called command substitution
+with a macro of the form $(command). The command is executed using
+fork()/exec() and the standard output of the command is captured (standard
+error is discarded). If the last character of the captured output is a
+newline, it is removed.
+
+The macros are evaluated at the time the button is pressed (as opposed to
+being evaluated during the transmission) which is a significant fact
+especially with the "push ... button" and date/time macros.
+
+An unrecognized $-macro is ignored.
+
+Disclaimer
+==========
+
+This program is something I wrote for my own amusement. I'm not a
+professional DSP engineer (though I may want to be one in the future) and
+I'm certainly not a GUI programmer nor do I ever want to be one.
+Suggestions especially for the GUI part are more than welcome!
+
+Hopefully the program is of use to you!
+
+Thanks
+======
+
+Thanks to Murray ZL1BPU and Nino IZ8BLY for creating a very cool ham
+communication modes, MFSK16 and MFSK8. Special thanks to Murray for the
+technical documentation of MFSK16/8 and Hellschreiber.
+
+Thanks also to Jesús EB1DIX for his RTTY decoder program for Linux. I used
+that software as the base for my experiments and a lot of ideas was
+borrowed from it.
+
+Likewise thanks to Lionel G3PPT for making Throb source code publically
+available. Again lot was learned just by browsing through it.
+
+Thanks to Hansi DL9RDZ for his PSK31 C++ classes and the work of Andrew
+G0TJZ and Peter G3PLX on which the classes are based on.
+
+Special thanks to Pawel SP9VRC for his work on MT63 and the source code
+for it. Due to a stupid oversight from my part I released gMFSK v0.5 with
+Pawel's MT63 code under GPL even though Pawel's original license was not
+GPL-compatible. Fortunately Pawel has since agreed to release his code
+under the GPL. Thanks Pawel!
+
+Also many thanks to Phil KA9Q and Charles G4GUO for giving ideas and/or
+code for the project. Neither probably knew about this project but that's
+simply what free software is, everyone benefits from it!
+
+Last but not least many thanks to Joni OH2NJR/OH2MUI for providing me with
+feedback and equipment to be able to develop and test the stuff.....
+
+-- 
+Tomi Manninen, OH2BNS <oh2bns@sral.fi>

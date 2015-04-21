@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE omf PUBLIC "-//OMF//DTD Scrollkeeper OMF Variant V1.0//EN" "http://scrollkeeper.sourceforge.net/dtds/scrollkeeper-omf-1.0/scrollkeeper-omf.dtd">
+<omf>
+  <resource>
+    <creator>
+      oh2bns@sral.fi (Tomi Manninen)
+    </creator>
+    <maintainer>
+      oh2bns@sral.fi (Tomi Manninen)
+    </maintainer>
+    <title>
+      gMFSK Manual V0.2
+    </title>
+    <date>
+      2003-05-05
+    </date>
+    <version identifier="0.1" date="2003-05-05" description="First release, program version 0.6"/>
+    <version identifier="0.2" date="2004-02-17" description="Updated, program version 0.6"/>
+    <subject category="GNOME|Applications"/>
+    <description>
+      User manual for the gMFSK HF terminal program. 
+    </description>
+    <type>
+      User's guide
+    </type>
+    <format mime="text/xml" dtd="-//OASIS//DTD DocBook XML V4.1.2//EN"/>
+    <identifier url=""/>
+    <language code="C"/>
+    <relation seriesid="752f51ec-7eed-11d7-8f1f-fbed39709854"/>
+    <rights type="GNU FDL" license.version="1.1" license="http://www.gnu.org/licenses/fdl.html" holder="Tomi Manninen"/>
+  </resource>
+</omf>

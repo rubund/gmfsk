@@ -1,0 +1,22 @@
+# List of source files containing translatable strings.
+
+src/callbacks.c
+src/callbacks.c
+src/conf.c
+src/confdialog.c
+src/cwirc.c
+src/druid.c
+src/hamlib.c
+src/interface.c
+src/log.c
+src/macro.c
+src/main.c
+src/miniscope.c
+src/picture.c
+src/picture.c
+src/ptt.c
+src/qsodata.c
+src/snd.c
+src/support.c
+src/trx.c
+src/waterfall.c

@@ -1,0 +1,1599 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY GFDL SYSTEM "fdl-appendix.xml">
+  <!ENTITY appversion "0.6">
+  <!ENTITY manrevision "0.2">
+  <!ENTITY date "Feb 2004">
+  <!ENTITY app "<application>gMFSK</application>">
+<!--
+    Information about the entities
+    The legal.xml file contains legal information, there is no need
+    to edit the file.  
+    Use the appversion entity to specify the version of the application.
+    Use the manrevision entity to specify the revision number of this manual. 
+    Use the date entity to specify the release date of this manual.
+    Use the app entity to specify the name of the application.
+-->
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- 
+  please do not change the id; for translations, change lang to
+  appropriate code
+-->
+
+  <articleinfo> 
+    <title>&app; Manual V&manrevision;</title>       
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Tomi Manninen</holder> 
+    </copyright>
+
+    <!-- translators: uncomment this:
+    <copyright>
+      <year>2002</year>
+      <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+    -->
+
+<!--
+    An address can be added to the publisher information.  If a role is 
+    not specified, the publisher/author is the same for all versions of the 
+    document.
+
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+-->
+
+    &legal;
+
+    <!-- This file  contains link to license for the documentation
+    (GNU FDL), and other legal stuff such as "NO WARRANTY"
+    statement. Please do not change any of this. -->
+
+    <authorgroup> 
+      <author> 
+	<firstname>Tomi</firstname> 
+	<surname>Manninen</surname> 
+	<affiliation> 
+	  <orgname>gMFSK Author</orgname> 
+	  <address> <email>oh2bns@sral.fi</email> </address> 
+	</affiliation> 
+      </author> 
+      <author> 
+	<firstname>Carl</firstname> 
+	<surname>Makin</surname> 
+	<affiliation> 
+	  <orgname>FreeBSD Port and Help Doc Contrib</orgname> 
+	  <address> <email>carl@stagecraft.cx</email> </address> 
+	</affiliation> 
+      </author> 
+      
+<!--
+      This is appropriate place for other contributors: translators,
+      maintainers, etc. Commented out by default. 
+-->
+<!--     
+      <othercredit role="contributor">
+	<firstname>Carl</firstname> 
+	<surname>Makin</surname> 
+	<affiliation> 
+	  <orgname></orgname> 
+	  <address> <email>carl@stagecraft.cx</email> </address> 
+	</affiliation>
+	<contrib>FreeBSD Port and Help Doc Contrib</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+
+<!-- 
+    According to GNU FDL, revision history is mandatory if you are
+    modifying/reusing someone else's document.  If not, you can omit
+    it. Remember to remove the &manrevision; entity from the revision
+    entries other than the current revision.
+    The revision numbering system for GNOME manuals is as follows:
+      * the revision number consists of two components
+      * the first component of the revision number reflects the
+        release version of the GNOME desktop. 
+      * the second component of the revision number is a decimal unit
+        that is incremented with each revision of the manual. 
+    For example, if the GNOME desktop release is V2.x, the first
+    version of the manual that is written in that desktop timeframe is
+    V2.0, the second version of the manual is V2.1, etc. When the
+    desktop release version changes to V3.x, the revision number of
+    the manual changes to V3.0, and so on. 
+-->  
+<!--
+    <revhistory>
+      <revision> 
+	<revnumber>MY-GNOME-APPLICATION Manual V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+	  <para role="author">Documentation Writer 2
+	    <email>docwriter2@gnome.org</email>
+	  </para>
+	  <para role="publisher">GNOME Documentation Project</para>
+	</revdescription> 
+      </revision> 
+      <revision> 
+	<revnumber>Full title of previous manual.</revnumber> 
+	<date>Release date of previous manual.</date> 
+	<revdescription> 
+	  <para role="author">Documentation Writer 1 
+	    <email>docwriter1@gnome.org</email>
+	  </para>
+	  <para role="publisher">GNOME Documentation Project</para>
+	</revdescription> 
+      </revision> 
+    </revhistory> 
+-->
+    <releaseinfo>
+      This manual describes version &appversion; of &app;.
+    </releaseinfo> 
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para>To report a bug or make a suggestion regarding the &app;
+	application or this manual, please email the author at
+	<email>oh2bns@sral.fi</email>.
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+    <primary>gmfsk</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="gmfsk-introduction"> 
+    <title>Introduction</title> 
+    <para>&app; is a terminal program for digital conversation modes
+      on HF amateur radio. &app; uses the soundcard to interface to the
+      radio. No external modem or TNC is needed.</para>
+    <para>&app; currently implements the following modes:</para> 
+    <itemizedlist> 
+      <listitem> 
+    	<para>MFSK (MFSK16 and MFSK8)</para> 
+      </listitem> 
+      <listitem> 
+    	<para>RTTY</para> 
+      </listitem> 
+      <listitem> 
+    	<para>THROB (1, 2 and 4 throbs/sec)</para> 
+      </listitem> 
+      <listitem> 
+    	<para>PSK31 (BPSK and QPSK)</para> 
+      </listitem> 
+      <listitem> 
+    	<para>PSK63</para> 
+      </listitem> 
+      <listitem> 
+    	<para>MT63</para> 
+      </listitem> 
+      <listitem> 
+    	<para>Hellschreiber (Feld Hell)</para> 
+      </listitem> 
+    </itemizedlist> 
+    <sect2 id="describe-functions">
+      <title>Available Modes</title>
+      <variablelist>
+	<varlistentry>
+	  <term>MFSK (MFSK16/MFSK8)</term>
+	  <listitem>
+	    <para>M-ary Frequency Shift Keying is a way of transmitting
+	      digital data using multiple tones usually sending one tone at a 
+	      time.  It is designed for real-time keyboard to keyboard
+	      communications and could probably be regarded as a logical
+	      replacement for RTTY.</para>
+	    <para>
+	      MFSK16 uses 16 individual tones using around 300 Hz
+	      of bandwidth and sends data at around 40 wpm.  MFSK8 uses 32 
+	      individual tones also using around 300 Hz of bandwidth
+	      but sends data at around half the speed.  MFSK8 is better in
+	      low signal and very noisy conditions than MFSK16, but MFSK16 
+	      is usually the default as it still performs very will in most
+	      conditions and provides a faster data transfer.
+	    </para>
+	    <para>
+	      The original MFSK website by Murray Greenman ZL1BPU is at
+	      <ulink
+		url="http://www.qsl.net/zl1bpu/MFSK/">http://www.qsl.net/zl1bpu/MFSK/</ulink>
+	    </para>
+	    <para>
+	      Look for MFSK signals around 7037, 10147, 14080, 18105 and
+	      21080 USB.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>RTTY</term>
+	  <listitem>
+	    <para>
+	      RTTY is the granddaddy of Amateur HF digital communications.
+	      While there are several variations, you are most likely to find
+	      170Hz Shift, 45.45 baud BAUDOT code radioteletype on the
+	      Amateur bands.
+	    </para>
+	    <para>
+	      Look for RTTY signals around 7080, 10140, 14070-14095, 18100,
+	      21070-21100 USB.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>THROB (1/2/4 throbs/sec)</term>
+	  <listitem>
+	    <para>
+	      Throb is an experimental mode written by Lionel Sear,
+	      G3PPT. It uses a possible 9 tones spaced 8 or 16 Hz
+	      apart, which gives a bandwidth of 72 or 144Hz
+	      respectively. It has three transmission speeds, 1,2 and
+	      4 Throbs/sec which give data rates of 10, 20 and 40 wpm
+	      respectively. The 1 and 2 Throb/sec speed use a tone
+	      spacing of 8Hz, bandwidth 72 Hz and the 4 Throb/sec
+	      speed uses a spacing of 16 Hz, bandwidth 144 Hz.
+	    </para>
+	    <para>
+	      Lionel's web page is at 
+	      <ulink
+		url="http://www.lsear.freeserve.co.uk/page3.html">http://www.lsear.freeserve.co.uk/page3.html</ulink>
+	    </para> 
+	    <para>
+	      Look for THROB signals near where you would also find
+	      MFSK signals.
+	    </para> 
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>PSK31 (BPSK/QPSK)</term>
+	  <listitem>
+	    <para>
+	      Phase Shift Keying 31.25 baud is one of the most popular
+	      HF Digital modes.  It uses BPSK (Binary Phase Shift
+	      Keying) or QPSK (Quadrature Phase Shift Keying) and a
+	      varicode character set to achieve up to 50 WPM.  It's a
+	      good performer most of the time although not quite as
+	      good as MFSK in noisy or high fading conditions.
+	    </para>
+	    <para>
+	      QPSK provides twice the raw data rate, which is then
+	      halved by adding redundancy to the data in the form of
+	      FEC.  In therory this gives exactly the same data rate
+	      as BPSK but with slightly increased reliability.
+	      However in real world conditions there is little or no
+	      difference.  The vast majority of contacts are done
+	      using BPSK.
+	    </para>
+	    <para>
+	      The "PSK31 Official Homepage" is at 
+	      <ulink
+		url="http://aintel.bi.ehu.es/psk31.html">http://aintel.bi.ehu.es/psk31.html</ulink>
+	    </para>
+	    <para>
+	      Look for PSK31 signals around 7070, 7035, 14070 and
+	      21080 USB.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>PSK63</term>
+	  <listitem>
+	    <para>
+	      PSK63 is a faster variant of PSK31 designed especially
+	      for contest operation. It is otherwise identical to
+	      PSK31 but the symbol rate is 62.5 baud.
+	    </para>
+	    <para>
+	      PSK63 info can be found at
+	      <ulink
+		url="http://www.qsl.net/kh6ty/psk63/">http://www.qsl.net/kh6ty/psk63/</ulink>
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>MT63</term>
+	  <listitem>
+	    <para>
+	      MT63 encodes the data into 64 different tones spread
+	      across either 500, 1000 (default) or 2000 Hz.  The data
+	      is also encoded using Forward Error Correction (FEC)
+	      which spreads each character over 3.2 seconds in time as
+	      well.  This makes it an extremely robust mode which is
+	      incredibly resistant to interference and exceptionally
+	      good at decoding weak signals.  Due to the high number
+	      of tones and FEC encoding MT63 delivers approximately
+	      100 wpm.
+	    </para>
+	    <para>
+	      The main MT63 website seems to be <ulink
+	      url="http://www.qsl.net/zl1bpu/MT63/MT63.html">http://www.qsl.net/zl1bpu/MT63/MT63.html</ulink>
+	    </para>
+	    <para>
+	      Look for MT63 signals around 14109.5 USB
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>FELDHELL</term>
+	  <listitem>
+	    <para>
+	      Feld-Hell or "Field Hellschreiber" is quite an old
+	      communications mode.  It was first patented in 1929 and
+	      that patented form is still in use today.  It was often
+	      used for field communications during WWII and so given
+	      the name of "Field" or "Feld" Hellschreiber to
+	      distinguish it from the land-line versions.
+	    </para>
+	    <para>
+	      Each character of a Feld-Hell transmission is portrayed
+	      as a series of dots, in a matrix, just like the printing
+	      of a dot-matrix printer. The dots are sent one at a
+	      time, rather like Morse code. Feld-Hell transmits in the
+	      following order - up each column from bottom to top,
+	      then up each successive column from left to right.
+	    </para>
+	    <para>
+	      An excellent website with Feld-Held info is at <ulink
+		url="http://www.qsl.net/zl1bpu/FUZZY/Feld.html">http://www.qsl.net/zl1bpu/FUZZY/Feld.html</ulink>
+	    </para>
+	    <para>
+	      Look for Feld-Hell signals around 3575 (Region 1) 3559
+	      (Region3), 7030-7040, 10135-10145, 14063-14070 (many
+	      operators monitor 14063), 18100-18105 and 21063-21070.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+<!-- =========== Getting Started ============================== -->
+  <sect1 id="gmfsk-getting-started"> 
+    <title>Getting Started</title> 
+
+    <sect2 id="gmfsk-start">
+      <title>To Start &app;</title>
+      <para>
+	To start &app; type the following command, then press
+	<keycap>Return</keycap>:
+      </para> 
+      <para>
+	<command>gmfsk</command>
+      </para>
+      <para>
+	&app; accepts the following command line arguments:
+      </para>
+      <variablelist>
+    	<varlistentry>
+	  <term>--cwirc</term>
+	  <listitem>
+	    <para>
+	      Start &app; in a special CWIrc slave mode.  See 
+	      <ulink
+		url="http://webperso.easyconnect.fr/om.the/web/helloip/">http://webperso.easyconnect.fr/om.the/web/helloip/</ulink>
+	      for details.
+	    </para>
+	  </listitem>
+    	</varlistentry>
+    	<varlistentry>
+	  <term>--run-druid</term>
+	  <listitem>
+	    <para>
+	      Start the configuration druid.  The druid is normally
+	      started the first time you use the program.
+	    </para>
+	  </listitem>
+    	</varlistentry>
+    	<varlistentry>
+	  <term>--testmode=MODE</term>
+	  <listitem>
+	    <para>
+	      Start &app; in test mode.  In test mode &app; reads the
+	      audio samples from standard input and writes them to
+	      standard output.  MODE can be rx, tx or both.
+	    </para>
+	  </listitem>
+    	</varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="gmfsk-when-start">
+      <title>When You Start &app;</title>
+      <para>
+	When you start &app;, the following window is displayed.
+      </para>
+
+      <!-- ==== Figure ==== -->
+      <figure id="mainwindow-fig"> 
+	<title>&app; Start Up Window</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject>
+	      <imagedata
+		fileref="figures/gmfsk_start_window.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!--
+	    <imageobject>
+	      <imagedata fileref="figures/image.eps" format="EPS"/>
+	    </imageobject>
+	    -->
+	    <textobject> 
+	      <phrase>
+		Shows &app; main window. Contains titlebar,
+		menubar, toolbar, received text area, transmitted text
+		area, macro buttons and the waterfall
+		Menubar contains File, Mode, Settings, and Help menus.
+	      </phrase> 
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+      <!-- ==== End of Figure ==== -->
+
+<!--
+      Include any descriptions of the GUI immediately after the
+      screenshot of the main UI, for example, the items on the menubar
+      and on the toolbar. This section is optional.
+-->
+
+      <para>
+	The &app; window contains the following elements:
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term>Menubar. </term>
+	  <listitem>
+	    <para>
+	      The menus on the menubar contain commands that let you
+	      log received text, select operating mode, modify
+	      parameters, and get help.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Toolbar. </term>
+	  <listitem>
+	    <para>
+	      The toolbar lets you switch between receiving,
+	      transmitting, generating a test tone or keeping the
+	      program idle.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Loggingbar. </term>
+	  <listitem>
+	    <para>
+	      The loggingbar provides an easy way to enter logging
+	      information into XLog.  XLog is a seperate Unix Ham
+	      Logging program.  It is not included with this program.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Received Window. </term>
+	  <listitem>
+	    <para>
+	      This is where all received text appears.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Transmit Window. </term>
+	  <listitem>
+	    <para>
+	      This is where the text you type appears as you type it
+	      when in transmit mode.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Macro Buttons. </term>
+	  <listitem>
+	    <para>
+	      There are 12 macros available to automate various tasks.
+	      These buttons will trigger the listed macro.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Waterfall Display. </term>
+	  <listitem>
+	    <para>
+	      Waterfall tuning display
+	    </para>
+	</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Function Box. </term>
+	  <listitem>
+	    <para>
+	      The function box displays received signal and tuning
+	      information and allows you to manually set some
+	      operating parameters.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>Status Bar. </term>
+	  <listitem>
+	    <para>
+	      The Status bar displays the operating status of the
+	      program including transmit state and mode.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+      <para>
+	As with any Gnome application the Menubar and Toolbar areas
+	are dockable, ie. you can drag them around the desktop or the
+	application window.
+      </para>
+
+    </sect2>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="gmfsk-usage"> 
+    <title>Usage</title> 
+    <para>
+      Let's take a look at &app;'s menubar:
+    </para>
+      
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gmfsk-file-menu"> 
+      <title>File Menu</title> 
+      <para>
+	The File Menu allows you to some basic file management
+	functions
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term>
+	    <menuchoice> 
+	      <guimenu>File</guimenu> 
+	      <guimenuitem>Send File</guimenuitem> 
+	    </menuchoice>
+	  </term>
+	  <listitem>
+	    <para>
+	      The <guilabel>Send File</guilabel> command loads a text
+	      file and sends enters it into the transmit window
+	      exactly as if you were typing it yourself, only much
+	      faster!
+	    </para>
+	    <para>
+	      When you invoke the <guilabel>Send File</guilabel>
+	      command a file selection box is displayed. Select the
+	      file that you want to transmit, then click
+	      <guibutton>OK</guibutton>. Click
+	      <guibutton>Cancel</guibutton> to abort.
+	    </para> 
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <menuchoice> 
+	      <guimenu>File</guimenu> 
+	      <guimenuitem>Log to File</guimenuitem> 
+	    </menuchoice>
+	  </term>
+	  <listitem>
+	    <para>
+	      <guilabel>Log to File</guilabel> saves
+	      everything both received and transmitted into a log
+	      file. This log file is specified in the
+	      <guimenu>Settings</guimenu> menu.  The default filename
+	      is <filename>~/gMFSK/log.txt</filename>.  The state of
+	      <guilabel>Log to File</guilabel> is saved at program
+	      exit and restored next time the program is started.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <menuchoice> 
+	      <guimenu>File</guimenu> 
+	      <guimenuitem>Clear TX Window</guimenuitem>
+	    </menuchoice>
+	  </term>
+	  <listitem>
+	    <para>
+	      The <guilabel>Clear TX Window</guilabel> command clears
+	      the Transmit Text Window.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <menuchoice> 
+	      <guimenu>File</guimenu> 
+	      <guimenuitem>Clear RX Window</guimenuitem> 
+	    </menuchoice>
+	  </term>
+	  <listitem>
+	    <para>
+	      The <guilabel>Clear RX Window</guilabel> command clears
+	      the Received Text Window.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>
+	    <menuchoice> 
+	      <guimenu>File</guimenu> 
+	      <guimenuitem>Quit</guimenuitem> 
+	    </menuchoice>
+	  </term>
+	  <listitem>
+	    <para>
+	      The <guilabel>Quit</guilabel> command does pretty much
+	      what you would expect...
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+
+      <!-- 
+      <caution>
+	<para>
+	  This is a caution.
+	</para>
+      </caution>
+      -->
+
+    </sect2> 
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gmfsk-mode-menu"> 
+      <title>Mode Menu</title> 
+      <para>
+	The <guilabel>Mode</guilabel> pulldown menu allows you to
+	select which mode to use.
+      </para> 
+      <para>
+	Select one of the following modes;
+      </para>
+      <variablelist>
+	<varlistentry>
+	  <term>MFSK</term> 
+	  <listitem>
+	    <para>
+	      The MFSK modem supports two modes:
+	    </para>
+	    <itemizedlist>
+	      <listitem>
+		MFSK16 - 16 tones, 15.625 symbols per second
+	      </listitem>
+	      <listitem>
+		MFSK8 - 32 tones, 7.8125 symbols per second
+	      </listitem>
+	    </itemizedlist>
+	    <para>
+	     	Both modes use convolutional FEC encoding (R=1/2, K=7,
+	     	NASA standard polynomials) and viterbi decoding.
+	    </para>
+	    <para>
+	      MFSK16 also supports sending small pictures in analog FM
+	      mode. This is compatible with MixW (<ulink
+		url="http://www.mixw.net/">http://www.mixw.net/</ulink>).
+	      Receiving pictures is automatic. Sending is triggered
+	      with the macros $pic and $picc (see <xref
+		linkend="gmfsk-settings-menu"/>).
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>RTTY</term>
+	  <listitem>
+	    <para>
+	      RTTY support in &app; should be considered
+	      experimental. 
+	    </para>
+	    <para>
+	      All the parameters (shift, baudrate, number of bits,
+	      parity, number of stopbits) are almost freely
+	      configurable. There is also a separate "reverse" setting
+	      for RTTY which you probably want to enable if you want
+	      to use USB to work RTTY.
+	    </para>
+	    <para>
+	      The "MSB first" option may be needed for the ASCII
+	      modes. 
+	    </para>
+	    <para>
+	      Note that no sanity checking of the parameters is made
+	      by the program, it is quite possible to enter values
+	      that don't make sense.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>THROB</term>
+	  <listitem>
+	    <para>
+	      Throb support is also to be considered
+	      experimental.
+	    </para>
+	    <para>
+	      For more information about THROB please check Lionel's
+	      web page 
+	      (<ulink
+		url="http://www.lsear.freeserve.co.uk/page3.html">http://www.lsear.freeserve.co.uk/page3.html</ulink>).
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>PSK31</term>
+	  <listitem>
+	    <para>
+	      PSK31 support in &app; borrows heavily from the C++
+	      modem classes written by Hansi Reiser DL9RDZ (which in
+	      turn is partly derived from the work of Andrew Senior
+	      G0TJZ and Peter Martinez G3PLX). While I have not used
+	      any code directly, much of the architecture and
+	      algorithms are almost directly copied from there. As a
+	      result I think the PSK31 support is pretty mature.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>PSK63</term>
+	  <listitem>
+	    <para>
+	      PSK63 is a faster variant of PSK31.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>MT63</term>
+	  <listitem>
+	    <para>
+	      The MT63 modem uses source code written by Pawel Jalocha
+	      SP9VRC. I have only written a few lines of glue code to
+	      integrate Pawel's code to my framework. The modem should
+	      be pretty mature. There is no support for the IZ8BLY
+	      style secondary channel. 8 bit characters are
+	      supported using escape 127 encoding.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>FELDHELL</term>
+	  <listitem>
+	    <para>
+	      FeldHell has full international charater set support.
+	      However, FeldHell TX uses antialiased fonts which is
+	      probably not the optimal solution.  The AGC parameter
+	      adjustments don't work yet.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </sect2> 
+
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="gmfsk-settings-menu"> 
+      <title>Settings</title> 
+      <para>
+	The <guilabel>Settings</guilabel> pulldown menu allows you to
+	modify program settings and FixText macros.
+      </para> 
+      <variablelist>
+	<varlistentry>
+	  <term><guilabel>Preferences</guilabel></term>
+	  <listitem>
+	    <para>
+	      <guilabel>Preferences</guilabel> are covered in the
+	      <xref linkend="gmfsk-prefs"/> section.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guilabel>Configure Macros</guilabel></term>
+	  <listitem>
+	    <para>
+	      <guilabel>Configure Macros</guilabel> allows you to edit
+	      any one of the 12 fixtext macros.  Selecting a fixtext
+	      macro to edit brings up a dialog box with two entry
+	      fields.  The top one is for the name of the fixtext
+	      macro.  Fixtext macro names are displayed on the fixtext
+	      buttons on the main screen.  The larger text entry field
+	      is where you type the macro itself.  Pretty much
+	      anything can be entered in here to be automatically sent
+	      when you either press the function key or the on screen
+	      button.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+
+      <para>
+	FixTexts can contain macros. Macros start with the
+	letter $. A standard macro is of the form $text. The available
+	standard macros are;
+      </para>
+
+      <variablelist>
+	<varlistentry>
+	  <term>$$</term>
+	  <listitem>The letter '$'</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$tx</term>
+	  <listitem>Push the TX button.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$rx</term>
+	  <listitem>Switch to receive.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$mycall</term>
+	  <listitem>Callsign as defined in preferences.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$myname</term>
+	  <listitem>Name as defined in preferences.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$myqth</term>
+	  <listitem>QTH as defined in preferences.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$myloc</term>
+	  <listitem>Locator as defined in preferences.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$myemail</term>
+	  <listitem>Email address as defined in preferences.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$time</term>
+	  <listitem>Local time.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$utctime</term>
+	  <listitem>Universal Coordinated Time.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$date</term>
+	  <listitem>Local date.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$utcdate</term>
+	  <listitem>UTC date.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$call</term>
+	  <listitem>Other partys callsign taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$band</term>
+	  <listitem>Band taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$rxrst</term>
+	  <listitem>Received RST taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$txrst</term>
+	  <listitem>Transmitted RST taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$name</term>
+	  <listitem>Other partys name taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$qth</term>
+	  <listitem>Other partys QTH taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$notes</term>
+	  <listitem>Notes taken from QSO data.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$soft</term>
+	  <listitem>Software version.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$startqso</term>
+	  <listitem>Set QSO start time to current time.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$logqso</term>
+	  <listitem>Send QSO data to Xlog</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$clearqso</term>
+	  <listitem>Clear loggingbar</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$mode</term>
+	  <listitem>Currently active mode name.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$pic</term>
+	  <listitem>Send grayscale picture.</listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>$picc</term>
+	  <listitem>Send color picture</listitem>
+	</varlistentry>
+      </variablelist>
+      
+      <para>
+	The macro name can also be enclosed in curly braces. This can
+	be useful if you need to avoid any spaces between the macro
+	and some text. The macro can also have an optional argument
+	separated by a colon. This only works in conjunction with
+	curly braces. Currently this argument is only useful with the
+	picture macro where you can supply a filename that way. A
+	typical picture function might be:
+      </para>
+      <para>
+	<command>${picc:/home/joe/joe.jpg}</command>
+      </para>
+      <para>
+	If the picture name is omitted or it is '?', the user is
+	presented with a file selection dialog.
+      </para>
+      <para>
+	In addition to standard macros you can use so called command
+	substitution with a function of the form $(command). The
+	command is executed using fork()/exec() and the standard
+	output of the command is captured (standard error is
+	discarded). If the last character of the captured output is a
+	newline, it is removed.
+      </para>
+      <para>
+	The fixtext macros are evaluated at the time the button is
+	pressed (as opposed to being evaluated during the
+	transmission) which is a significant fact especially with the
+	"push ... button" and date/time macros.
+      </para>
+      <para>
+	An unrecognized $-macro is ignored.
+      </para>
+    </sect2>
+  </sect1>
+
+<!-- ============= Customization ============================= -->
+  <sect1 id="gmfsk-prefs"> 
+    <title>Settings</title> 
+    <para>
+      To configure &app;, choose
+      <menuchoice>
+	<guimenu>Settings</guimenu>
+	<guimenuitem>Preferences</guimenuitem>
+      </menuchoice>.
+      The <guilabel>Preferences</guilabel> dialog contains the
+      following sections:
+    </para> 
+
+    <!-- =============== Customization Subsection ================ -->
+    <sect2 id="gmfsk-prefs-general"> 
+      <title>General</title> 
+      <para>
+	General configuration options for &app;:
+      </para>
+      <variablelist> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Station info</guilabel> </term> 
+	  <listitem> 
+	    <para>
+	      Specify your personal information.  &app; will use these
+	      values in variables in macros.
+	    </para>
+	    <itemizedlist> 
+	      <listitem> 
+		<para>
+		  <guilabel>Callsign</guilabel>
+		</para> 
+		<para>
+		  Station Callsign
+		</para> 
+	      </listitem> 
+	      <listitem> 
+		<para> 
+		  <guilabel>Name</guilabel>
+		</para> 
+		<para>
+		  Your preferred name
+		</para> 
+	      </listitem> 
+	      <listitem> 
+		<para> 
+		  <guilabel>QTH</guilabel> 
+		</para> 
+		<para>
+		  Your location (eg Canberra, Australia)
+		</para> 
+	      </listitem> 
+	      <listitem> 
+		<para> 
+		  <guilabel>Locator</guilabel> 
+		</para> 
+		<para>
+		  Your Maidenhead locator square.  The ARRL has a good
+		  page at 
+		  <ulink
+		    url="http://www.arrl.org/locate/gridinfo.html">http://www.arrl.org/locate/gridinfo.html</ulink>
+		</para> 
+	      </listitem> 
+	      <listitem> 
+		<para> 
+		  <guilabel>E-mail</guilabel> 
+		</para> 
+		<para>
+		  Your email address (if you have one).
+		</para> 
+	      </listitem> 
+	    </itemizedlist> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Date &amp; Time</guilabel> </term> 
+	  <listitem> 
+	    <para>
+	      These are used in the $time and $date macros.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Bands</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      A comma separated list of bands that you want to appear
+	      in the Bands popdown list.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Files &amp; Dirs</guilabel> 
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Configure the log file name and default directories
+	      for sent and received picture files.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+      </variablelist> 
+    </sect2>
+
+    <!-- ============= Customization Subsection ===================== -->
+    <sect2 id="gmfsk-prefs-appearance"> 
+      <title>Appearance</title> 
+      <para>
+	Lets you configure the colours and fonts used in &app;:
+      </para> 
+      <variablelist>
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Colors</guilabel> 
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Click on the color button and then select your favourite
+	      colors from the Gnome color picker.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Fonts</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Click on the font buttons and then select your favourite
+	      fonts from the Gnome font dialog.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+      </variablelist>
+    </sect2> 
+
+    <!-- ============= Customization Subsection ===================== -->
+    <sect2 id="gmfsk-prefs-modems"> 
+      <title>Modems</title> 
+      <para>
+	Configure modem parameters.  All modems preference panels have
+	a <guilabel>Restart modem</guilabel> button at the bottom of
+	the panel.  If you make a change to a parameter you must press
+	this button to restart the modem to make your changes take
+	effect.
+      </para> 
+      <variablelist>
+	<varlistentry> 
+	  <term> 
+	    <guilabel>All</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Settings that affect all modems.
+	    </para>
+	    <para>
+	      With TX frequency offset you can correct
+	      any systematic frequency error your transceiver might
+	      have between RX and TX modes.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>MFSK/THROB/PSK31</guilabel> 
+	  </term> 
+	  <listitem> 
+	    <para>
+	      The only modem setting for these modes is an individual
+	      squelch setting. (THROB squelch has no effect.)
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>RTTY</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      This allows you to modify RTTY shift, baudrate, bits
+	      (5=BAUDOT, 7/8=ASCII) parity, stopbits, inverted or 
+	      normal byte ordering.  The defaults are: Shift 170,
+	      Baudrate 45.45, Bits 5 (BAUDOT), Parity none,
+	      Stopbits 1.5, Reverse Polarity yes and Send MSB First no.
+	      These are the Amateur default. You can change them if you
+	      want to work in ASCII rather then BAUDOT or decode
+	      non-Amateur signals. Not however that the software makes
+	      no sanity checking of the parameters. It's possible to
+	      enter values that make no sense.
+	      (RTTY squelch has no effect.)
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>MT63</guilabel> 
+	  </term> 
+	  <listitem> 
+	    <para>
+	      This allows you to change the bandwidth and interleave of
+	      the MT63 modem.  The default parameters are: Bandwidth
+	      1000 Hz, Interleave 64 (long), CW Identification no,
+	      Allow 8 Bit Characters yes.  These are the
+	      recommended ones.  It would be best to change them only
+	      when you fully understand the protocol.
+	    </para> 
+	    <para>
+	      CW ID is sent alongside the transmission if selected. The
+	      callsign is taken from the station info preferences.
+	    </para>
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>HELL</guilabel> 
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Here you can change the font and operating parameters of
+	      the Feld-Hell modem.  (The AGC settings don't
+	      currently work.)
+	    </para>
+	  </listitem> 
+	</varlistentry> 
+      </variablelist>
+    </sect2> 
+
+    <!-- ============= Customization Subsection ===================== -->
+    <sect2 id="gmfsk-prefs-waterfall"> 
+      <title>Waterfall</title> 
+      <para>
+	Configure the waterfall display.
+      </para> 
+      <variablelist>
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Settings</guilabel> 
+	  </term> 
+	  <listitem> 
+	    <para>
+	      This panel allows you to tweak the parameters of the
+	      waterfall display.
+	    </para> 
+	    <variablelist>
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Ref level</guilabel>
+		</term>
+		<listitem> 
+		  <para>
+		    Sets the reference level of the waterfall and spectrum
+		    displays.  This sets the level in dB that corresponds
+		    to the brightest color in waterfall and to the top
+		    of the window in spectrum display.  0 dB corresponds
+		    (approximately) to the strongest signal that the
+		    sound card can handle.
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Amp span</guilabel>
+		</term> 
+		<listitem> 
+		  <para>
+		    Sets the amplitude span of the waterfall and spectrum
+		    displays.  This sets the difference in dB between
+		    black and white in waterfall and the top and
+		    bottom of the window in spectrum display.
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Mode</guilabel>
+		</term> 
+		<listitem> 
+		  <para>
+		    Switches between Waterfall, Spectrum and Scope displays.
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Zoom</guilabel>
+		</term> 
+		<listitem> 
+		  <para>
+		    Sets the zoom in Waterfall and Spectrum display modes.
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Speed</guilabel>
+		</term> 
+		<listitem> 
+		  <para>
+		    Sets the display update speed.
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Window</guilabel>
+		</term> 
+		<listitem> 
+		  <para>
+		    Sets the FFT windowing function used when calculating
+		    the Waterfall and Spectrum displays.
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	      <varlistentry> 
+		<term> 
+		  <guilabel>Waterfall scrolls upwards</guilabel>
+		</term> 
+		<listitem> 
+		  <para>
+		    Changes the direction of scrolling in the waterfall
+		    display (up or down).
+		  </para>
+		</listitem> 
+	      </varlistentry> 
+	    </variablelist>
+	  </listitem> 
+	</varlistentry> 
+      </variablelist>
+    </sect2> 
+
+    <!-- ============= Customization Subsection ===================== -->
+    <sect2 id="gmfsk-prefs-devices"> 
+      <title>Devices</title> 
+      <para>
+	Configure sound and PTT devices.
+      </para> 
+      <variablelist>
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Sound</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Please enter the full path to your OSS compatible sound
+	      device.  This is probably something like
+	      <filename>/dev/dsp</filename> on Linux and
+	      <filename>/dev/dspW</filename> on FreeBSD.
+	    </para> 
+	    <para>
+	      The <guilabel>Requested sample rate</guilabel>,
+	      <guilabel>TX rate offset</guilabel> and
+	      <guilabel>RX rate offset</guilabel> allow you to rectify
+	      any sample rate problems with your soundcard.  Normally
+	      you don't need to touch these but in case your soundcard
+	      doesn't support the default rate of 8000 samples per second
+	      or if you know that it has some sample rate offset, you
+	      can correct it separately for transmit and receive.
+	    </para> 
+	    <para>
+	      As an example of a bad case consider this: Your soundcard
+	      only supports 11025 sps, but you know that it actually
+	      samples at 11020 sps on transmit and 11035 on receive.
+	      In this case you should put 11025 to the
+	      <guilabel>Requested sample rate</guilabel> box,
+	      (11020 - 11025) / 11025 * 1000000 = -453.5 to the
+	      <guilabel>TX rate offset</guilabel> box and
+	      (11035 - 11025) / 11025 * 1000000 = 907 to the
+	      <guilabel>RX rate offset</guilabel> box.
+	    </para> 
+	    <para>
+	      There are also options to enable 8 bit sound, stereo
+	      sound and full duplex.  Try 8 bit or stereo audio if you
+	      get errors when &app; tries to open the sound device.
+	      Full duplex should not be used unless it's the only option
+	      that works; it is unsupported and generally a bad idea. 
+	    </para>
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>PTT</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      &app; has the ability to key your transmitter using either
+	      the serial or the parallel port.  For serial port you can
+	      select DTR or RTS (or both), for parallel port DATA0 is
+	      used. 
+	    </para>
+	    <para>
+	      Select one from the list or type whatever you want to the
+	      entry.  Serial ports are of the form 
+	      <filename>/dev/ttyS0</filename> and parallel ports of the
+	      form <filename>/dev/parport0</filename>.  On FreeBSD 
+	      serial ports are something like
+	      <filename>/dev/cuaa0</filename>.
+	    </para>
+	    <para>
+	      There's a good page on interfacing your soundcard to your
+	      rig at; <ulink
+		url="http://www.qsl.net/wm2u/interface.html">http://www.qsl.net/wm2u/interface.html</ulink>
+	    </para>
+	  </listitem> 
+	</varlistentry> 
+      </variablelist>
+    </sect2> 
+
+    <!-- ============= Customization Subsection ===================== -->
+    <sect2 id="gmfsk-prefs-hamlib"> 
+      <title>Hamlib</title> 
+      <para>
+	Configure Hamlib (<ulink
+	  url="http://hamlib.org">http://hamlib.org</ulink>) support.
+	This may not be available if the support is not compiled in
+	the binary.
+      </para> 
+      <variablelist>
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Settings</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Select the radio model and the port the radio is
+	      connected to.  For the RPC rig, the port is the hostname
+	      where the rig daemon runs (typically localhost).  For
+	      serial ports you need to then select the speed to be
+	      used.
+	    </para> 
+	    <para> 
+	      <guilabel>Config</guilabel> is a comma separated list
+	      of Hamlib config parameters: param1 = value1,
+	      param2 = value2, ... You can get a list of the parameters
+	      your rig support using the <command>rigctl</command>
+	      command:
+	    </para> 
+	    <para> 
+	      <command>rigctl -m &lt;model&gt; -L</command>
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+	<varlistentry> 
+	  <term> 
+	    <guilabel>Features</guilabel>
+	  </term> 
+	  <listitem> 
+	    <para>
+	      Here you can select what &app; uses hamlib for.
+	    </para> 
+	  </listitem> 
+	</varlistentry> 
+      </variablelist>
+    </sect2>
+  </sect1>
+
+<!-- ============= Operation ============================= -->
+  <sect1 id="gmfsk-operation"> 
+    <title>Operating &app;</title> 
+    <para>
+      Operating &app; should be easy to learn even without much help
+      if you have any experience in operating with other modern
+      soundcard digital modes. The MFSK web site 
+      (<ulink
+	url="http://www.qsl.net/zl1bpu/MFSK/">http://www.qsl.net/zl1bpu/MFSK/</ulink>)
+      is suggested reading for background information. Also the help
+      in IZ8BLY Stream program could prove useful. Note however that
+      tuning in &app; works a little different to that in Stream.
+    </para>
+    <para>
+      Setting audio levels is very important. The scope display should
+      prove a nice tool for setting the incoming audio level. However
+      be aware that the amplifier stages before the sound card mixer
+      can also be overdriven without showing signs on the scope
+      display.
+    </para>
+    <para>
+      On transmit you should be just as careful. Overdriving MFSK or
+      RTTY doesn't produce intermodulation products as there is only
+      one tone transmitted at a time but harmonic products (of the
+      audio) are always present when overdriving. THROB on the other
+      hand does produce intermodulation products as most of the
+      possible symbols use two tones.
+    </para>
+    <para>
+      The received text and the QSO data area are of course subject to
+      the normal X Window Selection system: dragging with the left
+      button selects text and the middle button pastes the selected
+      text. However the received text area also implements an
+      additional trick with the right button.  Clicking the right
+      button over a word selects the word and opens a context menu
+      where you can select where you want the selected data to be
+      pasted.
+    </para>
+    <para>
+      The waterfall can be paused from the popup menu that opens if
+      you right click over it. The waterfall config dialog can also be
+      activated from the popup menu.
+    </para>
+    <para>
+      The status bar shows modem state, transmission mode and UTC
+      time. Clicking the mode label is a shortcut to the mode config
+      dialog.
+    </para>
+    <para>
+      The <guilabel>Log entry</guilabel> button sends the QSO data to
+      a logging program using interprocess communication
+      (IPC). Currently only xlog 
+      (<ulink
+	url="http://savannah.gnu.org/projects/Xlog">http://savannah.gnu.org/projects/Xlog</ulink>)
+      supports this feature.
+    </para>
+    <para>
+      The <guilabel>New entry</guilabel> button clears all the QSO
+      data fields and resets the QSO time (the first change after a
+      reset on any of the QSO data fields sets the time).
+    </para>
+    <para>
+      The most used functions now have keyboard accelerators. Fixtext
+      buttons show the associated function keys in their labels and
+      the other buttons tell you the accelerator in their tooltips
+      ie. when you hover the mouse pointer above the button (be sure
+      to enable tooltips in gnome config).
+    </para>
+  </sect1>
+
+<!-- ============= Bugs ================================== -->
+<!--
+  This section is optional and is commented out by default. You can
+  use it to describe known bugs and limitations of the program if
+  there are any - please be frank and list all problems you know of.
+-->
+<!--
+  <sect1 id="gmfsk-bugs">
+    <title>Known Bugs and Limitations</title>
+    <para>
+    </para>
+  </sect1>
+-->
+
+<!-- ============= About ================================== -->
+<!--
+  This section contains info about the program (not docs), such as
+  author's name(s), web page, license, feedback address. This section
+  is optional: primary place for this info is "About.." box of the
+  program. However, if you do wish to include this info in the manual,
+  this is the place to put it. Alternatively, you can put this
+  information in the title page. 
+-->
+  <sect1 id="gmfsk-about"> 
+    <title>About &app;</title> 
+    <para>
+      &app; was written by Tomi Manninen. To find more information
+      about &app;, please visit the 
+      <ulink url="http://gmfsk.connect.fi">gMFSK Web page</ulink>.
+    </para>
+    <para>
+      To report a bug or make a suggestion regarding this application
+      or this manual, please email the author at
+      <email>oh2bns@sral.fi</email>.
+    </para>
+    <para>
+      This program is distributed under the terms of the GNU General
+      Public license as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version. A copy of this license can be found at this 
+      <ulink url="ghelp:gpl" type="help">link</ulink>, or in the file
+      COPYING included with the source code of this program.
+    </para>
+      
+    <!-- ============= About subsection ================================== -->
+    <sect2 id="gmfsk-about-thanks">
+      <title>Thanks</title>
+      <para>
+	Thanks to Murray ZL1BPU and Nino IZ8BLY for creating a very
+	cool ham communication modes, MFSK16 and MFSK8. Special thanks
+	to Murray for the technical documentation of MFSK16/8 and
+	Hellschreiber.
+      </para>
+      <para>
+	Thanks also to Jes&uacute;s EB1DIX for his RTTY decoder
+	program for Linux. I used that software as the base for my
+	experiments and a lot of ideas was borrowed from it.
+      </para>
+      <para>
+	Likewise thanks to Lionel G3PPT for making Throb source code
+	publically available. Again lot was learned just by browsing
+	through it.
+      </para>
+      <para>
+	Thanks to Hansi DL9RDZ for his PSK31 C++ classes and the work
+	of Andrew G0TJZ and Peter G3PLX on which the classes are based
+	on.
+      </para>
+      <para>
+	Special thanks to Pawel SP9VRC for his work on MT63 and the
+	source code for it. Due to a stupid oversight from my part I
+	released &app; v0.5 with Pawel's MT63 code under GPL even
+	though Pawel's original license was not
+	GPL-compatible. Fortunately Pawel has since agreed to release
+	his code under the GPL. Thanks Pawel!
+      </para>
+      <para>
+	Also many thanks to Phil KA9Q and Charles G4GUO for giving
+	ideas and/or code for the project. Neither probably knew about
+	this project but that's simply what free software is, everyone
+	benefits from it!
+      </para>
+      <para>
+	Last but not least many thanks to Joni OH2NJR/OH2MUI for
+	providing me with feedback and equipment to be able to develop
+	and test the stuff.....
+      </para>
+    </sect2>
+  </sect1> 
+
+  &GFDL;
+
+</article>

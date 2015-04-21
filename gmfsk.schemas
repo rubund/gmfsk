@@ -1,0 +1,892 @@
+<gconfschemafile>
+  <schemalist>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/info/mycall</key>
+      <applyto>/apps/gmfsk/info/mycall</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Station callsign</short>
+        <long>Station callsign is used for the fixtext macro $mycall.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/info/myname</key>
+      <applyto>/apps/gmfsk/info/myname</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Operator's name</short>
+        <long>Operator's name is used for the fixtext macro $myname.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/info/myqth</key>
+      <applyto>/apps/gmfsk/info/myqth</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Station QTH</short>
+        <long>Station QTH is used for the fixtext macro $myqth.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/info/myloc</key>
+      <applyto>/apps/gmfsk/info/myloc</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Station locator</short>
+        <long>Station locator is used for the fixtext macro $myloc.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/info/myemail</key>
+      <applyto>/apps/gmfsk/info/myemail</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>Operator's email address</short>
+        <long>Operator's email address is used for
+        the fixtext macro $myemail.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/colors/tx</key>
+      <applyto>/apps/gmfsk/colors/tx</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>red</default>
+      <locale name="C">
+        <short>TX text color</short>
+        <long>Color used for transmitted text in the RX window.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/colors/rx</key>
+      <applyto>/apps/gmfsk/colors/rx</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>black</default>
+      <locale name="C">
+        <short>RX text color</short>
+        <long>Color used for received text in the RX window.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/colors/hl</key>
+      <applyto>/apps/gmfsk/colors/hl</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>blue</default>
+      <locale name="C">
+        <short>Highlighted text color</short>
+        <long>Color used for special characters in the RX window.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/colors/txwin</key>
+      <applyto>/apps/gmfsk/colors/txwin</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>white</default>
+      <locale name="C">
+        <short>TX window background color</short>
+        <long>TX window background color.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/colors/rxwin</key>
+      <applyto>/apps/gmfsk/colors/rxwin</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>white</default>
+      <locale name="C">
+        <short>RX window background color</short>
+        <long>RX window background color.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/fonts/txfont</key>
+      <applyto>/apps/gmfsk/fonts/txfont</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>Sans 10</default>
+      <locale name="C">
+        <short>TX window font</short>
+        <long>Font used in the TX window.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/fonts/rxfont</key>
+      <applyto>/apps/gmfsk/fonts/rxfont</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>Sans 10</default>
+      <locale name="C">
+        <short>RX window font</short>
+        <long>Font used in the RX window.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/sound/dev</key>
+      <applyto>/apps/gmfsk/sound/dev</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>/dev/dsp</default>
+      <locale name="C">
+        <short>Sound device</short>
+        <long>Device used for sound input/output.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/ptt/dev</key>
+      <applyto>/apps/gmfsk/ptt/dev</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>none</default>
+      <locale name="C">
+        <short>PTT device</short>
+        <long>Serial device used for PTT control. A value of "none"
+        disables PTT control.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/datefmt</key>
+      <applyto>/apps/gmfsk/misc/datefmt</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>%d.%m.%Y</default>
+      <locale name="C">
+        <short>Date format string</short>
+        <long>Format string used for the fixtext macros $date and $utcdate.
+        See the strftime(3) manual page for explanation of the format.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/timefmt</key>
+      <applyto>/apps/gmfsk/misc/timefmt</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>%H:%M:%S %Z</default>
+      <locale name="C">
+        <short>Time format string</short>
+        <long>Format string used for the fixtext macros $time and $utctime.
+        See the strftime(3) manual page for explanation of the format.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/bands</key>
+      <applyto>/apps/gmfsk/misc/bands</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>,1.8,3.5,7,10,14,18,21,24,28</default>
+      <locale name="C">
+        <short>QSO bands list</short>
+        <long>A comma separated list of bands to be included in the
+        combobox in the QSO data area.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/logfile</key>
+      <applyto>/apps/gmfsk/misc/logfile</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>~/gMFSK.log</default>
+      <locale name="C">
+        <short>Log file name</short>
+        <long>All received and transmitted text is logged to this file
+        if logging is enabled.
+        A tilde (~) at the beginning is expanded to the users home
+        directory.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/picrxdir</key>
+      <applyto>/apps/gmfsk/misc/picrxdir</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>~/gMFSK/</default>
+      <locale name="C">
+        <short>RX picture directory</short>
+        <long>Default directory to save received pictures to.
+        A tilde (~) at the beginning is expanded to the users home
+        directory.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/pictxdir</key>
+      <applyto>/apps/gmfsk/misc/pictxdir</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>~/gMFSK/</default>
+      <locale name="C">
+        <short>TX picture directory</short>
+        <long>Default directory to load pictures to be transmitted.
+        A tilde (~) at the beginning is expanded to the users home
+        directory.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/hell/font</key>
+      <applyto>/apps/gmfsk/hell/font</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>FeldNarr 14</default>
+      <locale name="C">
+        <short>Hellschreiber font</short>
+        <long>Font used to render transmitted Hellschreiber text.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/sound/8bit</key>
+      <applyto>/apps/gmfsk/sound/8bit</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Eight bit sound I/O</short>
+        <long>Use eight bit sound I/O. Some older cards might not
+        support 16 bit samples.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/sound/stereo</key>
+      <applyto>/apps/gmfsk/sound/stereo</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Stereo sound I/O</short>
+        <long>Use stereo sound I/O. Some newer cards do not
+        support mono.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/sound/fulldup</key>
+      <applyto>/apps/gmfsk/sound/fulldup</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Full duplex sound I/O</short>
+        <long>Use full duplex sound I/O. This is unsupported
+        and likely to be buggy.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/sound/testmode</key>
+      <applyto>/apps/gmfsk/sound/testmode</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Test mode sound I/O</short>
+        <long>In test mode sound input is read from stdin (as 16 bit
+        signed native byteorder samples). Sound output is written to
+        stdout. Useful for channel simulation etc.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/ptt/inverted</key>
+      <applyto>/apps/gmfsk/ptt/inverted</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Inverted PTT</short>
+        <long>Use inverted PTT control.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/afc</key>
+      <applyto>/apps/gmfsk/misc/afc</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>AFC</short>
+        <long>Automatic Frequency Control.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/squelch</key>
+      <applyto>/apps/gmfsk/misc/squelch</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+      <locale name="C">
+        <short>Squelch</short>
+        <long>Squelch.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/reverse</key>
+      <applyto>/apps/gmfsk/misc/reverse</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Reverse</short>
+        <long>Reverse modulation in frequency domain.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/reverse</key>
+      <applyto>/apps/gmfsk/rtty/reverse</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+      <locale name="C">
+        <short>RTTY reverse</short>
+        <long>Reverse mark/space in RTTY mode.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/msbfirst</key>
+      <applyto>/apps/gmfsk/rtty/reverse</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>RTTY MSB first</short>
+        <long>Send Most Significant Bit first in RTTY mode.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/mt63/cwid</key>
+      <applyto>/apps/gmfsk/mt63/cwid</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>MT63 CWID</short>
+        <long>Send CW ID during MT63 transmission.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/hell/uppercase</key>
+      <applyto>/apps/gmfsk/hell/uppercase</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>TRUE</default>
+      <locale name="C">
+        <short>Hellscreiber force upper case</short>
+        <long>Force upper case letters in Hellschreiber transmission.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/direction</key>
+      <applyto>/apps/gmfsk/wf/direction</applyto>
+      <owner>gmfsk</owner>
+      <type>bool</type>
+      <default>FALSE</default>
+      <locale name="C">
+        <short>Waterfall direction</short>
+        <long>Scrolling direction of the waterfall display. If true
+        waterfall scrolls upwards.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/ptt/mode</key>
+      <applyto>/apps/gmfsk/ptt/mode</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>2</default>
+      <locale name="C">
+        <short>PTT mode</short>
+        <long>Push-to-Talk control mode.  Possible values
+        are:  0 (RTS), 1 (DTR), 2 (RTS and DTR).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/mode</key>
+      <applyto>/apps/gmfsk/wf/mode</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+        <short>Waterfall mode</short>
+        <long>Waterfall display mode.  Possible values
+        are:  0 (Normal), 1 (Spectrum), 2 (Scope).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/zoom</key>
+      <applyto>/apps/gmfsk/wf/zoom</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+        <short>Waterfall zoom</short>
+        <long>Waterfall display zoom.  Possible values
+        are:  0 (1x), 1 (2x), 2 (4x).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/speed</key>
+      <applyto>/apps/gmfsk/wf/speed</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>1</default>
+      <locale name="C">
+        <short>Waterfall speed</short>
+        <long>Waterfall display speed.  Possible values
+        are:  0 (Half), 1 (Normal), 2 (Fast).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/window</key>
+      <applyto>/apps/gmfsk/wf/window</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>1</default>
+      <locale name="C">
+        <short>Waterfall window function</short>
+        <long>Waterfall display window function.  Possible values
+        are:  0 (Boxcar), 1 (Triangular), 2 (Hamming).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/bits</key>
+      <applyto>/apps/gmfsk/rtty/bits</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+        <short>RTTY data bits</short>
+        <long>RTTY number of data bits.  Possible values are:
+        0 (5 bits - BAUDOT), 1 (7 bits - ASCII), 2 (8 bits - ASCII).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/parity</key>
+      <applyto>/apps/gmfsk/rtty/parity</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>0</default>
+      <locale name="C">
+        <short>RTTY parity</short>
+        <long>RTTY parity type.  Possible values are:
+        0 (None), 1 (Even), 2 (Odd), 3 (Zero), 4 (One).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/stop</key>
+      <applyto>/apps/gmfsk/rtty/parity</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>1</default>
+      <locale name="C">
+        <short>RTTY stop bits</short>
+        <long>RTTY number of stop bits.  Possible values are:
+        0 (1 bit), 1 (1.5 bits), 2 (2 bits).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/mt63/bandwidth</key>
+      <applyto>/apps/gmfsk/mt63/bandwidth</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>1</default>
+      <locale name="C">
+        <short>MT63 bandwidth</short>
+        <long>MT63 bandwidth mode.  Possible values are:
+        0 (500 Hz), 1 (1000 Hz), 2 (2000 Hz).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/mt63/interleave</key>
+      <applyto>/apps/gmfsk/mt63/interleave</applyto>
+      <owner>gmfsk</owner>
+      <type>int</type>
+      <default>1</default>
+      <locale name="C">
+        <short>MT63 interleave</short>
+        <long>MT63 interleave mode.  Possible values are:
+        0 (Short - 32), 1 (Long - 64).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/reflevel</key>
+      <applyto>/apps/gmfsk/wf/reflevel</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>-10.0</default>
+      <locale name="C">
+        <short>Waterfall reference level</short>
+        <long>Waterfall disply reference level in dB. Relative amplitude
+        value of a white pixel. Allowed range: -100 ... 0</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/ampspan</key>
+      <applyto>/apps/gmfsk/wf/ampspan</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>100.0</default>
+      <locale name="C">
+        <short>Waterfall amplitude span</short>
+        <long>Waterfall disply amplitude span in dB. A black pixel
+        means this much lower amplitude compred to a white pixel.
+        Allowed range: 10 ... 100</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/wf/ampspan</key>
+      <applyto>/apps/gmfsk/wf/ampspan</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>100.0</default>
+      <locale name="C">
+        <short>Waterfall amplitude span</short>
+        <long>Waterfall disply amplitude span in dB. A black pixel
+        means this much lower amplitude compred to a white pixel.
+        Allowed range: 10 ... 100</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/misc/txoffset</key>
+      <applyto>/apps/gmfsk/misc/txoffset</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>0.0</default>
+      <locale name="C">
+        <short>TX offset frequency</short>
+        <long>Transmitter offset frequency in Hz. The transmit frequency
+        is shifted by this much in frequency.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/mfsk/squelch</key>
+      <applyto>/apps/gmfsk/mfsk/squelch</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>15.0</default>
+      <locale name="C">
+        <short>MFSK squelch level</short>
+        <long>Squelch level. If the "goodness" of reception is below
+        this value, no text is printed and AFC is disabled.
+        Allowed range: 0 ... 100</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/shift</key>
+      <applyto>/apps/gmfsk/rtty/shift</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>170.0</default>
+      <locale name="C">
+        <short>RTTY shift</short>
+        <long>RTTY shift in Hz.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/baud</key>
+      <applyto>/apps/gmfsk/rtty/baud</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>45.45</default>
+      <locale name="C">
+        <short>RTTY baud rate</short>
+        <long>RTTY baud rate.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/rtty/squelch</key>
+      <applyto>/apps/gmfsk/rtty/squelch</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>15.0</default>
+      <locale name="C">
+        <short>RTTY squelch level</short>
+        <long>Squelch level. If the "goodness" of reception is below
+        this value, no text is printed and AFC is disabled.
+        Allowed range: 0 ... 100.
+	(RTTY squelch does not work at the moment.)</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/throb/squelch</key>
+      <applyto>/apps/gmfsk/throb/squelch</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>15.0</default>
+      <locale name="C">
+        <short>THROB squelch level</short>
+        <long>Squelch level. If the "goodness" of reception is below
+        this value, no text is printed and AFC is disabled.
+        Allowed range: 0 ... 100.
+        (THROB squelch does not work at the moment.)</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/psk31/squelch</key>
+      <applyto>/apps/gmfsk/psk31/squelch</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>15.0</default>
+      <locale name="C">
+        <short>PSK31 squelch level</short>
+        <long>Squelch level. If the "goodness" of reception is below
+        this value, no text is printed and AFC is disabled.
+        Allowed range: 0 ... 100</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/mt63/squelch</key>
+      <applyto>/apps/gmfsk/mt63/squelch</applyto>
+      <owner>gmfsk</owner>
+      <type>float</type>
+      <default>15.0</default>
+      <locale name="C">
+        <short>MT63 squelch level</short>
+        <long>Squelch level. If the "goodness" of reception is below
+        this value, no text is printed and AFC is disabled.
+        Allowed range: 0 ... 100</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/name1</key>
+      <applyto>/apps/gmfsk/macro/name1</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>CQ</default>
+      <locale name="C">
+        <short>Macro 1 name</short>
+        <long>Macro 1 name</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/text1</key>
+      <applyto>/apps/gmfsk/macro/text1</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>$tx
+cq cq cq de $mycall $mycall $mycall
+cq cq cq de $mycall $mycall $mycall
+cq cq cq de $mycall $mycall $mycall
+
+pse k
+$rx</default>
+      <locale name="C">
+        <short>Macro 1 text</short>
+        <long>Macro 1 text</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/name2</key>
+      <applyto>/apps/gmfsk/macro/name2</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>Station</default>
+      <locale name="C">
+        <short>Macro 2 name</short>
+        <long>Macro 2 name</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/text2</key>
+      <applyto>/apps/gmfsk/macro/text2</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>---
+$mycall station info:
+
+Name:   $myname
+QTH:    $myqth, Locator: $myloc
+Email:  $myemail
+Rig:    Icom IC-745
+Pwr:    abt 10 W
+Ant:    end fed wire + SG-237 automatic ATU
+Comp:   AMD Duron 900 MHz 256 MB
+OS:     $(cat /etc/redhat-release)
+Soft:   $soft
+
+localtime: $time ($utctime)
+
+---
+</default>
+      <locale name="C">
+        <short>Macro 2 text</short>
+        <long>Macro 2 text</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/name3</key>
+      <applyto>/apps/gmfsk/macro/name3</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>BTU</default>
+      <locale name="C">
+        <short>Macro 3 name</short>
+        <long>Macro 3 name</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/text3</key>
+      <applyto>/apps/gmfsk/macro/text3</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>btu $call de $mycall k
+$rx</default>
+      <locale name="C">
+        <short>Macro 3 text</short>
+        <long>Macro 3 text</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/name4</key>
+      <applyto>/apps/gmfsk/macro/name4</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>call de mycall</default>
+      <locale name="C">
+        <short>Macro 4 name</short>
+        <long>Macro 4 name</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/text4</key>
+      <applyto>/apps/gmfsk/macro/text4</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>$tx
+$call de $mycall
+</default>
+      <locale name="C">
+        <short>Macro 4 text</short>
+        <long>Macro 4 text</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/name5</key>
+      <applyto>/apps/gmfsk/macro/name5</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>QRZ ?</default>
+      <locale name="C">
+        <short>Macro 5 name</short>
+        <long>Macro 5 name</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/text5</key>
+      <applyto>/apps/gmfsk/macro/text5</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>$tx
+qrz? qrz? qrz? de $mycall $mycall $mycall
+
+pse kn
+$rx</default>
+      <locale name="C">
+        <short>Macro 5 text</short>
+        <long>Macro 5 text</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/name6</key>
+      <applyto>/apps/gmfsk/macro/name6</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>73 &amp; sk</default>
+      <locale name="C">
+        <short>Macro 6 name</short>
+        <long>Macro 6 name</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/gmfsk/macro/text6</key>
+      <applyto>/apps/gmfsk/macro/text6</applyto>
+      <owner>gmfsk</owner>
+      <type>string</type>
+      <default>Thanks for very nice $mode QSO dr $name.
+QSL is ok via buro if needed.
+73 and hope to see you soon again on $mode or other digital modes.
+$call de $mycall
+sk sk
+$rx </default>
+      <locale name="C">
+        <short>Macro 6 text</short>
+        <long>Macro 6 text</long>
+      </locale>
+    </schema>
+
+  </schemalist>
+</gconfschemafile>
+
+
+

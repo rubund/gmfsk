@@ -1,0 +1,588 @@
+2005-01-20  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.7pre1.
+
+2005-01-20  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Added a "center on this signal" button to the gui. The idea
+	  is to change the rig frequency (with hamlib) so that the currently
+	  decoded signal is in the center of the receiver pass band.
+	  Thanks Leigh WA5ZNU.
+
+2005-01-20  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changes to the way Olivia handles sent characters
+	  (make it more "real time"). Thanks Paul K9PS.
+
+2005-01-16  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed a typo in confdialog.c. Adding Olivia made hamlib
+	  config unreachable.
+
+	* Generalized some of the hamlib init code.
+
+2005-01-15  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Intergrated Pawel's new Olivia modem. Works but is pretty
+	  much untested...
+
+2005-01-04  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Started using glib malloc functions in all files and
+	  removed AC_FUNC_*ALLOC* checks from configure.in.
+	  This should fix the rpl_malloc bug some people are
+	  seeing.
+
+2005-01-03  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Internationalization stuff. All strings should now be
+	  marked for i18n.
+
+	* Wrote a quick Finnish translation.
+
+	* Slovakian translation from Mike OM4AA.
+
+	* Fixed mt63/dsp.h so that it compiles with gcc 3.4.
+	  Thanks Carl Makin VK1KCM.
+
+2004-11-14  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fix autoconf stuff so that gmfsk compiles on arm architecture
+	  too. Thanks Hamish VK3SB.
+
+2004-09-12  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* File send didn't quite work. Added a conversion
+	  to UTF8 before writing to the tx window.
+
+2004-09-12  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Some changes to the config dialog: Expand the children
+	  when a row is selected. Also mode and waterfall shortcuts
+	  automatically expand the correct treeview item.
+
+2004-08-04  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Added Feldhell fonts, made FeldNarr the default feldhell
+	  TX font and changed the TX entry widget to use the TX font.
+
+2004-07-30  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* CWIrc now uses the core sample rate conversion.
+
+2004-07-29  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Calculate the size of sound fragments from the
+	  real sample rate.
+
+2004-07-24  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed a bug where some modems refuse to transmit
+	  if sample rate conversion is in use.
+
+	* Feldhell transmit didn't always empty the text entry.
+
+2004-07-15  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.6.
+
+2004-07-06  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Updated MT63 to use the official 0.5 version code.
+
+2004-07-06  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Updates to the help file.
+
+2004-06-29  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* An attempt at automatic sync for THROB. Not perfect
+	  but works for now.
+
+2004-04-27  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed a bug causing a freeze when going from tx to rx
+	  on some systems (compiler or lib dependent?).
+
+2004-04-17  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Samplerate conversion gets now used automatically if
+	  the requested rate is not supported.
+
+2004-04-16  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Added progress meter for MFSK picture send.
+
+	* Statusbar messages are removed by a 10sec timeout.
+
+	* Use a common output buffer for all modulators.
+	  This also fixes a FreeBSD crash on Feldhell TX.
+
+	* Colored waterfall. (For now disabled, need to edit
+	  source and recompile.) (tnx Thierry F4DWV)
+
+2004-04-15  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* MT63 CWID now sends "<callsign> MT63" instead of
+	  only the callsign.
+
+2004-04-13  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changes to make everything compile also without
+	  optimization enabled (to help debugging).
+
+	* Use AC_COMPILE_WARNINGS in configure.in
+
+2004-04-04  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Added timestamps to each line in the log file
+	  and fixed a few minor issues in log.c (tnx Andrea IZ4FHT).
+
+	* Made "Log to file" sticky between invocations.
+
+2004-03-28  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Implemented sample rate conversion using libsamplerate
+	  (slightly stripped down to save space).
+
+	* Restructured snd.c.
+
+2004-03-08  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Reset RTS and DTR at serial PTT open.
+
+2004-03-02  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changed the state change logic a bit. Switching from pause
+	  to tx works now.
+
+2004-02-27  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed filter.c to actually save calculations when decimating...
+
+2004-02-26  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* CWirc bug fix (Pierre F8EJF)
+
+2004-02-25  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Support for hamlib rig_set_conf
+
+2004-02-22  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Add underscore to the paths fed to find_menu_item().
+	  This fixes a sigsegv on gnome 2.4. There will
+	  probably be a problem with translations though(?)
+
+2004-02-22  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.6beta3
+
+	* New help docs from Carl VK1KCM and lots of doc tweaking
+	  by me in the past few weeks
+
+2004-02-20  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Added parport ptt support
+
+2004-02-17  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Rewrote qsodata.c
+
+	* Start in the mode saved at last exit
+
+	* Added callsign to the saved picture name
+
+	* Adjusted waterfall spectrum mode display scale a bit
+
+2004-02-10  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Qsodata band combo changed to a simple entry if hamlib
+	  is in use
+
+2004-02-09  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* New mode: PSK63
+
+	* Changed the way TX/RX switching is handled in macros and
+	  squashed a major bug
+
+	* removed macros $abort and $pause
+
+2004-02-04  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Hamlib errors after initialization are not fatal.
+	  Errors reported to the main status bar.
+
+2004-01-25  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Workaround for old popt versions
+
+	* Search /opt/gnome2/bin as well for gconftool-2
+
+2004-01-23  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.6beta2
+
+	* Included some sample fixtexts
+
+2004-01-18  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Small modification to support hamlib-1.1.5.
+
+2004-01-12  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Waterfall mode can be set directly from the popup menu.
+
+	* Testmode is now set from command line.
+
+2003-12-27  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Test needed hamlib functions at startup and added
+	  a bit better logic if some features are not supported.
+
+2003-11-27  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Use popt to parse command line options. Add a --run-druid
+	  option.
+
+	* Added a first time configuration druid (wizard).
+
+2003-11-23  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* FFTW wisdom is saved to to gconf now. No separate file
+	  anymore.
+
+2003-11-12  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* CWirc slave code from Pierre-Philippe Coupard. See
+	  http://webperso.easyconnect.fr/om.the/web/helloip/
+
+2003-11-10  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Started using Glade 2.0.1.
+
+2003-11-03  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* New macros: $startqso, $logqso, $clearqso (set start time,
+	  log qso, clear qso data respectively).
+
+	* Log qso sends end time to the remote log.
+
+	* Don't clear qso data when pushing "log qso".
+
+	* Search for gconftool-2 also in /opt/gnome/bin
+
+2003-11-01  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Hitting TX button moved focus always to the TX text widget.
+	  This is not very good in Feldhell mode... Fixed.
+
+2003-10-28  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Included gnome-screenshot.png in gMFSK. MFSK picture TX
+	  fails if this is not found.
+
+2003-10-25  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.6beta1
+
+2003-10-23  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* New help file from Carl VK1KCM. This is still work in progress.
+
+2003-10-18  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed timefmt key in the schemas file.
+
+2003-10-12  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed compile without hamlib support.
+
+2003-09-12  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Reworked configure.in.
+
+2003-09-06  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Hamlib PTT
+
+2003-09-03  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Moved sound config reads to the main thread. Apparently GConf
+	  is not thread safe...
+
+	* Made sound open non-blocking. Better error reporting if
+	  sound card is busy.
+
+	* Added the GPL statement to each source file.
+
+2003-08-31  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* More hamlib stuff. Most of it now works at least for me...
+
+2003-08-05  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Hamlib stuff...
+
+2003-08-04  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Use g_file_get_contents() in "Send File..."
+
+2003-07-26  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Waterfall enhancements: fall/rise switch, improved frequency
+	  ruler that can be dragged.
+
+	* TX window clear bug fixed.
+
+	* Made FFTW wisdom file configurable (default ~/gMFSK/fftw_wisdom)
+
+2003-07-20  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* More preparations for FFTW3.
+
+	* Fixed a bug in the fftfilt code.
+	  (wrong length in fftfilt_set_freqs())
+
+	* Use FFTW_MEASURE flag to fftw_create_plan(). Also wisdom is
+	  imported/exported from/to $HOME/.gmfsk_fftw_wisdom. There will
+	  be a short delay the first time the program is started or
+	  a new modem is selected.
+
+2003-07-18  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Reset miniscope and metric dial at TX start.
+
+	* Feldhell now uses the same sample rate as all the other
+	  modems (8000 sps).
+
+	* 8 bit character handling for MT63 (escape 127).
+
+2003-07-14  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* All modems now have a separate squelch setting.
+	  (Only MFSK, PSK31 and MT63 have a working squelch though.)
+
+2003-07-14  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Setting Hellschreiber filter bandwidth now works.
+
+2003-07-14  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Rewrote much or the config code. Adding new config items
+	  is now much easier.
+
+	* Wrote a .schemas file. This provides defaults and
+	  documentation to the config keys used by gmfsk.
+
+	* Updated the build files and .spec file to install the
+	  .schemas file. Also fixed the "Installed (but unpackaged)
+	  file(s) found" error on RPM builds.
+
+	* Use the c_re() and c_im() macros to access complex numbers.
+	  This is the first step towards supporting FFTW 3.
+
+2003-07-10  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* MFSK pictures should now work. Tests against MixW show
+	  that it is compatible... (knock knock)
+
+2003-07-05  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Switched to using GAsyncQueues in trx.c.
+
+	* Macros can now have curly braces and an optional
+	  argument separated by a colon. Like this:
+	  ${pic:/home/joe/joe.jpg}
+
+	* Two new macros: $pic and $picc. The first sends a gray-
+	  scale picture, the latter a color picture. An optional
+	  argument tells the picture file to send. If it's omitted
+	  or is a question mark, a file selection dialog is opened.
+
+2003-06-23  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed a bug in RTTY 8 bit ASCII handling. (A problem
+	  with signed chars cast to ints...)
+
+	* FreeBSD fix for snd.c (tnx Craig vk1kcm)
+
+2003-06-20  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* MFSK picture receive almost works now
+
+2003-06-10  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Simplified the MFSK sync code a bit
+
+2003-05-30  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Help system now installs correctly
+
+	* RPM spec file fixes
+
+	* Added a "locator" entry in the QSO data area
+
+	* Right click over rxtext uses current selection if there is one
+
+2003-05-18  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changes to make everything unicode transparent
+
+	* TX text is handled differently now
+
+2003-05-15  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Papertape is now (sort of) resizable
+
+2003-05-09  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* FeldHell TX now works. Still needs some work before
+	  it's ready for release.
+
+2003-05-05  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Updated About dialog
+
+	* Started a help file
+
+2003-05-03  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Command macro segfaults if command isn't found - fixed
+
+	* PTT open now delayed from config change
+
+2003-04-26  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Separate config dialogs for all modems. Clicking statusbar
+	  pops up the mode config.
+
+	* Removed "Apps" config dialog
+
+	* Fixed "Clear RX/TX window" for FeldHell
+
+	* Some preparations for FeldHell TX
+
+2003-04-19  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.5
+
+	* Ported to GTK+ 2 / Gnome 2
+
+	* gettext support
+
+	* New modems: MFSK8, (Q)PSK31, MT63, FELDHELL (rx only for now)
+
+	* Removed the homemade FFT implementation, FFTW is now required
+
+	* Wrote my own Viterbi decoder, Phil's code removed
+
+	* "make rpm"
+
+	* Extensive rewrite of the waterfall widget
+
+	* Syncscope converted to a real widget (miniscope)
+
+	* Config system ported to gconf-2
+
+	* AFC/SQL/REV state saved/recovered at program exit/start
+
+	* New macro: $mode
+
+	* PTT output configurable to RTS or DTR
+
+	* Various other minor things...
+
+2002-04-22  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changed the way waterfall ticks are drawn
+
+2002-04-08  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixtexts still used /gmfsk/ as config file, fixed.
+
+	* Implemented command substitution macros for fixtexts.
+
+	* Made QSO bands and time/date format strings configurable.
+
+	* Removed short time/date macros.
+
+	* Fixed bug in TX window key press handling. Not all modifiers
+	  should be ignored... :)
+
+2002-03-29  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Released version 0.4.
+
+	* Numerous changes, eg. multithreaded modem engine and
+	  support for RTTY and THROB.
+
+2001-06-23  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changed tune signal behaviour.
+
+2001-06-18  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Fixed SIGFPE on Alpha.
+
+2001-06-17  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Some changes to enable generating debug symbols if needed.
+
+	* Version 0.3.
+
+2001-05-11  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* A "send file" function.
+
+	* Icon for the tune button (thanks Paul K9PS).
+
+	* TX window accepts selections now.
+
+	* Settable RX and TX window background colors.
+
+	* Support for 8-bit sound cards.
+
+	* A fullduplex sound io mode for certain broken soundcard drivers.
+
+	* STDIO test mode for doing channel simulations (this was
+	  previously a compile time option).
+
+	* PTT should now work correctly (waits for all samples to be
+	  sent). Also PTT signal is now also on DTR, it seems that most
+	  other software support both RTS and DTR.
+
+	* Inverted PTT mode.
+
+	* Macro buttons sent LF as EOL fixed.
+
+	* Stupid typo with errmsg() fixed.
+
+	* Writing to the TX window optimised somewhat.
+
+	* A bit more informative sound IO error messages.
+
+	* A "log to file" function. (thanks again Paul K9PS)
+
+	* RX and TX window clear functions now moved under the File menu.
+
+	* Code restructuring as always...
+
+2001-04-28  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Changed soundcard reads to be non-blocking. This _might_ help
+	  folks with buggy soundcard drivers.
+
+	* Implemented PTT and settable sound device.
+
+	* Some code restructuring.
+
+	* Added a RPM .spec file.
+
+	* Version 0.2.
+
+2001-04-22  Tomi Manninen  <tpm@oh2bns.ampr.org>
+
+	* Initial public release (version 0.1).
+

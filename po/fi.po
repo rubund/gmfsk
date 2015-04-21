@@ -1,0 +1,1752 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2004 Tomi Manninen
+# This file is distributed under the same license as the gmfsk package.
+# Tomi Manninen <oh2bns@sral.fi>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gmfsk 0.6.1\n"
+"POT-Creation-Date: 2005-02-20 23:14+0200\n"
+"PO-Revision-Date: 2004-12-29 20:41+0200\n"
+"Last-Translator: Tomi Manninen <oh2bns@sral.fi>\n"
+"Language-Team: Finnish <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callbacks.c:84
+msgid "Unable to open log file"
+msgstr "Tallennustiedoston avaus epäonnistui"
+
+#: src/callbacks.c:1351
+#, c-format
+msgid "Error reading file: %s"
+msgstr "Virhe tiedoston luvussa: %s"
+
+#: src/callbacks.c:1359
+#, c-format
+msgid "Error converting file to UTF8: %s"
+msgstr "Virhe tiedoston UTF8-muunnoksessa: %s"
+
+#. Append qsodata buttons
+#: src/callbacks.c:1509 src/interface.c:2159 src/interface.c:4517
+msgid "Callsign"
+msgstr "Kutsu"
+
+#: src/callbacks.c:1517 src/interface.c:525 src/interface.c:2167
+#: src/interface.c:4525
+msgid "Name"
+msgstr "Nimi"
+
+#: src/callbacks.c:1525 src/interface.c:598 src/interface.c:2175
+#: src/interface.c:4533
+msgid "QTH"
+msgstr "QTH"
+
+#: src/callbacks.c:1533 src/interface.c:612 src/interface.c:2183
+#: src/interface.c:4541
+msgid "Locator"
+msgstr "Lokaattori"
+
+#: src/callbacks.c:1541 src/interface.c:541
+msgid "Sent RST"
+msgstr "Lähetetty RST"
+
+#: src/callbacks.c:1549
+msgid "Received RST"
+msgstr "Vastaanotettu RST"
+
+#: src/callbacks.c:1557 src/interface.c:605
+msgid "Notes"
+msgstr "Lisätietoja"
+
+#: src/conf.c:310 src/druid.c:291
+#, c-format
+msgid "Error converting filename (%s=%s): %s"
+msgstr "Virhe tiedoston nimen muunnoksessa (%s=%s): %s"
+
+#: src/conf.c:357
+msgid "Couldn't allocate color"
+msgstr "Väriä ei voitu varata"
+
+#: src/conf.c:620
+msgid "GConf client init failed!!!\n"
+msgstr "GConf asiakkaan alustus epäonnistui!!!\n"
+
+#: src/confdialog.c:60
+msgid "Station info"
+msgstr "Aseman tiedot"
+
+#: src/confdialog.c:61
+msgid "Date & Time"
+msgstr "Aika ja päiväys"
+
+#: src/confdialog.c:62 src/interface.c:2298
+msgid "Bands"
+msgstr "Bandit"
+
+#: src/confdialog.c:63
+msgid "Files & Dirs"
+msgstr "Tiedostot ja hakemistot"
+
+#: src/confdialog.c:68 src/interface.c:2446
+msgid "Colors"
+msgstr "Värit"
+
+#: src/confdialog.c:69 src/interface.c:2493
+msgid "Fonts"
+msgstr "Kirjasimet"
+
+#: src/confdialog.c:74 src/interface.c:2531
+msgid "All"
+msgstr "Kaikki"
+
+#: src/confdialog.c:75 src/interface.c:2572
+msgid "MFSK"
+msgstr "MFSK"
+
+#: src/confdialog.c:76 src/interface.c:83 src/interface.c:2704
+msgid "OLIVIA"
+msgstr ""
+
+#: src/confdialog.c:77 src/interface.c:90 src/interface.c:2898
+msgid "RTTY"
+msgstr "RTTY"
+
+#: src/confdialog.c:78 src/interface.c:2938
+msgid "THROB"
+msgstr "THROB"
+
+#: src/confdialog.c:79 src/interface.c:2977
+msgid "PSK31"
+msgstr "PSK31"
+
+#: src/confdialog.c:80 src/interface.c:139 src/interface.c:3084
+msgid "MT63"
+msgstr "MT63"
+
+#: src/confdialog.c:81 src/interface.c:3185
+msgid "HELL"
+msgstr "HELL"
+
+#: src/confdialog.c:82 src/interface.c:153 src/interface.c:3256
+msgid "CW"
+msgstr "CW"
+
+#: src/confdialog.c:87 src/confdialog.c:99 src/interface.c:3406
+#: src/interface.c:3738
+msgid "Settings"
+msgstr "Asetukset"
+
+#: src/confdialog.c:92 src/interface.c:3538
+msgid "Sound"
+msgstr "Ääni"
+
+#: src/confdialog.c:93 src/interface.c:3627
+msgid "PTT"
+msgstr "PTT"
+
+#: src/confdialog.c:100
+msgid "Features"
+msgstr "Ominaisuudet"
+
+#: src/confdialog.c:106
+msgid "General"
+msgstr "Yleiset"
+
+#: src/confdialog.c:107
+msgid "Appearance"
+msgstr "Ulkoasu"
+
+#: src/confdialog.c:108
+msgid "Modems"
+msgstr "Modeemit"
+
+#: src/confdialog.c:109 src/interface.c:1341 src/interface.c:1648
+msgid "Waterfall"
+msgstr "Vesiputous"
+
+#: src/confdialog.c:110
+msgid "Devices"
+msgstr "Laitteet"
+
+#: src/confdialog.c:112 src/interface.c:3742
+msgid "Hamlib"
+msgstr "Hamlib"
+
+#: src/confdialog.c:660
+msgid "Categories"
+msgstr "Luokat"
+
+#: src/confdialog.c:712
+msgid "confdialog_select_node: ConfDialog init failed\n"
+msgstr "confdialog_select_node: ConfDialog:in alustus epäonnistui\n"
+
+#: src/confdialog.c:725
+#, c-format
+msgid "confdialog_select_node: tree path '%s' not found (%s)\n"
+msgstr "confdialog_select_node: puupolkua '%s' ei löytynyt (%s)\n"
+
+#: src/cwirc.c:66
+msgid "Can't attach to the CWirc API shared memory block!\n"
+msgstr "Kytkeytyminen CWirc API:n jaettuun muistilohkoon epäonnistui!\n"
+
+#: src/cwirc.c:70
+msgid "Working in CWirc slave mode.\n"
+msgstr "CWirc-tila aktivoitu.\n"
+
+#: src/druid.c:409
+#, c-format
+msgid "Error creating directory: %s: %m"
+msgstr "Virhe hakemiston luomisessa: %s: %m"
+
+#: src/druid.c:416
+#, c-format
+msgid "Error creating directory: %s exists but is not a directory"
+msgstr "Virhe hakemiston luomisessa: %s on olemassa mutta ei ole hakemisto"
+
+#: src/druid.c:435
+#, c-format
+msgid "Error creating file: %s: %m"
+msgstr "Virhe tiedoston luomisessa: %s: %m"
+
+#: src/druid.c:442
+#, c-format
+msgid "Error creating file: %s exists but is not a regular file"
+msgstr ""
+"Virhe tiedoston luomisessa: %s on olemassa mutta ei ole tavallinen tiedosto"
+
+#: src/druid.c:447
+#, c-format
+msgid "Error: %s is not writable: %m"
+msgstr "Virhe: tiedostoon %s ei voida kirjoittaa: %m"
+
+#: src/druid.c:505
+#, c-format
+msgid "Sound card open for read failed: %s"
+msgstr "Äänikortin avaaminen kirjoitusta varten epäonnistui: %s"
+
+#: src/druid.c:512 src/druid.c:539
+#, c-format
+msgid "Reading from sound card failed: %s"
+msgstr "Äänikortilta luku epäonnistui: %s"
+
+#: src/druid.c:523
+#, c-format
+msgid "Sound card open for write failed: %s"
+msgstr "Äänikortille kirjoitus epäonnistui: %s"
+
+#: src/druid.c:576 src/ptt.c:146
+#, c-format
+msgid "Cannot open PTT device '%s': %m"
+msgstr "PTT-laitteen '%s' avaus epäonnistui: %m"
+
+#: src/druid.c:590 src/ptt.c:123 src/ptt.c:130
+#, c-format
+msgid "set_ptt: ioctl: %m"
+msgstr "set_ptt: ioctl: %m"
+
+#: src/hamlib.c:270
+#, c-format
+msgid "Hamlib init: Bad rig config parameter: '%s'"
+msgstr "Hamlib init: Virheellinen rigin asetus: '%s'"
+
+#: src/hamlib.c:275
+#, c-format
+msgid "Hamlib init: rig_set_conf failed (%s=%s): %s"
+msgstr "Hamlib init: rig_set_conf epäonnistui (%s=%s): %s"
+
+#: src/hamlib.c:310
+#, c-format
+msgid "Hamlib init: rig_init failed (model=%d)"
+msgstr "Hamlib init: rig_init epäonnistui (malli=%d)"
+
+#: src/hamlib.c:322
+#, c-format
+msgid "Hamlib init: Bad param=value pair: '%s'"
+msgstr "Hamlib init: Virheellinen parametri=arvo -pari: '%s'"
+
+#: src/hamlib.c:348
+#, c-format
+msgid "Hamlib init: rig_open failed: %s"
+msgstr "Hamlib init: rig_open epäonnistui: %s"
+
+#: src/hamlib.c:361
+#, c-format
+msgid "Hamlib init: rig_get_freq failed: %s"
+msgstr "Hamlib init: rig_get_freq epäonnistui: %s"
+
+#: src/hamlib.c:372
+#, c-format
+msgid ""
+"Hamlib init: rig_get_mode failed: %s.\n"
+"Assuming USB mode."
+msgstr ""
+"Hamlib init: rig_get_mode epäonnistui: %s.\n"
+"Oletus on USB."
+
+#: src/hamlib.c:379
+#, c-format
+msgid ""
+"Hamlib init: rig_set_ptt failed: %s.\n"
+"Hamlib PTT disabled"
+msgstr ""
+"Hamlib init: rig_set_ptt epäonnistui: %s.\n"
+"Hamlib PTT deaktivoitu"
+
+#: src/hamlib.c:396
+#, c-format
+msgid "Hamlib init: pthread_create: %m"
+msgstr "Hamlib init: pthread_create: %m"
+
+#: src/hamlib.c:440
+#, c-format
+msgid ""
+"rig_set_ptt failed: %s.\n"
+"Hamlib PTT disabled.\n"
+msgstr ""
+"rig_set_ptt epäonnistui: %s.\n"
+"Hamlib PTT deaktivoitu.\n"
+
+#: src/hamlib.c:484
+#, c-format
+msgid "rig_get_freq failed: %s"
+msgstr "rig_get_freq epäonnistui: %s"
+
+#: src/hamlib.c:506
+#, c-format
+msgid "rig_get_mode failed: %s"
+msgstr "rig_get_mode epäonnistui: %s"
+
+#: src/hamlib.c:524
+#, fuzzy, c-format
+msgid "rig_set_freq failed: %s"
+msgstr "rig_get_freq epäonnistui: %s"
+
+#: src/interface.c:32
+msgid "_Send file..."
+msgstr "_Lähetä tiedosto"
+
+#: src/interface.c:40
+msgid "_Log to file"
+msgstr "_Tallenna tiedostoon"
+
+#: src/interface.c:48
+msgid "Clear _TX window"
+msgstr "Tyhjennä _TX ikkuna"
+
+#: src/interface.c:55
+msgid "Clear _RX window"
+msgstr "Tyhjennä _RX ikkuna"
+
+#: src/interface.c:69
+msgid "MFSK16"
+msgstr "MFSK16"
+
+#: src/interface.c:76
+msgid "MFSK8"
+msgstr "MFSK8"
+
+#: src/interface.c:97
+msgid "THROB (1 tps)"
+msgstr "THROB (1 tps)"
+
+#: src/interface.c:104
+msgid "THROB (2 tps)"
+msgstr "THROB (2 tps)"
+
+#: src/interface.c:111
+msgid "THROB (4 tps)"
+msgstr "THROB (4 tps)"
+
+#: src/interface.c:118
+msgid "PSK31 (BPSK)"
+msgstr "PSK31 (BPSK)"
+
+#: src/interface.c:125
+msgid "PSK31 (QPSK)"
+msgstr "PSK31 (QPSK)"
+
+#: src/interface.c:132
+msgid "PSK63"
+msgstr "PSK63"
+
+#: src/interface.c:146
+msgid "FELDHELL"
+msgstr "FELDHELL"
+
+#: src/interface.c:175
+msgid "macro 1"
+msgstr "makro 1"
+
+#: src/interface.c:182
+msgid "macro 2"
+msgstr "makro 2"
+
+#: src/interface.c:189
+msgid "macro 3"
+msgstr "makro 3"
+
+#: src/interface.c:196
+msgid "macro 4"
+msgstr "makro 4"
+
+#: src/interface.c:203
+msgid "macro 5"
+msgstr "makro 5"
+
+#: src/interface.c:210
+msgid "macro 6"
+msgstr "makro 6"
+
+#: src/interface.c:217
+msgid "macro 7"
+msgstr "makro 7"
+
+#: src/interface.c:224
+msgid "macro 8"
+msgstr "makro 8"
+
+#: src/interface.c:231
+msgid "macro 9"
+msgstr "makro 9"
+
+#: src/interface.c:238
+msgid "macro 10"
+msgstr "makro 10"
+
+#: src/interface.c:245
+msgid "macro 11"
+msgstr "makro 11"
+
+#: src/interface.c:252
+msgid "macro 12"
+msgstr "makro 12"
+
+#: src/interface.c:265
+msgid "_Configure macros"
+msgstr "_Aseta makrot"
+
+#: src/interface.c:277
+msgid "_Contents"
+msgstr "_Sisältö"
+
+#: src/interface.c:290
+msgid "_File"
+msgstr "_Tiedosto"
+
+#: src/interface.c:297
+msgid "_Mode"
+msgstr "_Lähetelaji"
+
+#: src/interface.c:304
+msgid "_Settings"
+msgstr "_Asetukset"
+
+#: src/interface.c:311
+msgid "_Help"
+msgstr "_Ohje"
+
+#: src/interface.c:416
+msgid "gMFSK"
+msgstr "gMFSK"
+
+#: src/interface.c:436 src/interface.c:1367
+msgid "Pause"
+msgstr "Tauko"
+
+#: src/interface.c:437
+msgid "Suspend the modem and release soundcard (Ctl+Z)"
+msgstr "Pysäytä modeemi ja vapauta äänikortti (Ctl+Z)"
+
+#: src/interface.c:454
+msgid "Receive"
+msgstr "Vastaanota"
+
+#: src/interface.c:455
+msgid "Switch to receive (Ctl+R)"
+msgstr "Vaihda vastaanotolle (Ctl+R)"
+
+#: src/interface.c:471
+msgid "Transmit"
+msgstr "Lähetä"
+
+#: src/interface.c:472
+msgid "Switch to transmit (Ctl+T)"
+msgstr "Vaihda lähetykselle (Ctl+T)"
+
+#: src/interface.c:489
+msgid "Abort"
+msgstr "Keskeytä"
+
+#: src/interface.c:490
+msgid "Abort transmission immediately (Ctl+X)"
+msgstr "Keskeytä lähetys välittömästi (Ctl+X)"
+
+#: src/interface.c:504
+msgid "Tune"
+msgstr "Viritä"
+
+#: src/interface.c:505
+msgid "Send tune signal (Ctl+U)"
+msgstr "Lähetä virityssignaalia (Ctl+U)"
+
+#: src/interface.c:533
+msgid "Rcvd RST"
+msgstr "Vastaanotettu RST"
+
+#: src/interface.c:549
+msgid "Call"
+msgstr "Kutsu"
+
+#: src/interface.c:557
+msgid "Band"
+msgstr "Bandi"
+
+#: src/interface.c:620
+msgid "New entry"
+msgstr "Uusi yhteys"
+
+#: src/interface.c:625
+msgid "Clear QSO data fields (Ctl-N)"
+msgstr "Tyhjennä QSO-tiedot (Ctl-N)"
+
+#: src/interface.c:644
+msgid "Log entry"
+msgstr "Vie lokiin"
+
+#: src/interface.c:649
+msgid "Send QSO data to xlog (Ctl-L)"
+msgstr "Lähetä QSO-tiedot lokiin (Ctl-L)"
+
+#: src/interface.c:694
+msgid "textmodes"
+msgstr "tekstiläheteet"
+
+#: src/interface.c:734
+msgid "hellmodes"
+msgstr "hell-lähetteet"
+
+#: src/interface.c:750 src/interface.c:759 src/interface.c:768
+#: src/interface.c:781 src/interface.c:790 src/interface.c:799
+#: src/interface.c:816 src/interface.c:825 src/interface.c:834
+#: src/interface.c:847 src/interface.c:856 src/interface.c:865
+msgid "Click right button to edit macro"
+msgstr "Klikkaa oikeata hiiren näppäintä editoidaksesi makroa"
+
+#: src/interface.c:896
+msgid "Freq"
+msgstr ""
+
+#: src/interface.c:910
+msgid "Center frequency on RX pass band"
+msgstr ""
+
+#: src/interface.c:921
+msgid "AFC"
+msgstr "AFC"
+
+#: src/interface.c:925
+msgid "Automatic frequency control"
+msgstr "Automaattinen taajuuden korjaus"
+
+#: src/interface.c:927
+msgid "SQL"
+msgstr "SQL"
+
+#: src/interface.c:931 src/interface.c:2564 src/interface.c:2603
+#: src/interface.c:2735 src/interface.c:2930 src/interface.c:2969
+#: src/interface.c:3008 src/interface.c:3216
+msgid "Squelch"
+msgstr "Kohinasalpa"
+
+#: src/interface.c:933
+msgid "REV"
+msgstr "REV"
+
+#: src/interface.c:937 src/interface.c:2878
+msgid "Reverse polarity"
+msgstr "Käänteinen polariteetti"
+
+#: src/interface.c:985
+msgid "clock"
+msgstr "kello"
+
+#. TRANSLATORS: Replace this string with your names, one name per line.
+#: src/interface.c:1280
+msgid "translator_credits"
+msgstr "Tomi Manninen, OH2BNS"
+
+#: src/interface.c:1288
+#, fuzzy
+msgid "Copyright 2001-2005 Tomi Manninen, OH2BNS"
+msgstr "Tekijänoikeudet 2001-2004 Tomi Manninen, OH2BNS"
+
+#: src/interface.c:1289
+#, fuzzy
+msgid ""
+"A Gnome terminal program for HF conversation modes (MFSK, OLIVIA, RTTY, "
+"THROB, PSK31, MT63 and FeldHell)"
+msgstr ""
+"Gnome pääteohjelma HF-alueen keskustelulähetelajeille (MFSK, RTTY, THROB, "
+"PSK31, MT63 and FeldHell)"
+
+#: src/interface.c:1308
+msgid "Select File to Transmit"
+msgstr "Valitse lähetettävä tiedosto"
+
+#: src/interface.c:1348 src/interface.c:1655
+msgid "Spectrum"
+msgstr "Spektri"
+
+#: src/interface.c:1355 src/interface.c:1662
+msgid "Scope"
+msgstr "Skooppi"
+
+#: src/interface.c:1381
+msgid "Waterfall properties..."
+msgstr "Vesiputousnäytön ominaisuudet..."
+
+#: src/interface.c:1417
+#, fuzzy
+msgid "125 Hz"
+msgstr "500 Hz"
+
+#: src/interface.c:1424
+#, fuzzy
+msgid "250 Hz"
+msgstr "500 Hz"
+
+#: src/interface.c:1431 src/interface.c:1622
+msgid "500 Hz"
+msgstr "500 Hz"
+
+#: src/interface.c:1438 src/interface.c:1629
+msgid "1000 Hz"
+msgstr "1000 Hz"
+
+#: src/interface.c:1445 src/interface.c:1636
+msgid "2000 Hz"
+msgstr "2000 Hz"
+
+#: src/interface.c:1457
+#, fuzzy
+msgid "4"
+msgstr "45"
+
+#: src/interface.c:1464
+#, fuzzy
+msgid "8"
+msgstr "85"
+
+#: src/interface.c:1471
+#, fuzzy
+msgid "16"
+msgstr "160"
+
+#: src/interface.c:1478
+#, fuzzy
+msgid "32"
+msgstr "2"
+
+#: src/interface.c:1485
+msgid "64"
+msgstr ""
+
+#: src/interface.c:1492
+#, fuzzy
+msgid "128"
+msgstr "182"
+
+#: src/interface.c:1499
+#, fuzzy
+msgid "256"
+msgstr "56"
+
+#: src/interface.c:1511 src/interface.c:3595 src/interface.c:4787
+msgid "none"
+msgstr "tyhjä"
+
+#: src/interface.c:1518
+msgid "even"
+msgstr "parillinen"
+
+#: src/interface.c:1525
+msgid "odd"
+msgstr "pariton"
+
+#: src/interface.c:1532
+msgid "zero"
+msgstr "nolla"
+
+#: src/interface.c:1539
+msgid "one"
+msgstr "yksi"
+
+#: src/interface.c:1551
+msgid "1"
+msgstr "1"
+
+#: src/interface.c:1558
+msgid "1.5"
+msgstr "1.5"
+
+#: src/interface.c:1565
+msgid "2"
+msgstr "2"
+
+#: src/interface.c:1577
+msgid "5 (BAUDOT)"
+msgstr "5 (BAUDOT)"
+
+#: src/interface.c:1584
+msgid "7 (ASCII)"
+msgstr "7 (ASCII)"
+
+#: src/interface.c:1591
+msgid "8 (ASCII)"
+msgstr "8 (ASCII)"
+
+#: src/interface.c:1603
+msgid "32 (short)"
+msgstr "32 (lyhyt)"
+
+#: src/interface.c:1610
+msgid "64 (long)"
+msgstr "64 (pitkä)"
+
+#: src/interface.c:1674
+msgid "x 1"
+msgstr "x 1"
+
+#: src/interface.c:1681
+msgid "x 2"
+msgstr "x 2"
+
+#: src/interface.c:1688
+msgid "x 4"
+msgstr "x 4"
+
+#: src/interface.c:1700
+msgid "Half"
+msgstr "Puolikas"
+
+#: src/interface.c:1707
+msgid "Normal"
+msgstr "Normaali"
+
+#: src/interface.c:1714
+msgid "Double"
+msgstr "Tupla"
+
+#: src/interface.c:1726
+msgid "Boxcar"
+msgstr "Laatikko"
+
+#: src/interface.c:1733
+msgid "Triangular"
+msgstr "Kolmio"
+
+#: src/interface.c:1740
+msgid "Hamming"
+msgstr "Hamming"
+
+#: src/interface.c:1762
+msgid "MHz"
+msgstr "MHz"
+
+#: src/interface.c:1769
+msgid "kHz"
+msgstr "kHz"
+
+#: src/interface.c:1776
+msgid "Hz"
+msgstr "Hz"
+
+#: src/interface.c:2100
+msgid "Preferences"
+msgstr "Valinnat"
+
+#: src/interface.c:2131
+msgid "<span font_desc=\"Serif Italic 48\" foreground=\"grey50\">gMFSK</span>"
+msgstr "<span font_desc=\"Serif Italic 48\" foreground=\"grey50\">gMFSK</span>"
+
+#: src/interface.c:2136
+msgid "Logo"
+msgstr "Logo"
+
+#: src/interface.c:2149
+msgid ""
+"The station information is used in the macros like $mycall, $myname, etc. "
+msgstr "Asematietoja käytetään makroissa kuten $mycall, $myname, jne. "
+
+#: src/interface.c:2191 src/interface.c:4549
+msgid "E-mail"
+msgstr "Sähköposti"
+
+#: src/interface.c:2229
+msgid "Station"
+msgstr "Asema"
+
+#: src/interface.c:2239
+msgid ""
+"These are used in the $date and $date macros. See the strftime manual page "
+"for an explanation of the format."
+msgstr ""
+"Näitä käytetään $date ja $time makroissa. Ulkoasu on selitetty strftime-"
+"funktion manuaalisivuilla."
+
+#: src/interface.c:2249
+msgid "Time format string"
+msgstr "Ajan ulkoasumerkkijono"
+
+#: src/interface.c:2257
+msgid "Date format string"
+msgstr "Päivämäärän ulkoasumerkkijono"
+
+#: src/interface.c:2270 src/interface.c:2277
+msgid "See the strftime manual page for explanation of this field"
+msgstr "Tämä kenttä on selitetty trftime-funktion manuaalisivulla"
+
+#: src/interface.c:2279
+msgid "Time"
+msgstr "Aika"
+
+#: src/interface.c:2288
+msgid ""
+"This is a comma separated list of bands you want to appear in the Bands "
+"popdown list."
+msgstr ""
+"Tämä on piluilla erotettu lista bandeista jotka haluat näkyviin Bandit-"
+"alasvetovalikossa"
+
+#: src/interface.c:2307
+msgid "Files and directories used by gMFSK."
+msgstr "Tiedostot ja hakemistot joita gMFSK käyttää"
+
+#: src/interface.c:2323 src/interface.c:4619
+msgid "Log file name"
+msgstr "Lokitiestoston nimi"
+
+#: src/interface.c:2330 src/interface.c:4626
+msgid "TX pictures directory"
+msgstr "Lähetettävien kuvien hakemisto"
+
+#: src/interface.c:2337 src/interface.c:4633
+msgid "RX pictures directory"
+msgstr "Vastaanotettujen kuvien hakemisto"
+
+#: src/interface.c:2356
+msgid "Files"
+msgstr "Tiedostot"
+
+#: src/interface.c:2366
+msgid ""
+"The color settings let you configure the colors used in the RX and TX "
+"windows."
+msgstr "Väriasetukset vaikuttavat RX- ja TX-ikkunoiden väreihin"
+
+#: src/interface.c:2406
+msgid "Received text color"
+msgstr "Vastaanotetun tekstin väri"
+
+#: src/interface.c:2414
+msgid "Transmitted text color"
+msgstr "Lähetetyn tekstin väri"
+
+#: src/interface.c:2422
+msgid "HIghlighted text color"
+msgstr "Korostetun tekstin väri"
+
+#: src/interface.c:2430
+msgid "RX window background color"
+msgstr "Rx-ikkunan taustaväri"
+
+#: src/interface.c:2438
+msgid "TX window background color"
+msgstr "TX-ikkunan taustaväri"
+
+#: src/interface.c:2455
+msgid ""
+"The fonts settings let you configure the fonts used in the RX and TX windows."
+msgstr "Kirjasinasetukset vaikuttavat RX- ja TX-ikkunoiden kirjasimiin."
+
+#: src/interface.c:2465
+msgid "Received text font"
+msgstr "Vastaanotetun tekstin kirjasin"
+
+#: src/interface.c:2473
+msgid "Transmitted text font"
+msgstr "Lähetetyn tekstin kirjasin"
+
+#: src/interface.c:2503
+msgid "These settings affect all modems."
+msgstr "Nämä asetukset vaikuttavat kaikkiin modeemeihin."
+
+#: src/interface.c:2523
+msgid "TX offset frequency"
+msgstr "Lähetyksen erotustaajuus"
+
+#: src/interface.c:2542
+msgid ""
+"MFSK16 and MFSK8 modem parameters.\n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"MFSK16- ja MFSK8-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:2568 src/interface.c:2700 src/interface.c:2894
+#: src/interface.c:2934 src/interface.c:2973 src/interface.c:3080
+#: src/interface.c:3252 src/interface.c:3534
+msgid "Restart modem"
+msgstr "Käynnistä modeemi uudelleen"
+
+#: src/interface.c:2581
+#, fuzzy
+msgid ""
+"OLIVIA modem parameters.\n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"CW-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:2645
+#, fuzzy
+msgid "Tones"
+msgstr "yksi"
+
+#: src/interface.c:2653 src/interface.c:3050
+msgid "Bandwidth"
+msgstr "Kaistanleveys"
+
+#: src/interface.c:2661
+msgid "RX sync search margin"
+msgstr ""
+
+#: src/interface.c:2669
+msgid "RX sync integration period"
+msgstr ""
+
+#: src/interface.c:2691 src/interface.c:3071
+msgid "Allow 8 bit characters (escape-127 method)"
+msgstr "Salli 8-bittiset merkit (escape-127 metodi)"
+
+#: src/interface.c:2696 src/interface.c:2890 src/interface.c:3076
+msgid "Modem settings"
+msgstr "Modeemin asetukset"
+
+#: src/interface.c:2713
+msgid ""
+"RTTY modem parameters.\n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"RTTY-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:2798
+msgid "23"
+msgstr "23"
+
+#: src/interface.c:2799
+msgid "85"
+msgstr "85"
+
+#: src/interface.c:2800
+msgid "160"
+msgstr "160"
+
+#: src/interface.c:2801
+msgid "170"
+msgstr "170"
+
+#: src/interface.c:2802
+msgid "182"
+msgstr "182"
+
+#: src/interface.c:2803 src/interface.c:2830
+msgid "200"
+msgstr "200"
+
+#: src/interface.c:2804
+msgid "240"
+msgstr "240"
+
+#: src/interface.c:2805
+msgid "350"
+msgstr "350"
+
+#: src/interface.c:2806
+msgid "425"
+msgstr "425"
+
+#: src/interface.c:2807
+msgid "850"
+msgstr "850"
+
+#: src/interface.c:2822
+msgid "45"
+msgstr "45"
+
+#: src/interface.c:2823
+msgid "45.45"
+msgstr "45,45"
+
+#: src/interface.c:2824
+msgid "50"
+msgstr "50"
+
+#: src/interface.c:2825
+msgid "56"
+msgstr "56"
+
+#: src/interface.c:2826
+msgid "75"
+msgstr "75"
+
+#: src/interface.c:2827
+msgid "100"
+msgstr "100"
+
+#: src/interface.c:2828
+msgid "110"
+msgstr "110"
+
+#: src/interface.c:2829
+msgid "150"
+msgstr "150"
+
+#: src/interface.c:2831
+msgid "300"
+msgstr "300"
+
+#: src/interface.c:2838
+msgid "Shift"
+msgstr "Taajuuserotus"
+
+#: src/interface.c:2846
+msgid "Baudrate"
+msgstr "Baudinopeus"
+
+#: src/interface.c:2854
+msgid "Bits"
+msgstr "Bittien lukumäärä"
+
+#: src/interface.c:2862
+msgid "Parity"
+msgstr "Pariteetti"
+
+#: src/interface.c:2870
+msgid "Stopbits"
+msgstr "Lopetusbittien lukumäärä"
+
+#: src/interface.c:2882
+msgid "If tones should be reversed for RTTY"
+msgstr "Käännettäänkö äänet RTTY:llä"
+
+#: src/interface.c:2884
+msgid "Send MSB first"
+msgstr "Lähetä MSB ensin"
+
+#: src/interface.c:2888
+msgid "If most significant bit should the transmitted first"
+msgstr "Lähetetäänkö eniten merkitsevä bitti ensiksi"
+
+#: src/interface.c:2908
+msgid ""
+"THROB modem parameters. \n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"THROB-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:2947
+msgid ""
+"BPSK31, QPSK31 and PSK63 modem parameters.\n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"BPSK31-, QPSK31- ja PSK63-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:2986
+msgid ""
+"MT63 modem parameters. \n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"MT63-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:3058
+msgid "Interleave"
+msgstr "Välistys"
+
+#: src/interface.c:3066
+msgid "CW Identification"
+msgstr "CW identifikaatio"
+
+#: src/interface.c:3093
+msgid "FELDHELL modem parameters."
+msgstr "FELDHELL-modeemin parametrit."
+
+#: src/interface.c:3107
+msgid "Force upper case"
+msgstr "Pakota suuraakkoset"
+
+#: src/interface.c:3114
+msgid "Hellschreiber font"
+msgstr "Hellscreiber-kirjasin"
+
+#: src/interface.c:3150 src/interface.c:3232
+msgid "Filter BW"
+msgstr "Suodattimen kaistanleveys"
+
+#: src/interface.c:3165
+msgid "AGC attack"
+msgstr "AGC hyökkäys"
+
+#: src/interface.c:3181
+msgid "AGC decay"
+msgstr "AGC sammuminen"
+
+#: src/interface.c:3194
+msgid ""
+"CW modem parameters.\n"
+"New parametes take effect after restarting the modem."
+msgstr ""
+"CW-modeemin parametrit.\n"
+"Uudet parametrit asettuvat voimaan modeemin uudelleenkäynnistyksen jälkeen."
+
+#: src/interface.c:3248
+msgid "Speed (WPM)"
+msgstr "Nopeus (WPM)"
+
+#: src/interface.c:3265
+msgid "Settings for the waterfall/scope display."
+msgstr "Vesiputous/skooppi-näytön asetukset."
+
+#: src/interface.c:3286
+msgid "Ref level"
+msgstr "Ref taso"
+
+#: src/interface.c:3301
+msgid "Amp span"
+msgstr "Amp väli"
+
+#: src/interface.c:3317
+msgid "Mode"
+msgstr "Toiminto"
+
+#: src/interface.c:3325
+msgid "Zoom"
+msgstr "Suurennos"
+
+#: src/interface.c:3333 src/interface.c:3704
+msgid "Speed"
+msgstr "Nopeus"
+
+#: src/interface.c:3341
+msgid "Window"
+msgstr "Ikkunafunktio"
+
+#: src/interface.c:3401
+msgid "Waterfall scrolls upwards"
+msgstr "Vesiputous vierii ylöspäin"
+
+#: src/interface.c:3410
+msgid "WF"
+msgstr "WF"
+
+#: src/interface.c:3423
+msgid "Sound card settings take effect after restarting the modem."
+msgstr ""
+"Äänikorttiasetukset tulevat voimaan kun modeemi käynnistetään uudelleen"
+
+#: src/interface.c:3433 src/interface.c:4709
+msgid "8-bit sound I/O"
+msgstr "8-bittinen ääni"
+
+#: src/interface.c:3440 src/interface.c:4714
+msgid "Stereo sound I/O"
+msgstr "Stereoääni"
+
+#: src/interface.c:3447
+msgid "Full duplex I/O (unsupported!)"
+msgstr "Täysduplexääni (ei tuettu!)"
+
+#: src/interface.c:3454 src/interface.c:4687
+msgid "Sound card device"
+msgstr "Äänikorttilaite"
+
+#: src/interface.c:3470 src/interface.c:4699
+msgid "/dev/dsp"
+msgstr "/dev/dsp"
+
+#: src/interface.c:3471 src/interface.c:4700
+msgid "/dev/dsp0"
+msgstr "/dev/dsp0"
+
+#: src/interface.c:3472 src/interface.c:4701
+msgid "/dev/dsp1"
+msgstr "/dev/dsp1"
+
+#: src/interface.c:3473 src/interface.c:4702
+msgid "/dev/dsp2"
+msgstr "/dev/dsp2"
+
+#: src/interface.c:3480
+msgid "Requested sample rate"
+msgstr "Pyydetty näytteistystaajuus"
+
+#: src/interface.c:3488
+msgid "TX rate offset (ppm)"
+msgstr "Lähetyksen näytteistyksen virhe (ppm)"
+
+#: src/interface.c:3496
+msgid "RX rate offset (ppm)"
+msgstr "Vastaanoton näytteistyksen virhe (ppm)"
+
+#: src/interface.c:3548
+msgid ""
+"Push-To-Talk settings. \n"
+"New setting take effect next time PTT is toggled."
+msgstr ""
+"PTT-asetukset.\n"
+"Uudet asetukset asettuvat voimaan seuraavan kerran kun PTT:tä vaihdetaan."
+
+#: src/interface.c:3562 src/interface.c:4754
+msgid "RTS"
+msgstr "RTS"
+
+#: src/interface.c:3571 src/interface.c:4763
+msgid "DTR"
+msgstr "DTR"
+
+#: src/interface.c:3579 src/interface.c:4771
+msgid "both"
+msgstr "Molemmat"
+
+#: src/interface.c:3596 src/interface.c:3693 src/interface.c:4788
+msgid "/dev/ttyS0"
+msgstr "/dev/ttyS0"
+
+#: src/interface.c:3597 src/interface.c:3694 src/interface.c:4789
+msgid "/dev/ttyS1"
+msgstr "/dev/ttyS1"
+
+#: src/interface.c:3598 src/interface.c:4790
+msgid "/dev/parport0"
+msgstr "/dev/parport0"
+
+#: src/interface.c:3599 src/interface.c:4791
+msgid "/dev/parport1"
+msgstr "/dev/parport1"
+
+#: src/interface.c:3606 src/interface.c:4798
+msgid "PTT device"
+msgstr "PTT-laite"
+
+#: src/interface.c:3614 src/interface.c:4806
+msgid "PTT line (serial)"
+msgstr "PTT-linja (sarjaportti)"
+
+#: src/interface.c:3622 src/interface.c:4814
+msgid "Use inverted PTT logic"
+msgstr "Käänteinen PTT-logiikka"
+
+#: src/interface.c:3637
+msgid "Hamlib support enables the rig control features in gMFSK."
+msgstr "Hamlib-tuki aktivoi gMFSK:n radionohjausominaisuudet."
+
+#: src/interface.c:3643
+msgid "Enable hamlib support"
+msgstr "Aktivoi gMFSK:n hamlib-tuki"
+
+#: src/interface.c:3656
+msgid "Radio model"
+msgstr "Radion malli"
+
+#: src/interface.c:3676
+msgid "Port"
+msgstr "Portti"
+
+#: src/interface.c:3692
+msgid "localhost"
+msgstr "localhost"
+
+#: src/interface.c:3695
+msgid "/dev/ttyS2"
+msgstr "/dev/ttyS2"
+
+#: src/interface.c:3696
+msgid "/dev/ttyS3"
+msgstr "/dev/ttyS3"
+
+#: src/interface.c:3702
+msgid "Serial port name or hostname for RPC rig"
+msgstr "Sarjaportin nimi tai RPG rigin koneennimi"
+
+#: src/interface.c:3729
+msgid "A comma separated list of parameter=value hamlib config parameters."
+msgstr "Pilkuilla erotettu parametri=arvo asetusparametrien lista."
+
+#: src/interface.c:3731
+msgid "Config"
+msgstr "Asetukset"
+
+#: src/interface.c:3751
+msgid "Here you can select the rig control features to use."
+msgstr "Tässä voit valita haluamasi radionohjaustoiminteet."
+
+#: src/interface.c:3761
+msgid "Use real frequencies in waterfall"
+msgstr "Käytä todellisia taajuuksia vesiputousnäytössä"
+
+#: src/interface.c:3768
+msgid "Set QSO data frequency"
+msgstr "Aseta taajuus QSO-tietoihin"
+
+#: src/interface.c:3775
+msgid "Use hamlib PTT"
+msgstr "Käytä hamlib-PTT:tä"
+
+#: src/interface.c:3782
+msgid "Resolution:"
+msgstr "Tarkkuus:"
+
+#: src/interface.c:3808
+#, fuzzy
+msgid "RX pass band center frequency"
+msgstr "Lähetyksen erotustaajuus"
+
+#: src/interface.c:3815
+msgid "Hamlib2"
+msgstr "Hamlib2"
+
+#: src/interface.c:4233
+msgid "Macro name"
+msgstr "Makron nimi"
+
+#: src/interface.c:4307
+msgid "gMFSK picture"
+msgstr "gMFSK-kuva"
+
+#: src/interface.c:4361
+msgid "Select Picture to Transmit"
+msgstr "Valitse lähetettävä kuva"
+
+#: src/interface.c:4389
+msgid "Select File"
+msgstr "Valitse tiedosto"
+
+#: src/interface.c:4474
+msgid "gMFSK configuration druid"
+msgstr "gMFSK asetusvelho"
+
+#: src/interface.c:4487
+msgid "Welcome to gMFSK"
+msgstr "Tervetuloa gMFSK:hon"
+
+#: src/interface.c:4489
+msgid ""
+"This is the first time you run this version of gMFSK. On the following pages "
+"you will be guided through the initial setup of gMFSK.\n"
+"\n"
+"All settings can also be done later in the main program Settings-"
+">Preferences dialog.\n"
+"\n"
+"This druid can be run again by starting gMFSK with the \"--run-druid\" flag."
+msgstr ""
+"Tämä on ensimmäinen kerta kun käynnistät tämän version gMFSK:sta. "
+"Seuraavilla sivuilla sinut ohjastetaan gMFSK:n ensiasennuksen läpi.\n"
+"\n"
+"Kaikkia asetuksia voidaan muuttaa myös myöhemmin Asetukset->Asetukset -"
+"valikon kautta.\n"
+"\n"
+"Voit käynnistää tämän velhon uudestaan käynnistämällä gMFSK:n \"--run-druid"
+"\" optiolla."
+
+#: src/interface.c:4495
+msgid "Station information"
+msgstr "Aseman tiedot"
+
+#: src/interface.c:4506
+msgid ""
+"Fill in your station information. This data is used in the fixtext macros."
+msgstr "Täytä asemasi tiedot. Näitä tietoja käytetään makroissa."
+
+#: src/interface.c:4591
+msgid "Files and directories"
+msgstr "Tiedostot ja hakemistot"
+
+#: src/interface.c:4602
+msgid ""
+"These files and directories are used by gMFSK. Click the button to actually "
+"create the files and directories."
+msgstr ""
+"gMFSK käyttää näitä tiedostoja ja hakemistoja. Klikkaa näppäintä jotta "
+"tiedostot ja hakemistot luodaan."
+
+#: src/interface.c:4652
+msgid "Create files and directories"
+msgstr "Luo tiedostot ja hakemistot"
+
+#: src/interface.c:4661
+msgid "Sound card configuration"
+msgstr "Äänikortin asetukset"
+
+#: src/interface.c:4672
+msgid ""
+"Some sound cards don't support the default setting (16 bit mono sampling). "
+"You should hear a short sound sample when you click the test button below."
+msgstr ""
+"Jotkut äänikortit eivät tue oletusasetuksia (16-bittinen mono-näytteistys). "
+"Sinun pitäisi kuulla lyhyt ääninäyte kun klikkaat alla olevaa testinäppäintä."
+
+#: src/interface.c:4719
+msgid "Test sound card"
+msgstr "Kokeile äänikorttia"
+
+#: src/interface.c:4728
+msgid "PTT configuration"
+msgstr "PTT-asetukset"
+
+#: src/interface.c:4739
+msgid ""
+"gMFSK can control PTT via the serial port control lines or the parallel port."
+msgstr "gMFSK voi kontrolloida PTT:tä joko sarja- tai rinnakkaisportin kautta."
+
+#: src/interface.c:4819
+msgid "Test PTT"
+msgstr "Kokeile PTT:tä"
+
+#: src/interface.c:4829
+msgid "Configuration complete!"
+msgstr "Asetukset valmiit!"
+
+#: src/interface.c:4831
+msgid "Initial setup is now complete.\n"
+msgstr "Ensiasennus on nyt valmis.\n"
+
+#: src/log.c:71
+#, c-format
+msgid "Error writing to log file: %m"
+msgstr "Virhe kirjoitettaessa tiedostoon: %m"
+
+#: src/log.c:94
+#, c-format
+msgid ""
+"\n"
+"--- Logging started at %s UTC ---\n"
+msgstr ""
+"\n"
+"--- Tiedostoon tallennus aloitettu %s UTC ---\n"
+
+#: src/log.c:105
+#, c-format
+msgid ""
+"\n"
+"--- Logging stopped at %s UTC ---\n"
+msgstr ""
+"\n"
+"--- Tiedostoon tallennus lopetettu %s UTC ---\n"
+
+#: src/macro.c:87
+#, c-format
+msgid "fill_macroconfig: invalid macro number %d\n"
+msgstr "fill_macroconfig: virheellinen makron numero %d\n"
+
+#: src/macro.c:120
+#, c-format
+msgid "apply_macroconfig: invalid macro number %d\n"
+msgstr "apply_macroconfig: virheellinen makron numero %d\n"
+
+#: src/macro.c:237
+#, c-format
+msgid "run_command: %s"
+msgstr "run_command: %s"
+
+#: src/macro.c:310
+#, c-format
+msgid "send_macro: invalid macro number %d\n"
+msgstr "send_macro: virheellinen makron numero %d\n"
+
+#: src/main.c:328
+#, c-format
+msgid "insert_rx_text: conversion failed: %s"
+msgstr "insert_rx_text: muunnos epäonnistui: %s"
+
+#: src/main.c:539
+msgid "Start with specified modem"
+msgstr ""
+
+#: src/main.c:539
+#, fuzzy
+msgid "MODEM"
+msgstr "MODE"
+
+#: src/main.c:542
+msgid "Run first-time configuration druid"
+msgstr "Käynnistä ensiasennusvelho"
+
+#: src/main.c:545
+msgid "Enable CWirc slave mode"
+msgstr "Aktivoi CWirc-tila"
+
+#: src/main.c:545
+msgid "SHMID"
+msgstr "SHMID"
+
+#: src/main.c:549
+msgid "Enable test mode (write audio data to stdin/stdout)"
+msgstr "Aktivoi testitila (audiodata stdin/stdout kanavista)"
+
+#: src/main.c:550
+msgid "MODE"
+msgstr "MODE"
+
+#: src/main.c:563
+#, c-format
+msgid "Menu item \"%s\" not found!\n"
+msgstr "Valikon kohtaa \"%s\" ei löytynyt!\n"
+
+#: src/main.c:609
+msgid ""
+"FFTW wisdom not found. This is normal if you are running gMFSK for the first "
+"time."
+msgstr ""
+"FFTW vihjeitä ei löydy. Tämä on normaalia jos käytät ohjelmaa ensimmäistä "
+"kertaa."
+
+#: src/main.c:628
+msgid "gMFSK -- testmode (both)"
+msgstr "gMFSK -- testitila (molemmat)"
+
+#: src/main.c:632
+msgid "gMFSK -- testmode (rx)"
+msgstr "gMFSK -- testitila (vastaanotto)"
+
+#: src/main.c:636
+msgid "gMFSK -- testmode (tx)"
+msgstr "gMFSK -- testitila (lähetys)"
+
+#: src/main.c:638
+#, c-format
+msgid "Invalid testmode '%s'\n"
+msgstr "Epäkelpo testitila '%s'\n"
+
+#: src/miniscope.c:176 src/miniscope.c:188 src/miniscope.c:200
+#: src/waterfall.c:343 src/waterfall.c:354 src/waterfall.c:365
+#: src/waterfall.c:376 src/waterfall.c:387
+#, c-format
+msgid "unable to allocate color: ( %d %d %d )"
+msgstr "väriä ei voitu varata: ( %d %d %d )"
+
+#: src/miniscope.c:434
+#, c-format
+msgid "miniscope: invalid mode %d\n"
+msgstr "miniscope: virheellinen toimintamuoto %d\n"
+
+#: src/picture.c:171
+#, c-format
+msgid "Error saving picture: %s: %s"
+msgstr "Virhe kuvatiedostoa tallennettaessa: %s: %s"
+
+#: src/picture.c:253
+#, c-format
+msgid "picture write: x >= width (%d >= %d)"
+msgstr "picture write: x >= width (%d >= %d)"
+
+#: src/picture.c:259
+#, c-format
+msgid "picture write: y >= height (%d >= %d)"
+msgstr "picture write: y >= height (%d >= %d)"
+
+#: src/picture.c:334
+#, c-format
+msgid "send_picture: %s"
+msgstr "send_picture: %s"
+
+#: src/picture.c:344
+msgid "send_picture: pixbuf conversion failed!"
+msgstr "send_picture: pixbuf-muunnos epäonnistui!"
+
+#: src/picture.c:351
+msgid "send_picture: couldn't load picture icon!"
+msgstr "send_picture: kuvaikonin lataus epäonnistui!"
+
+#: src/ptt.c:162
+#, c-format
+msgid "Device '%s' is neither a parallel nor a serial port"
+msgstr "Laite '%s' ei ole sarja- eikä rinnakkaisportti"
+
+#: src/ptt.c:164
+#, c-format
+msgid "Device '%s' is not a serial port"
+msgstr "Laite '%s' ei ole sarjaportti"
+
+#: src/qsodata.c:76
+#, c-format
+msgid "log message too long, entry dropped: %s\n"
+msgstr "lokiviesti on liian pitkä, merkintä poistettu: %s\n"
+
+#: src/snd.c:144
+msgid "opensnd: device not set"
+msgstr "opensnd: laitetta ei ole asetettu"
+
+#: src/snd.c:168
+#, c-format
+msgid "opensnd: open: %s: %m"
+msgstr "opensnd: open: %s: %m"
+
+#: src/snd.c:174
+#, c-format
+msgid "opensnd: ioctl: SNDCTL_DSP_NONBLOCK: %m"
+msgstr "opensnd: ioctl: SNDCTL_DSP_NONBLOCK: %m"
+
+#: src/snd.c:194
+#, c-format
+msgid "opensnd: ioctl: SNDCTL_DSP_SETFMT: %m"
+msgstr "opensnd: ioctl: SNDCTL_DSP_SETFMT: %m"
+
+#: src/snd.c:198
+msgid "opensnd: Requested sample format not supported"
+msgstr "opensnd: Pyydetty näytteistysmuoto ei ole tuettu"
+
+#: src/snd.c:214
+#, c-format
+msgid "opensnd: ioctl: SNDCTL_DSP_STEREO: %m"
+msgstr "opensnd: ioctl: SNDCTL_DSP_STEREO: %m"
+
+#: src/snd.c:218
+#, c-format
+msgid "opensnd: Cannot set %s audio"
+msgstr "opensnd: %s-ääni ei ole mahdollinen"
+
+#: src/snd.c:229
+#, c-format
+msgid "opensnd: ioctl: SNDCTL_DSP_SPEED: %m"
+msgstr "opensnd: ioctl: SNDCTL_DSP_SPEED: %m"
+
+#: src/snd.c:233
+#, c-format
+msgid "Sampling rate is %u, requested %u\n"
+msgstr "Näytteistystaajuus on %u, pyydetty taajuus %u\n"
+
+#: src/snd.c:261
+#, c-format
+msgid "opensnd: ioctl: SNDCTL_DSP_SETFRAGMENT: %m"
+msgstr "opensnd: ioctl: SNDCTL_DSP_SETFRAGMENT: %m"
+
+#: src/snd.c:349
+#, c-format
+msgid "sound_open_for_write: src_new failed: %s"
+msgstr "sound_open_for_write: src_new epäonnistui: %s"
+
+#: src/snd.c:418
+#, c-format
+msgid "sound_open_for_read: src_new failed: %s"
+msgstr "sound_open_for_read: src_new epäonnistui: %s"
+
+#: src/snd.c:461
+#, c-format
+msgid "sound_close: ioctl: SNDCTL_DSP_SYNC: %m"
+msgstr "sound_close: ioctl: SNDCTL_DSP_SYNC: %m"
+
+#: src/snd.c:489
+msgid "sound_write: fd < 0"
+msgstr "sound_write: fd < 0"
+
+#: src/snd.c:503
+#, c-format
+msgid "sound_write: src_process: %s"
+msgstr "sound_write: src_process: %s"
+
+#: src/snd.c:522
+#, c-format
+msgid "write_samples: count <= 0 (%d)"
+msgstr "write_samples: count <= 0 (%d)"
+
+#: src/snd.c:527
+#, c-format
+msgid "write_samples: count > SND_BUF_LEN (%d)"
+msgstr "write_samples: count > SND_BUF_LEN (%d)"
+
+#: src/snd.c:558
+#, c-format
+msgid "write_samples: write: %m"
+msgstr "write_samples: write: %m"
+
+#: src/snd.c:590
+msgid "sound_read: fd < 0"
+msgstr "sound_read: fd < 0"
+
+#: src/snd.c:611
+#, c-format
+msgid "sound_read: src_process: %s"
+msgstr "sound_read: src_process: %s"
+
+#: src/snd.c:630
+#, c-format
+msgid "read_samples: count <= 0 (%d)"
+msgstr "read_samples: count <= 0 (%d)"
+
+#: src/snd.c:635
+#, c-format
+msgid "read_samples: count > SND_BUF_LEN (%d)"
+msgstr "read_samples: count > SND_BUF_LEN (%d)"
+
+#: src/snd.c:683
+#, c-format
+msgid "sound_read: read: %m"
+msgstr "sound_read: read: %m"
+
+#: src/support.c:60 src/support.c:85
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr "Pixmap-tiedostoa ei löytynyt: %s"
+
+#: src/trx.c:100
+#, c-format
+msgid "sound_open_for_read: %s"
+msgstr "sound_open_for_read: %s"
+
+#: src/trx.c:121
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: src/trx.c:138
+#, c-format
+msgid "sound_open_for_write: %s"
+msgstr "sound_open_for_write: %s"
+
+#: src/trx.c:297
+msgid "Modem initialization failed!"
+msgstr "Modeemin alustus epäonnistui!"
+
+#: src/trx.c:307
+#, c-format
+msgid "pthread_create: %m"
+msgstr "pthread_create: %m"
+
+#: src/trx.c:823
+#, c-format
+msgid "trx_get_tx_char: conversion failed: %s"
+msgstr "trx_get_tx_char: muunnos epäonnistui: %s"
+
+#: src/waterfall.c:1060
+#, c-format
+msgid "Unknown waterfall mode: %d\n"
+msgstr "Tuntematon vesiputouksen toimintatila: %d\n"
+
+#: src/waterfall.c:1226
+#, c-format
+msgid "Invalid window function: %d\n"
+msgstr "Epäkelpo ikkunafunktio: %d\n"
+
+#: src/waterfall.c:1395
+#, c-format
+msgid "Unsupported magnification: %d\n"
+msgstr "Suurennosta ei tueta: %d\n"
+
+#~ msgid "frequency"
+#~ msgstr "taajuus"

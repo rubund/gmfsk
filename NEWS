@@ -1,0 +1,24 @@
+Version 0.6beta1 user visible changes:
+
+ - Feldhell TX works. Full international character set support.
+
+ - All modems have their own config dialog. Clicking the mode
+   label in the statusbar opens the dialog for the current mode.
+   (RTTY and THROB squelch and Feldhell AGC settings don't work yet.)
+
+ - Help file. This is still work in progress. Specifically the
+   section about usage is mostly bogus right now.
+
+ - TX text is handled a bit differently now. Difficult to explain,
+   please test...
+
+ - Locator entry in QSO data (also sent to remote log).
+
+ - MFSK pictures.
+
+ - The FFT library (FFTW) now uses "wisdom" to optimize CPU consumption.
+   User will notice that the first time a modem is used, there will be
+   a few seconds delay.
+
+ - Hamlib (rig control) support.
+
