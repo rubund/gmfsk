@@ -478,11 +478,11 @@ char *sound_error(void)
 
 gint sound_write(gfloat *buf, gint cnt)
 {
-//	gint n;
-//
-//#if SND_DEBUG > 1
-//	dprintf("sound_write(%d)\n", cnt);
-//#endif
+	gint n;
+
+#if SND_DEBUG > 1
+	dprintf("sound_write(%d)\n", cnt);
+#endif
 //
 //	if (cwirc_extension_mode)
 //		return cwirc_sound_write(buf, cnt);
@@ -495,8 +495,8 @@ gint sound_write(gfloat *buf, gint cnt)
 //		return -1;
 //	}
 //
-//	if (tx_src_state == NULL)
-//		return write_samples(buf, cnt);
+	if (tx_src_state == NULL)
+		return write_samples(buf, cnt);
 //
 //	tx_src_data->data_in = buf;
 //	tx_src_data->input_frames = cnt;
@@ -520,19 +520,19 @@ static gint write_samples(gfloat *buf, gint count)
 //	void *p;
 //	gint i, j;
 //
-//#if SND_DEBUG > 1
-//	dprintf("write_samples(%d)\n", count);
-//#endif
-//
-//	if (count <= 0) {
-//		snderr(_("write_samples: count <= 0 (%d)"), count);
-//		return -1;
-//	}
-//
-//	if (count > SND_BUF_LEN) {
-//		snderr(_("write_samples: count > SND_BUF_LEN (%d)"), count);
-//		return -1;
-//	}
+#if SND_DEBUG > 1
+	dprintf("write_samples(%d)\n", count);
+#endif
+
+	if (count <= 0) {
+		snderr(_("write_samples: count <= 0 (%d)"), count);
+		return -1;
+	}
+
+	if (count > SND_BUF_LEN) {
+		snderr(_("write_samples: count > SND_BUF_LEN (%d)"), count);
+		return -1;
+	}
 //
 //	if (cwirc_extension_mode)
 //		return cwirc_sound_write(buf, count);
