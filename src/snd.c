@@ -59,6 +59,7 @@ static gmfsk_snd_config_t newconfig;
 
 static gint snd_fd = -1;
 static gint snd_dir = 0;
+static snd_pcm_t *alsa_dev;
 
 static gint16 snd_w_buffer[2 * SND_BUF_LEN];
 static guint8 snd_b_buffer[2 * SND_BUF_LEN];
@@ -365,6 +366,62 @@ gint sound_open_for_write(gint rate)
 
 gint sound_open_for_read(gint rate)
 {
+	gint err;
+	gint channels, dir;
+
+	char *sound_device = "default";
+	if ((err = snd_pcm_open(&alsa_dev, sound_device, SND_PCM_STREAM_CAPTURE, 0)) < 0) {
+		snderr(_("Error opening sound device (%s)"), sound_device);
+		return -1;
+	}
+
+	snd_pcm_hw_params_t *hwparams = NULL;
+	snd_pcm_hw_params_alloca(&hwparams);
+	if ((err = snd_pcm_hw_params_any(alsa_dev, hwparams)) < 0) {
+		snderr(_("Error initializing hwparams"));
+		return -1;
+	}
+	if ((err = snd_pcm_hw_params_set_access(alsa_dev, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
+		snderr(_("Error setting acecss mode (SND_PCM_ACCESS_RW_INTERLEAVED): %s"),src_strerror(err));
+		return -1;
+	}
+	if ((err = snd_pcm_hw_params_set_format(alsa_dev, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
+		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
+		return -1;
+	}
+	//if (sound_channels == SOUND_CHANNELS_MONO)
+		channels = 1;
+	//else
+	//	channels = 2;
+
+	if ((err = snd_pcm_hw_params_set_channels(alsa_dev, hwparams, channels)) < 0) {
+		snderr(_("Error setting channels %d: %s"), channels, src_strerror(err));
+		snderr(_("Maybe your sound card does not support this SoundChannels setting (mono-only or stereo-only card)."));
+		return -1;
+	}
+
+	if ((err = snd_pcm_hw_params_set_rate_near(alsa_dev, hwparams, &rate, 0)) < 0) {
+		snderr(_("Error setting sample rate (%d): %s"), rate, src_strerror(err));
+		return -1;
+	}
+
+	snd_pcm_uframes_t size = 4096; /* number of frames */
+	
+	dir = 0;
+	if ((err = snd_pcm_hw_params_set_period_size_near(alsa_dev, hwparams, &size, &dir)) < 0) {
+		snderr(_("Error setting buffer size (%d): %s"), size, src_strerror(err));
+		return -1;
+	}
+
+	if ((err = snd_pcm_hw_params(alsa_dev, hwparams)) < 0) {
+		snderr(_("Error writing hwparams: %s"), src_strerror(err));
+		return -1;
+	}
+
+	snd_pcm_hw_params_get_period_size(hwparams, &size, &dir);
+
+	//int buffer_len_in_bytes = *buffer_l * sizeof(short) * channels;
+	
 //	gdouble real_rate;
 //	gdouble ratio;
 //	gint err;
@@ -435,6 +492,7 @@ gint sound_open_for_read(gint rate)
 
 void sound_close(void)
 {
+	snd_pcm_close(alsa_dev);
 //	if (cwirc_extension_mode)
 //		return;
 //
