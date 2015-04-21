@@ -36,13 +36,15 @@
 #include <fcntl.h>
 #include <time.h>
 
-#include <sys/soundcard.h>
+//#include <sys/soundcard.h>
 #include <sys/ioctl.h>
 
 #include "snd.h"
 #include "misc.h"
 #include "cwirc.h"
 #include "samplerate.h"
+
+#include <alsa/asoundlib.h>
 
 #define	SND_DEBUG	0
 
