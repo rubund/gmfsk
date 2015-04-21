@@ -197,6 +197,15 @@ on_freqspinbutton_changed              (GtkEditable     *editable,
                                         gpointer         user_data);
 
 void
+on_refspinbutton_changed              (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_ampspinbutton_changed              (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+
+void
 on_afcbutton_toggled                   (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
@@ -416,3 +425,19 @@ on_olivia1_activate                    (GtkMenuItem     *menuitem,
 void
 on_qsybutton_clicked                   (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_waterfall2_color_activate 		(GtkMenuItem *menuitem, gpointer user_data);
+
+void
+on_waterfall2_grayscale_activate 	(GtkMenuItem *menuitem, gpointer user_data);
+
+void
+on_waterfall3x1_activate	(GtkMenuItem *menuitem, gpointer user_data);
+
+void
+on_waterfall3x2_activate	(GtkMenuItem *menuitem, gpointer user_data);
+
+void
+on_waterfall3x4_activate	(GtkMenuItem *menuitem, gpointer user_data);
+

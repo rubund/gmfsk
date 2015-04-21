@@ -117,6 +117,8 @@ struct _Waterfall
 	GdkColor tracecol;
 
 	GdkRgbCmap *cmap;
+	GdkRgbCmap *gmap;
+	gboolean dispclr;
 
 	GdkPixmap *pixmap;
 
@@ -156,6 +158,8 @@ struct _Waterfall
 
 	gdouble *specbuf;
 	gdouble *peakbuf;
+	gdouble ratio;
+	gdouble imd;
 
 	GdkCursor *ruler_cursor;
 	gboolean ruler_cursor_set;
@@ -197,7 +201,7 @@ void waterfall_set_reflevel(Waterfall *wf, gdouble reflevel);
 void waterfall_set_dir(Waterfall *wf, gboolean dir);
 void waterfall_set_fixed(Waterfall *wf, gboolean fixed);
 void waterfall_set_lsb(Waterfall *wf, gboolean lsb);
-
+void waterfall_set_colormode(Waterfall *wf, gboolean flag);
 void waterfall_get_config(Waterfall *wf, wf_config_t *config);
 
 #ifdef __cplusplus

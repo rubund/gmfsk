@@ -107,6 +107,7 @@ extern inline guint8 rbits8(guint8 w)
 /*
  * Integer base-2 logarithm
  */
+/*
 extern inline guint log2(guint x)
 {
 	int y = 0;
@@ -120,6 +121,7 @@ extern inline guint log2(guint x)
 
 	return y;
 }
+*/
 
 /* ---------------------------------------------------------------------- */
 

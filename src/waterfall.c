@@ -161,7 +161,8 @@ static void waterfall_init(Waterfall *wf)
 	gdk_color_parse("magenta", &wf->pointer1col);
 	wf->pointer1_gc = NULL;
 
-	gdk_color_parse("blue",    &wf->pointer2col);
+	gdk_color_parse("yellow",    &wf->pointer2col);
+
 	wf->pointer2_gc = NULL;
 
 	gdk_color_parse("red",     &wf->pointer3col);
@@ -174,7 +175,7 @@ static void waterfall_init(Waterfall *wf)
 	wf->trace_gc = NULL;
 
 	/* compute cmap */
-#if 0
+// create color map for waterfall
 	for (i = 0; i < 256; i++) {
 		guchar r, g, b;
 
@@ -189,11 +190,13 @@ static void waterfall_init(Waterfall *wf)
 		}
 		colormap[i] = (r << 16) + (g << 8) + b;
 	}
-#else
+	wf->cmap = gdk_rgb_cmap_new(colormap, 256); // color map
+// create grayscale map for waterfall
 	for (i = 0; i < 256; i++)
 		colormap[i] = 65793 * i;
-#endif
-	wf->cmap = gdk_rgb_cmap_new(colormap, 256);
+
+	wf->gmap = gdk_rgb_cmap_new(colormap, 256); // gray scale map
+	wf->dispclr = TRUE;
 
 	wf->pixmap = NULL;
 	wf->pixbufsize = 0;
@@ -439,6 +442,10 @@ static void waterfall_unrealize(GtkWidget *widget)
 	if (wf->cmap)
 		gdk_rgb_cmap_free(wf->cmap);
 	wf->cmap = NULL;
+	
+	if (wf->gmap)
+		gdk_rgb_cmap_free(wf->gmap);
+	wf->gmap = NULL;
 
 	g_free(wf->pixbuf);
 	wf->pixbuf = NULL;
@@ -840,7 +847,7 @@ static void draw_waterfall(Waterfall *wf)
 			       GDK_RGB_DITHER_NORMAL,
 			       ptr,
 			       wf->fftlen / 2,
-			       wf->cmap);
+				   	 (wf->dispclr == TRUE ? wf->cmap : wf->gmap));
 
 	/* draw ruler */
 	gdk_draw_rectangle(wf->pixmap, widget->style->black_gc, TRUE,
@@ -1100,11 +1107,14 @@ static gint idle_callback(gpointer data)
 
 /* ---------------------------------------------------------------------- */
 
+
 #define	cabs(z)		(sqrt(c_re(z) * c_re(z) + c_im(z) * c_im(z)))
 
 static void setdata(Waterfall *wf)
 {
 	gint i, width, size;
+	gint i4m, i4p, i3m, i3p, i1m, i1p, ictr, ioff;
+	gfloat avgsig, avgsig0, avgsig1, avgsig3, avgsig4;
 	guchar *ptr;
 
 	for (i = 0; i < wf->fftlen; i++) {
@@ -1151,6 +1161,7 @@ static void setdata(Waterfall *wf)
 		/* spectrum data */
 		wf->specbuf[i] = x;
 	}
+
 }
 
 void waterfall_set_data(Waterfall *wf, gfloat *data, int len)
@@ -1501,6 +1512,11 @@ void waterfall_set_fixed(Waterfall *wf, gboolean flag)
 	g_return_if_fail(IS_WATERFALL(wf));
 
 	wf->fixed = flag;
+}
+
+void waterfall_set_colormode(Waterfall *wf, gboolean flag)
+{
+	wf->dispclr = flag;
 }
 
 void waterfall_set_lsb(Waterfall *wf, gboolean flag)

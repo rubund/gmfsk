@@ -105,6 +105,7 @@ guint8 rbits8(guint8 w)
 /*
  * Integer base-2 logarithm
  */
+/*
 guint log2(guint x)
 {
 	int y = 0;
@@ -118,6 +119,7 @@ guint log2(guint x)
 
 	return y;
 }
+*/
 
 /* ---------------------------------------------------------------------- */
 

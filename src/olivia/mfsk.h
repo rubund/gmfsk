@@ -1960,7 +1960,7 @@ template <class Type=float>
 
    Type *ModulatorOutput;
 
-   RateConverter<Type> RateConverter; // output rate converter
+   ::RateConverter<Type> RateConverter; // output rate converter
 
    Type *ConverterOutput;
 
@@ -2209,7 +2209,7 @@ template <class Type=float>
 
   private:
 
-   RateConverter<Type> RateConverter;
+   ::RateConverter<Type> RateConverter;
 
    Seq<Type> InputBuffer;
 

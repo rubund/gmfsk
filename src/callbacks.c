@@ -1210,7 +1210,8 @@ on_waterfall_button_press_event        (GtkWidget       *widget,
                                         GdkEventButton  *event,
                                         gpointer         user_data)
 {
-	GtkWidget *w = WFPopupMenu;
+	GtkWidget *wm = WFPopupMenu;
+	GtkWidget *w;
 	gint i;
 
 	/* we are interested in button three */
@@ -1219,7 +1220,12 @@ on_waterfall_button_press_event        (GtkWidget       *widget,
 
 	/* activate the correct mode radiobutton */
 	i = conf_get_int("wf/mode") + 2;
-	w = GTK_WIDGET(g_list_nth_data(GTK_MENU_SHELL(w)->children, i));
+	w = GTK_WIDGET(g_list_nth_data(GTK_MENU_SHELL(wm)->children, i));
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(w), TRUE);
+
+	/* activate the correct width radiobutton */
+	i = conf_get_int("wf/zoom") + 9;
+	w = GTK_WIDGET(g_list_nth_data(GTK_MENU_SHELL(wm)->children, i));
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(w), TRUE);
 
 	gtk_menu_popup(GTK_MENU(WFPopupMenu), NULL, NULL, NULL, NULL,
@@ -1281,7 +1287,6 @@ on_freqspinbutton_changed              (GtkEditable     *editable,
 	freq = gtk_spin_button_get_value_as_float(spin);
 	waterfall_set_frequency(waterfall, freq);
 }
-
 
 void
 on_afcbutton_toggled                   (GtkToggleButton *togglebutton,
@@ -1633,3 +1638,44 @@ on_qsybutton_clicked                   (GtkButton       *button,
 	g_warning("on_qsybutton_clicked: Hamlib support not compiled in");
 #endif
 }
+
+/* ---------------------------------------------------------------------- */
+
+void
+on_waterfall2_color_activate                    (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+  waterfall_set_colormode(waterfall, TRUE);
+}
+
+void
+on_waterfall2_grayscale_activate                    (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+  waterfall_set_colormode(waterfall, FALSE);
+}
+
+void setmag(gint val)
+{
+  waterfall_set_magnification(waterfall, val);
+  conf_set_int("wf/zoom", val);
+}
+
+void
+on_waterfall3x1_activate	(GtkMenuItem *menuitem, gpointer user_data)
+{
+  setmag (WATERFALL_MAG_1);
+}
+
+void
+on_waterfall3x2_activate	(GtkMenuItem *menuitem, gpointer user_data)
+{
+  setmag (WATERFALL_MAG_2);
+}
+
+void
+on_waterfall3x4_activate	(GtkMenuItem *menuitem, gpointer user_data)
+{
+  setmag (WATERFALL_MAG_4);
+}
+
