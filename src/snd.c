@@ -571,36 +571,37 @@ static gint write_samples(gfloat *buf, gint count)
 
 gint sound_read(gfloat **buffer, gint *count)
 {
+	struct timespec ts;
+	gint n;
+
+#if SND_DEBUG > 1
+	dprintf("sound_read(%d)\n", *count);
+#endif
+
+	*count = MIN(*count, SND_BUF_LEN);
+
+// To remove:
 	static float phase = 0;
-	*count = 100;
-	int i;
-	for(i=0;i<(*count);i++){
-		snd_buffer[i] = 0.1*cos(phase);
+	for(n=0;n<(*count);n++){
+		snd_buffer[n] = 0.1*cos(phase);
 		phase += 2*M_PI*10000.0/48000.0;
 		if(phase > 2*M_PI) phase -= 2*M_PI;
 	}
 	*buffer = snd_buffer;
-//	struct timespec ts;
-//	gint n;
 //
-//#if SND_DEBUG > 1
-//	dprintf("sound_read(%d)\n", *count);
-//#endif
-//
-//	*count = MIN(*count, SND_BUF_LEN);
-//
-//	if ((config.flags & SND_FLAG_TESTMODE_MASK) == SND_FLAG_TESTMODE_TX) {
-//		ts.tv_sec = 0;
-//		ts.tv_nsec = *count * (1000000000L / 8000);
-//
-//		nanosleep(&ts, NULL);
-//
-//		for (n = 0; n < *count; n++)
-//			snd_buffer[n] = (g_random_double() - 0.5) / 100.0;
-//
-//		*buffer = snd_buffer;
-//		return 0;
-//	}
+
+	if ((config.flags & SND_FLAG_TESTMODE_MASK) == SND_FLAG_TESTMODE_TX) {
+		ts.tv_sec = 0;
+		ts.tv_nsec = *count * (1000000000L / 8000);
+
+		nanosleep(&ts, NULL);
+
+		for (n = 0; n < *count; n++)
+			snd_buffer[n] = (g_random_double() - 0.5) / 100.0;
+
+		*buffer = snd_buffer;
+		return 0;
+	}
 //
 //	if (snd_fd < 0) {
 //		snderr(_("sound_read: fd < 0"));
