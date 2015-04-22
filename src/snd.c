@@ -432,6 +432,28 @@ gint sound_open_for_read(gint rate)
 {
 	gint err;
 	gint channels, dir;
+	gdouble real_rate;
+	gdouble ratio;
+
+	/* copy current config */
+	memcpy(&config, &newconfig, sizeof(gmfsk_snd_config_t));
+
+	if (cwirc_extension_mode) {
+		config.samplerate = CWIRC_SRATE;
+		config.rxoffset = 0;
+	}
+
+	if (cwirc_extension_mode)
+		snd_fd = 0;
+	else if (config.flags & SND_FLAG_TESTMODE_MASK)
+		snd_fd = 0;
+//	else if (!(config.flags & SND_FLAG_FULLDUP))
+//		snd_fd = opensnd(O_RDONLY);
+//	else if (snd_fd < 0)
+//		snd_fd = opensnd(O_RDWR);
+//
+//	if (snd_fd < 0)
+//		return -1;
 
 	char *sound_device = "default";
 	if ((err = snd_pcm_open(&alsa_dev_rx, sound_device, SND_PCM_STREAM_CAPTURE, 0)) < 0) {
@@ -492,73 +514,49 @@ gint sound_open_for_read(gint rate)
 		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
 	}
 	//int buffer_len_in_bytes = *buffer_l * sizeof(short) * channels;
-	
-//	gdouble real_rate;
-//	gdouble ratio;
-//	gint err;
-//
-//	/* copy current config */
-//	memcpy(&config, &newconfig, sizeof(snd_config_t));
-//
-//	if (cwirc_extension_mode) {
-//		config.samplerate = CWIRC_SRATE;
-//		config.rxoffset = 0;
-//	}
-//
-//	if (cwirc_extension_mode)
-//		snd_fd = 0;
-//	else if (config.flags & SND_FLAG_TESTMODE_MASK)
-//		snd_fd = 0;
-//	else if (!(config.flags & SND_FLAG_FULLDUP))
-//		snd_fd = opensnd(O_RDONLY);
-//	else if (snd_fd < 0)
-//		snd_fd = opensnd(O_RDWR);
-//
-//	if (snd_fd < 0)
-//		return -1;
+	snd_fd = 1; //FIXME
 //
 //	snd_dir = O_RDONLY;
-//
-//	real_rate = config.samplerate * (1.0 + config.rxoffset / 1e6);
-//
-//	if (rate == real_rate) {
-//		if (rx_src_state) {
-//			src_delete(rx_src_state);
-//			rx_src_state = NULL;
-//		}
-//		return snd_fd;
-//	}
-//
-//	ratio = rate / real_rate;
-//
-//	if (rx_src_state && rx_src_data && rx_src_data->src_ratio == ratio) {
-//		src_reset(rx_src_state);
-//		return snd_fd;
-//	}
-//
-//#if SND_DEBUG
-//	dprintf("Resampling input from %.1f to %d (%f)\n",
-//		real_rate, rate, ratio);
-//#endif
-//
-//	if (rx_src_state)
-//		src_delete(rx_src_state);
-//
-//	rx_src_state = src_new(SRC_SINC_FASTEST, 1, &err);
-//
-//	if (rx_src_state == NULL) {
-//		snderr(_("sound_open_for_read: src_new failed: %s"), src_strerror(err));
-//		snd_fd = -1;
-//		return -1;
-//	}
-//
-//	if (!rx_src_data)
-//		rx_src_data = g_new(SRC_DATA, 1);
-//
-//	rx_src_data->src_ratio = ratio;
-//
-//	return snd_fd;
-	return 1;
+
+	real_rate = config.samplerate * (1.0 + config.rxoffset / 1e6);
+
+	if (rate == real_rate) {
+		if (rx_src_state) {
+			src_delete(rx_src_state);
+			rx_src_state = NULL;
+		}
+		return snd_fd;
+	}
+
+	ratio = rate / real_rate;
+
+	if (rx_src_state && rx_src_data && rx_src_data->src_ratio == ratio) {
+		src_reset(rx_src_state);
+		return snd_fd;
+	}
+
+#if SND_DEBUG
+	dprintf("Resampling input from %.1f to %d (%f)\n",
+		real_rate, rate, ratio);
+#endif
+
+	if (rx_src_state)
+		src_delete(rx_src_state);
+
+	rx_src_state = src_new(SRC_SINC_FASTEST, 1, &err);
+
+	if (rx_src_state == NULL) {
+		snderr(_("sound_open_for_read: src_new failed: %s"), src_strerror(err));
+		snd_fd = -1;
+		return -1;
+	}
+
+	if (!rx_src_data)
+		rx_src_data = g_new(SRC_DATA, 1);
+
+	rx_src_data->src_ratio = ratio;
+
+	return snd_fd;
 }
 
 void sound_close(void)
