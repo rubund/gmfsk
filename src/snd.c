@@ -299,7 +299,28 @@ gint sound_open_for_write(gint rate)
 {
 	gint err;
 	gint channels, dir;
+	gdouble real_rate;
+	gdouble ratio;
 
+	/* copy current config */
+	memcpy(&config, &newconfig, sizeof(gmfsk_snd_config_t));
+
+	if (cwirc_extension_mode) {
+		config.samplerate = CWIRC_SRATE;
+		config.txoffset = 0;
+	}
+
+	if (cwirc_extension_mode)
+		snd_fd = 0;
+	else if (config.flags & SND_FLAG_TESTMODE_MASK)
+		snd_fd = 1;
+//	else if (!(config.flags & SND_FLAG_FULLDUP))
+//		snd_fd = opensnd(O_WRONLY);
+//	else if (snd_fd < 0)
+//		snd_fd = opensnd(O_RDWR);
+//
+//	if (snd_fd < 0)
+//		return -1;
 	char *sound_device = "default";
 	if ((err = snd_pcm_open(&alsa_dev_tx, sound_device, SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
 		snderr(_("Error opening sound device (%s)"), sound_device);
@@ -358,72 +379,53 @@ gint sound_open_for_write(gint rate)
 	if ((err = snd_pcm_prepare(alsa_dev_tx)) < 0) {
 		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
 	}
-//	gdouble real_rate;
-//	gdouble ratio;
-//	gint err;
+	snd_fd = 1; //FIXME
+
+
+	real_rate = config.samplerate * (1.0 + config.txoffset / 1e6);
+
+	if (rate == real_rate) {
+		if (tx_src_state) {
+			src_delete(tx_src_state);
+			tx_src_state = NULL;
+		}
+		return snd_fd;
+	}
+
+	ratio = real_rate / rate;
+
+	if (tx_src_state && tx_src_data && tx_src_data->src_ratio == ratio) {
+		src_reset(tx_src_state);
+		return snd_fd;
+	}
+
+#if SND_DEBUG
+	dprintf("Resampling output from %d to %.1f (%f)\n",
+		rate, real_rate, ratio);
+#endif
+
+	if (tx_src_state)
+		src_delete(tx_src_state);
+
+	tx_src_state = src_new(SRC_SINC_FASTEST, 1, &err);
+
+	if (tx_src_state == NULL) {
+		snderr(_("sound_open_for_write: src_new failed: %s"), src_strerror(err));
+		snd_fd = -1;
+		return -1;
+	}
+	if (!tx_src_data)
+		tx_src_data = g_new(SRC_DATA, 1);
+
+	tx_src_data->src_ratio = ratio;
+
 //
-//	/* copy current config */
-//	memcpy(&config, &newconfig, sizeof(snd_config_t));
 //
-//	if (cwirc_extension_mode) {
-//		config.samplerate = CWIRC_SRATE;
-//		config.txoffset = 0;
-//	}
-//
-//	if (cwirc_extension_mode)
-//		snd_fd = 0;
-//	else if (config.flags & SND_FLAG_TESTMODE_MASK)
-//		snd_fd = 1;
-//	else if (!(config.flags & SND_FLAG_FULLDUP))
-//		snd_fd = opensnd(O_WRONLY);
-//	else if (snd_fd < 0)
-//		snd_fd = opensnd(O_RDWR);
-//
-//	if (snd_fd < 0)
-//		return -1;
 //
 //	snd_dir = O_WRONLY;
 //
-//	real_rate = config.samplerate * (1.0 + config.txoffset / 1e6);
 //
-//	if (rate == real_rate) {
-//		if (tx_src_state) {
-//			src_delete(tx_src_state);
-//			tx_src_state = NULL;
-//		}
-//		return snd_fd;
-//	}
-//
-//	ratio = real_rate / rate;
-//
-//	if (tx_src_state && tx_src_data && tx_src_data->src_ratio == ratio) {
-//		src_reset(tx_src_state);
-//		return snd_fd;
-//	}
-//
-//#if SND_DEBUG
-//	dprintf("Resampling output from %d to %.1f (%f)\n",
-//		rate, real_rate, ratio);
-//#endif
-//
-//	if (tx_src_state)
-//		src_delete(tx_src_state);
-//
-//	tx_src_state = src_new(SRC_SINC_FASTEST, 1, &err);
-//
-//	if (tx_src_state == NULL) {
-//		snderr(_("sound_open_for_write: src_new failed: %s"), src_strerror(err));
-//		snd_fd = -1;
-//		return -1;
-//	}
-//
-//	if (!tx_src_data)
-//		tx_src_data = g_new(SRC_DATA, 1);
-//
-//	tx_src_data->src_ratio = ratio;
-//
-//	return snd_fd;
-	return 1;
+	return snd_fd;
 }
 
 gint sound_open_for_read(gint rate)
