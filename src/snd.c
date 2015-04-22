@@ -342,9 +342,18 @@ gint sound_open_for_write(gint rate)
 		snderr(_("Error setting acecss mode (SND_PCM_ACCESS_RW_INTERLEAVED): %s"),src_strerror(err));
 		return -1;
 	}
-	if ((err = snd_pcm_hw_params_set_format(alsa_dev_tx, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
-		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
-		return -1;
+
+	if (config.flags & SND_FLAG_8BIT){
+		if ((err = snd_pcm_hw_params_set_format(alsa_dev_tx, hwparams, SND_PCM_FORMAT_U8)) < 0) {
+			snderr(_("Error setting format (SND_PCM_FORMAT_U8): %s"), src_strerror(err));
+			return -1;
+		}
+	}
+	else {
+		if ((err = snd_pcm_hw_params_set_format(alsa_dev_tx, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
+			snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
+			return -1;
+		}
 	}
 
 	if (config.flags & SND_FLAG_STEREO)
@@ -483,9 +492,18 @@ gint sound_open_for_read(gint rate)
 		snderr(_("Error setting acecss mode (SND_PCM_ACCESS_RW_INTERLEAVED): %s"),src_strerror(err));
 		return -1;
 	}
-	if ((err = snd_pcm_hw_params_set_format(alsa_dev_rx, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
-		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
-		return -1;
+
+	if (config.flags & SND_FLAG_8BIT){
+		if ((err = snd_pcm_hw_params_set_format(alsa_dev_rx, hwparams, SND_PCM_FORMAT_U8)) < 0) {
+			snderr(_("Error setting format (SND_PCM_FORMAT_U8): %s"), src_strerror(err));
+			return -1;
+		}
+	}
+	else {
+		if ((err = snd_pcm_hw_params_set_format(alsa_dev_rx, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
+			snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
+			return -1;
+		}
 	}
 
 	if (config.flags & SND_FLAG_STEREO)
@@ -686,16 +704,16 @@ static gint write_samples(gfloat *buf, gint count)
 	if (cwirc_extension_mode)
 		return cwirc_sound_write(buf, count);
 
-//	if (config.flags & SND_FLAG_8BIT) {
-//		for (i = j = 0; i < count; i++) {
-//			snd_b_buffer[j++] = (buf[i] * 127.0 * SND_VOL) + 128.0;
-//			if (config.flags & SND_FLAG_STEREO)
-//				snd_b_buffer[j++] = 128;
-//		}
+	if (config.flags & SND_FLAG_8BIT) {
+		for (i = j = 0; i < count; i++) {
+			snd_b_buffer[j++] = (buf[i] * 127.0 * SND_VOL) + 128.0;
+			if (config.flags & SND_FLAG_STEREO)
+				snd_b_buffer[j++] = 128;
+		}
 //
 //		count *= sizeof(guint8);
-//		p = snd_b_buffer;
-//	} else {
+		p = snd_b_buffer;
+	} else {
 		for (i = j = 0; i < count; i++) {
 			snd_w_buffer[j++] = buf[i] * 32767.0 * SND_VOL;
 			if (config.flags & SND_FLAG_STEREO)
@@ -704,7 +722,7 @@ static gint write_samples(gfloat *buf, gint count)
 
 		//count *= sizeof(gint16);
 		p = snd_w_buffer;
-//	}
+	}
 
 	//if (config.flags & SND_FLAG_STEREO)
 	//	count *= 2;
@@ -816,9 +834,25 @@ static gint read_samples(gfloat *buf, gint count)
 //	if (config.flags & SND_FLAG_STEREO)
 //		count *= 2;
 //
-//	if (config.flags & SND_FLAG_8BIT) {
+
+
+	if (config.flags & SND_FLAG_8BIT) {
+
+		err = snd_pcm_readi(alsa_dev_rx, snd_b_buffer, count);
+		len = count;
+
+		if (err == -EPIPE) {
+			snderr(_("Overrun"));
+			snd_pcm_prepare(alsa_dev_rx);
+		} else if (err < 0) {
+			snderr(_("Read error"));
+		} else if (err != count) {
+			snderr(_("Short read, read %d frames"), err);
+		} else {
+			/*hlog(LOG_DEBUG, LOGPREFIX "Read %d samples", err); */
+		}
 //		count *= sizeof(guint8);
-//
+
 //		if ((len = read(snd_fd, snd_b_buffer, count)) < 0)
 //			goto error;
 //
@@ -827,33 +861,31 @@ static gint read_samples(gfloat *buf, gint count)
 //		if (config.flags & SND_FLAG_STEREO)
 //			len /= 2;
 //
-//		for (i = j = 0; i < len; i++) {
-//			buf[i] = (snd_b_buffer[j++] - 128) / 128.0;
-//			if (config.flags & SND_FLAG_STEREO)
-//				j++;
-//		}
-//	} else {
+		for (i = j = 0; i < len; i++) {
+			buf[i] = (snd_b_buffer[j++] - 128) / 128.0;
+			if (config.flags & SND_FLAG_STEREO)
+				j++;
+		}
+	} else {
+		err = snd_pcm_readi(alsa_dev_rx, snd_w_buffer, count);
+		len = count;
+
+		if (err == -EPIPE) {
+			snderr(_("Overrun"));
+			snd_pcm_prepare(alsa_dev_rx);
+		} else if (err < 0) {
+			snderr(_("Read error"));
+		} else if (err != count) {
+			snderr(_("Short read, read %d frames"), err);
+		} else {
+			/*hlog(LOG_DEBUG, LOGPREFIX "Read %d samples", err); */
+		}
 //		count *= sizeof(gint16);
-//
+
 //		if ((len = read(snd_fd, snd_w_buffer, count)) < 0)
 //			goto error;
-//
-//	}
-// To remove:
 
-	err = snd_pcm_readi(alsa_dev_rx, snd_w_buffer, count);
-	len = count;
 
-	if (err == -EPIPE) {
-		snderr(_("Overrun"));
-		snd_pcm_prepare(alsa_dev_rx);
-	} else if (err < 0) {
-		snderr(_("Read error"));
-	} else if (err != count) {
-		snderr(_("Short read, read %d frames"), err);
-	} else {
-		/*hlog(LOG_DEBUG, LOGPREFIX "Read %d samples", err); */
-	}
 
 //		len /= sizeof(gint16);
 //
@@ -865,6 +897,7 @@ static gint read_samples(gfloat *buf, gint count)
 			if (config.flags & SND_FLAG_STEREO)
 				j++;
 		}
+	}
 
 	return len;
 
