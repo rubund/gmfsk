@@ -801,11 +801,11 @@ static gint read_samples(gfloat *buf, gint count)
 		return -1;
 	}
 
-//	if (cwirc_extension_mode)
-//		return cwirc_sound_read(buf, count);
-//
-//	if (config.flags & SND_FLAG_STEREO)
-//		count *= 2;
+	if (cwirc_extension_mode)
+		return cwirc_sound_read(buf, count);
+
+	if (config.flags & SND_FLAG_STEREO)
+		count *= 2;
 //
 //	if (config.flags & SND_FLAG_8BIT) {
 //		count *= sizeof(guint8);
@@ -848,13 +848,13 @@ static gint read_samples(gfloat *buf, gint count)
 
 //		len /= sizeof(gint16);
 //
-//		if (config.flags & SND_FLAG_STEREO)
-//			len /= 2;
-//
+		if (config.flags & SND_FLAG_STEREO)
+			len /= 2;
+
 		for (i = j = 0; i < len; i++) {
 			buf[i] = snd_w_buffer[j++] / 32768.0;
-//			if (config.flags & SND_FLAG_STEREO)
-//				j++;
+			if (config.flags & SND_FLAG_STEREO)
+				j++;
 		}
 
 	return len;
