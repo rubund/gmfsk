@@ -664,20 +664,20 @@ gint sound_write(gfloat *buf, gint cnt)
 
 	if (tx_src_state == NULL)
 		return write_samples(buf, cnt);
-//
-//	tx_src_data->data_in = buf;
-//	tx_src_data->input_frames = cnt;
-//	tx_src_data->data_out = src_buffer;
-//	tx_src_data->output_frames = SRC_BUF_LEN;
-//	tx_src_data->end_of_input = 0;
-//
-//	if ((n = src_process(tx_src_state, tx_src_data)) != 0) {
-//		snderr(_("sound_write: src_process: %s"), src_strerror(n));
-//		return -1;
-//	}
 
-	//write_samples(src_buffer, tx_src_data->output_frames_gen);
-	write_samples(buf, cnt); //FIXME
+	tx_src_data->data_in = buf;
+	tx_src_data->input_frames = cnt;
+	tx_src_data->data_out = src_buffer;
+	tx_src_data->output_frames = SRC_BUF_LEN;
+	tx_src_data->end_of_input = 0;
+
+	if ((n = src_process(tx_src_state, tx_src_data)) != 0) {
+		snderr(_("sound_write: src_process: %s"), src_strerror(n));
+		return -1;
+	}
+
+	write_samples(src_buffer, tx_src_data->output_frames_gen);
+	//write_samples(src_buffer, cnt); //FIXME
 //
 	return cnt;
 }
@@ -786,24 +786,25 @@ gint sound_read(gfloat **buffer, gint *count)
 		return 0;
 	}
 //
-//	n = floor(*count / rx_src_data->src_ratio / 512 + 0.5) * 512;
+
+	n = floor(*count / rx_src_data->src_ratio / 512 + 0.5) * 512;
 	//n = read_samples(src_buffer, n);
-	n = *count; //FIXME
-	n = read_samples(snd_buffer, n);
+	//n = *count; //FIXME
+	n = read_samples(src_buffer, n);
 //
-//	rx_src_data->data_in = src_buffer;
-//	rx_src_data->input_frames = n;
-//	rx_src_data->data_out = snd_buffer;
-//	rx_src_data->output_frames = SND_BUF_LEN;
-//	rx_src_data->end_of_input = 0;
+	rx_src_data->data_in = src_buffer;
+	rx_src_data->input_frames = n;
+	rx_src_data->data_out = snd_buffer;
+	rx_src_data->output_frames = SND_BUF_LEN;
+	rx_src_data->end_of_input = 0;
+
+	if ((n = src_process(rx_src_state, rx_src_data)) != 0) {
+		snderr(_("sound_read: src_process: %s"), src_strerror(n));
+		return -1;
+	}
 //
-//	if ((n = src_process(rx_src_state, rx_src_data)) != 0) {
-//		snderr(_("sound_read: src_process: %s"), src_strerror(n));
-//		return -1;
-//	}
-//
-//	*count = rx_src_data->output_frames_gen;
-	*count = n; //FIXME
+	*count = rx_src_data->output_frames_gen;
+//	*count = n; //FIXME
 	*buffer = snd_buffer;
 //
 //	return 0;
