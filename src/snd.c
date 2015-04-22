@@ -318,6 +318,7 @@ gint sound_open_for_write(gint rate)
 //		snd_fd = opensnd(O_WRONLY);
 //	else if (snd_fd < 0)
 //		snd_fd = opensnd(O_RDWR);
+	else{
 //
 //	if (snd_fd < 0)
 //		return -1;
@@ -378,6 +379,7 @@ gint sound_open_for_write(gint rate)
 	snd_pcm_prepare(alsa_dev_tx);
 	if ((err = snd_pcm_prepare(alsa_dev_tx)) < 0) {
 		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
+	}
 	}
 	snd_fd = 1; //FIXME
 
@@ -451,6 +453,7 @@ gint sound_open_for_read(gint rate)
 //		snd_fd = opensnd(O_RDONLY);
 //	else if (snd_fd < 0)
 //		snd_fd = opensnd(O_RDWR);
+	else {
 //
 //	if (snd_fd < 0)
 //		return -1;
@@ -514,6 +517,7 @@ gint sound_open_for_read(gint rate)
 		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
 	}
 	//int buffer_len_in_bytes = *buffer_l * sizeof(short) * channels;
+	}
 	snd_fd = 1; //FIXME
 //
 //	snd_dir = O_RDONLY;
@@ -561,6 +565,17 @@ gint sound_open_for_read(gint rate)
 
 void sound_close(void)
 {
+	if (cwirc_extension_mode)
+		return;
+
+	if (config.flags & SND_FLAG_TESTMODE_MASK) {
+		snd_fd = -1;
+		return;
+	}
+
+	if (config.flags & SND_FLAG_FULLDUP)
+		return;
+
 	if (alsa_dev_rx != NULL){
 		snd_pcm_close(alsa_dev_rx);
 		alsa_dev_rx = NULL;
@@ -569,16 +584,6 @@ void sound_close(void)
 		snd_pcm_close(alsa_dev_tx);
 		alsa_dev_tx = NULL;
 	}
-//	if (cwirc_extension_mode)
-//		return;
-//
-//	if (config.flags & SND_FLAG_TESTMODE_MASK) {
-//		snd_fd = -1;
-//		return;
-//	}
-//
-//	if (config.flags & SND_FLAG_FULLDUP)
-//		return;
 //
 //#if 0	/* this doesn't seem to work like it should... */
 //	if (tx_src_state && snd_dir == O_WRONLY) {
