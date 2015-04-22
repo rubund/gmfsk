@@ -346,10 +346,11 @@ gint sound_open_for_write(gint rate)
 		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
 		return -1;
 	}
-	//if (sound_channels == SOUND_CHANNELS_MONO)
+
+	if (config.flags & SND_FLAG_STEREO)
+		channels = 2;
+	else
 		channels = 1;
-	//else
-	//	channels = 2;
 
 	if ((err = snd_pcm_hw_params_set_channels(alsa_dev_tx, hwparams, channels)) < 0) {
 		snderr(_("Error setting channels %d: %s"), channels, src_strerror(err));
@@ -486,10 +487,11 @@ gint sound_open_for_read(gint rate)
 		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
 		return -1;
 	}
-	//if (sound_channels == SOUND_CHANNELS_MONO)
+
+	if (config.flags & SND_FLAG_STEREO)
+		channels = 2;
+	else
 		channels = 1;
-	//else
-	//	channels = 2;
 
 	if ((err = snd_pcm_hw_params_set_channels(alsa_dev_rx, hwparams, channels)) < 0) {
 		snderr(_("Error setting channels %d: %s"), channels, src_strerror(err));
@@ -696,16 +698,16 @@ static gint write_samples(gfloat *buf, gint count)
 //	} else {
 		for (i = j = 0; i < count; i++) {
 			snd_w_buffer[j++] = buf[i] * 32767.0 * SND_VOL;
-			//if (config.flags & SND_FLAG_STEREO)
-			//	snd_w_buffer[j++] = 0;
+			if (config.flags & SND_FLAG_STEREO)
+				snd_w_buffer[j++] = 0;
 		}
 
 		//count *= sizeof(gint16);
 		p = snd_w_buffer;
 //	}
 
-	if (config.flags & SND_FLAG_STEREO)
-		count *= 2;
+	//if (config.flags & SND_FLAG_STEREO)
+	//	count *= 2;
 
 //	if ((i = write(snd_fd, p, count)) < 0)
 //		snderr(_("write_samples: write: %m"));
@@ -811,8 +813,8 @@ static gint read_samples(gfloat *buf, gint count)
 	if (cwirc_extension_mode)
 		return cwirc_sound_read(buf, count);
 
-	if (config.flags & SND_FLAG_STEREO)
-		count *= 2;
+//	if (config.flags & SND_FLAG_STEREO)
+//		count *= 2;
 //
 //	if (config.flags & SND_FLAG_8BIT) {
 //		count *= sizeof(guint8);
@@ -855,8 +857,8 @@ static gint read_samples(gfloat *buf, gint count)
 
 //		len /= sizeof(gint16);
 //
-		if (config.flags & SND_FLAG_STEREO)
-			len /= 2;
+//		if (config.flags & SND_FLAG_STEREO)
+//			len /= 2;
 
 		for (i = j = 0; i < len; i++) {
 			buf[i] = snd_w_buffer[j++] / 32768.0;
