@@ -622,18 +622,18 @@ gint sound_write(gfloat *buf, gint cnt)
 #if SND_DEBUG > 1
 	dprintf("sound_write(%d)\n", cnt);
 #endif
-//
-//	if (cwirc_extension_mode)
-//		return cwirc_sound_write(buf, cnt);
-//
-//	if ((config.flags & SND_FLAG_TESTMODE_MASK) == SND_FLAG_TESTMODE_RX)
-//		return cnt;
-//
-//	if (snd_fd < 0) {
-//		snderr(_("sound_write: fd < 0"));
-//		return -1;
-//	}
-//
+
+	if (cwirc_extension_mode)
+		return cwirc_sound_write(buf, cnt);
+
+	if ((config.flags & SND_FLAG_TESTMODE_MASK) == SND_FLAG_TESTMODE_RX)
+		return cnt;
+
+	if (snd_fd < 0) {
+		snderr(_("sound_write: fd < 0"));
+		return -1;
+	}
+
 	if (tx_src_state == NULL)
 		return write_samples(buf, cnt);
 //
@@ -651,7 +651,6 @@ gint sound_write(gfloat *buf, gint cnt)
 	//write_samples(src_buffer, tx_src_data->output_frames_gen);
 	write_samples(buf, cnt); //FIXME
 //
-//	return cnt;
 	return cnt;
 }
 
