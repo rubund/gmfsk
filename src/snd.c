@@ -111,24 +111,24 @@ void sound_get_flags(guint *flags)
 
 static void snderr(const gchar *fmt, ...)
 {
-//	va_list args;
-//
-//	va_start(args, fmt);
-//	vsnprintf(snd_error_str, sizeof(snd_error_str), fmt, args);
-//	snd_error_str[sizeof(snd_error_str) - 1] = 0;
-//	va_end(args);
-//
-//	fprintf(stderr, "*** %s ***\n", snd_error_str);
+	va_list args;
+
+	va_start(args, fmt);
+	vsnprintf(snd_error_str, sizeof(snd_error_str), fmt, args);
+	snd_error_str[sizeof(snd_error_str) - 1] = 0;
+	va_end(args);
+
+	fprintf(stderr, "*** %s ***\n", snd_error_str);
 }
 
 #if SND_DEBUG
 static void dprintf(const char *fmt, ...)
 {
-//	va_list args;
-//
-//	va_start(args, fmt);
-//	vfprintf(stderr, fmt, args);
-//	va_end(args);
+	va_list args;
+
+	va_start(args, fmt);
+	vfprintf(stderr, fmt, args);
+	va_end(args);
 }
 #endif
 
