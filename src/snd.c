@@ -693,7 +693,7 @@ static gint write_samples(gfloat *buf, gint count)
 			//	snd_w_buffer[j++] = 0;
 		}
 
-		count *= sizeof(gint16);
+		//count *= sizeof(gint16);
 		p = snd_w_buffer;
 //	}
 //
@@ -717,7 +717,7 @@ static gint write_samples(gfloat *buf, gint count)
 		/*hlog(LOG_DEBUG, LOGPREFIX "Read %d samples", err); */
 	}
 
-	count /= sizeof(gint16);
+	//count /= sizeof(gint16);
 	return count;
 }
 
