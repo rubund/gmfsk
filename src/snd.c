@@ -50,7 +50,7 @@
 
 /* ---------------------------------------------------------------------- */
 
-#define	SND_BUF_LEN		65536
+#define	SND_BUF_LEN		512
 #define	SRC_BUF_LEN		(8*SND_BUF_LEN)
 #define	SND_VOL			0.5
 
@@ -404,6 +404,7 @@ gint sound_open_for_read(gint rate)
 		snderr(_("Error setting sample rate (%d): %s"), rate, src_strerror(err));
 		return -1;
 	}
+	printf("rate: %d\n",rate);
 
 	snd_pcm_uframes_t size = 64; /* number of frames */
 	
@@ -420,6 +421,13 @@ gint sound_open_for_read(gint rate)
 
 	snd_pcm_hw_params_get_period_size(hwparams, &size, &dir);
 
+	snd_pcm_uframes_t bufferSize;
+	snd_pcm_hw_params_get_buffer_size(hwparams, &bufferSize);
+
+	snd_pcm_prepare(alsa_dev);
+	if ((err = snd_pcm_prepare(alsa_dev)) < 0) {
+		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
+	}
 	//int buffer_len_in_bytes = *buffer_l * sizeof(short) * channels;
 	
 //	gdouble real_rate;
@@ -704,6 +712,7 @@ static gint read_samples(gfloat *buf, gint count)
 		snderr(_("read_samples: count > SND_BUF_LEN (%d)"), count);
 		return -1;
 	}
+	printf("count: %d\n",count);
 
 //	if (cwirc_extension_mode)
 //		return cwirc_sound_read(buf, count);
