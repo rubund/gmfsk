@@ -59,7 +59,8 @@ static gmfsk_snd_config_t newconfig;
 
 static gint snd_fd = -1;
 static gint snd_dir = 0;
-static snd_pcm_t *alsa_dev;
+static snd_pcm_t *alsa_dev_rx = NULL;
+static snd_pcm_t *alsa_dev_tx = NULL;
 
 static gint16 snd_w_buffer[2 * SND_BUF_LEN];
 static guint8 snd_b_buffer[2 * SND_BUF_LEN];
@@ -296,6 +297,67 @@ static gint opensnd(gint direction)
 
 gint sound_open_for_write(gint rate)
 {
+	gint err;
+	gint channels, dir;
+
+	char *sound_device = "default";
+	if ((err = snd_pcm_open(&alsa_dev_tx, sound_device, SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
+		snderr(_("Error opening sound device (%s)"), sound_device);
+		return -1;
+	}
+
+	snd_pcm_hw_params_t *hwparams = NULL;
+	snd_pcm_hw_params_alloca(&hwparams);
+	if ((err = snd_pcm_hw_params_any(alsa_dev_tx, hwparams)) < 0) {
+		snderr(_("Error initializing hwparams"));
+		return -1;
+	}
+	if ((err = snd_pcm_hw_params_set_access(alsa_dev_tx, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
+		snderr(_("Error setting acecss mode (SND_PCM_ACCESS_RW_INTERLEAVED): %s"),src_strerror(err));
+		return -1;
+	}
+	if ((err = snd_pcm_hw_params_set_format(alsa_dev_tx, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
+		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
+		return -1;
+	}
+	//if (sound_channels == SOUND_CHANNELS_MONO)
+		channels = 1;
+	//else
+	//	channels = 2;
+
+	if ((err = snd_pcm_hw_params_set_channels(alsa_dev_tx, hwparams, channels)) < 0) {
+		snderr(_("Error setting channels %d: %s"), channels, src_strerror(err));
+		snderr(_("Maybe your sound card does not support this SoundChannels setting (mono-only or stereo-only card)."));
+		return -1;
+	}
+
+	if ((err = snd_pcm_hw_params_set_rate_near(alsa_dev_tx, hwparams, &rate, 0)) < 0) {
+		snderr(_("Error setting sample rate (%d): %s"), rate, src_strerror(err));
+		return -1;
+	}
+
+	snd_pcm_uframes_t size = 64; /* number of frames */
+	
+	dir = 0;
+	if ((err = snd_pcm_hw_params_set_period_size_near(alsa_dev_tx, hwparams, &size, &dir)) < 0) {
+		snderr(_("Error setting buffer size (%d): %s"), size, src_strerror(err));
+		return -1;
+	}
+
+	if ((err = snd_pcm_hw_params(alsa_dev_tx, hwparams)) < 0) {
+		snderr(_("Error writing hwparams: %s"), src_strerror(err));
+		return -1;
+	}
+
+	snd_pcm_hw_params_get_period_size(hwparams, &size, &dir);
+
+	snd_pcm_uframes_t bufferSize;
+	snd_pcm_hw_params_get_buffer_size(hwparams, &bufferSize);
+
+	snd_pcm_prepare(alsa_dev_tx);
+	if ((err = snd_pcm_prepare(alsa_dev_tx)) < 0) {
+		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
+	}
 //	gdouble real_rate;
 //	gdouble ratio;
 //	gint err;
@@ -370,22 +432,22 @@ gint sound_open_for_read(gint rate)
 	gint channels, dir;
 
 	char *sound_device = "default";
-	if ((err = snd_pcm_open(&alsa_dev, sound_device, SND_PCM_STREAM_CAPTURE, 0)) < 0) {
+	if ((err = snd_pcm_open(&alsa_dev_rx, sound_device, SND_PCM_STREAM_CAPTURE, 0)) < 0) {
 		snderr(_("Error opening sound device (%s)"), sound_device);
 		return -1;
 	}
 
 	snd_pcm_hw_params_t *hwparams = NULL;
 	snd_pcm_hw_params_alloca(&hwparams);
-	if ((err = snd_pcm_hw_params_any(alsa_dev, hwparams)) < 0) {
+	if ((err = snd_pcm_hw_params_any(alsa_dev_rx, hwparams)) < 0) {
 		snderr(_("Error initializing hwparams"));
 		return -1;
 	}
-	if ((err = snd_pcm_hw_params_set_access(alsa_dev, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
+	if ((err = snd_pcm_hw_params_set_access(alsa_dev_rx, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0) {
 		snderr(_("Error setting acecss mode (SND_PCM_ACCESS_RW_INTERLEAVED): %s"),src_strerror(err));
 		return -1;
 	}
-	if ((err = snd_pcm_hw_params_set_format(alsa_dev, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
+	if ((err = snd_pcm_hw_params_set_format(alsa_dev_rx, hwparams, SND_PCM_FORMAT_S16_LE)) < 0) {
 		snderr(_("Error setting format (SND_PCM_FORMAT_S16_LE): %s"), src_strerror(err));
 		return -1;
 	}
@@ -394,27 +456,26 @@ gint sound_open_for_read(gint rate)
 	//else
 	//	channels = 2;
 
-	if ((err = snd_pcm_hw_params_set_channels(alsa_dev, hwparams, channels)) < 0) {
+	if ((err = snd_pcm_hw_params_set_channels(alsa_dev_rx, hwparams, channels)) < 0) {
 		snderr(_("Error setting channels %d: %s"), channels, src_strerror(err));
 		snderr(_("Maybe your sound card does not support this SoundChannels setting (mono-only or stereo-only card)."));
 		return -1;
 	}
 
-	if ((err = snd_pcm_hw_params_set_rate_near(alsa_dev, hwparams, &rate, 0)) < 0) {
+	if ((err = snd_pcm_hw_params_set_rate_near(alsa_dev_rx, hwparams, &rate, 0)) < 0) {
 		snderr(_("Error setting sample rate (%d): %s"), rate, src_strerror(err));
 		return -1;
 	}
-	printf("rate: %d\n",rate);
 
 	snd_pcm_uframes_t size = 64; /* number of frames */
 	
 	dir = 0;
-	if ((err = snd_pcm_hw_params_set_period_size_near(alsa_dev, hwparams, &size, &dir)) < 0) {
+	if ((err = snd_pcm_hw_params_set_period_size_near(alsa_dev_rx, hwparams, &size, &dir)) < 0) {
 		snderr(_("Error setting buffer size (%d): %s"), size, src_strerror(err));
 		return -1;
 	}
 
-	if ((err = snd_pcm_hw_params(alsa_dev, hwparams)) < 0) {
+	if ((err = snd_pcm_hw_params(alsa_dev_rx, hwparams)) < 0) {
 		snderr(_("Error writing hwparams: %s"), src_strerror(err));
 		return -1;
 	}
@@ -424,8 +485,8 @@ gint sound_open_for_read(gint rate)
 	snd_pcm_uframes_t bufferSize;
 	snd_pcm_hw_params_get_buffer_size(hwparams, &bufferSize);
 
-	snd_pcm_prepare(alsa_dev);
-	if ((err = snd_pcm_prepare(alsa_dev)) < 0) {
+	snd_pcm_prepare(alsa_dev_rx);
+	if ((err = snd_pcm_prepare(alsa_dev_rx)) < 0) {
 		snderr(_("Error preparing pcm device: %s"), src_strerror(err));
 	}
 	//int buffer_len_in_bytes = *buffer_l * sizeof(short) * channels;
@@ -500,7 +561,14 @@ gint sound_open_for_read(gint rate)
 
 void sound_close(void)
 {
-	snd_pcm_close(alsa_dev);
+	if (alsa_dev_rx != NULL){
+		snd_pcm_close(alsa_dev_rx);
+		alsa_dev_rx = NULL;
+	}
+	if (alsa_dev_tx != NULL){
+		snd_pcm_close(alsa_dev_tx);
+		alsa_dev_tx = NULL;
+	}
 //	if (cwirc_extension_mode)
 //		return;
 //
@@ -712,7 +780,6 @@ static gint read_samples(gfloat *buf, gint count)
 		snderr(_("read_samples: count > SND_BUF_LEN (%d)"), count);
 		return -1;
 	}
-	printf("count: %d\n",count);
 
 //	if (cwirc_extension_mode)
 //		return cwirc_sound_read(buf, count);
@@ -745,12 +812,12 @@ static gint read_samples(gfloat *buf, gint count)
 //	}
 // To remove:
 
-	err = snd_pcm_readi(alsa_dev, snd_w_buffer, count);
+	err = snd_pcm_readi(alsa_dev_rx, snd_w_buffer, count);
 	len = count;
 
 	if (err == -EPIPE) {
 		snderr(_("Overrun"));
-		snd_pcm_prepare(alsa_dev);
+		snd_pcm_prepare(alsa_dev_rx);
 	} else if (err < 0) {
 		snderr(_("Read error"));
 	} else if (err != count) {
