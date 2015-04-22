@@ -642,8 +642,9 @@ gint sound_write(gfloat *buf, gint cnt)
 //		snderr(_("sound_write: src_process: %s"), src_strerror(n));
 //		return -1;
 //	}
-//
-//	write_samples(src_buffer, tx_src_data->output_frames_gen);
+
+	//write_samples(src_buffer, tx_src_data->output_frames_gen);
+	write_samples(buf, cnt); //FIXME
 //
 //	return cnt;
 	return cnt;
@@ -651,8 +652,8 @@ gint sound_write(gfloat *buf, gint cnt)
 
 static gint write_samples(gfloat *buf, gint count)
 {
-//	void *p;
-//	gint i, j;
+	void *p;
+	gint i, j, err;
 //
 #if SND_DEBUG > 1
 	dprintf("write_samples(%d)\n", count);
@@ -681,14 +682,14 @@ static gint write_samples(gfloat *buf, gint count)
 //		count *= sizeof(guint8);
 //		p = snd_b_buffer;
 //	} else {
-//		for (i = j = 0; i < count; i++) {
-//			snd_w_buffer[j++] = buf[i] * 32767.0 * SND_VOL;
-//			if (config.flags & SND_FLAG_STEREO)
-//				snd_w_buffer[j++] = 0;
-//		}
-//
-//		count *= sizeof(gint16);
-//		p = snd_w_buffer;
+		for (i = j = 0; i < count; i++) {
+			snd_w_buffer[j++] = buf[i] * 32767.0 * SND_VOL;
+			//if (config.flags & SND_FLAG_STEREO)
+			//	snd_w_buffer[j++] = 0;
+		}
+
+		count *= sizeof(gint16);
+		p = snd_w_buffer;
 //	}
 //
 //	if (config.flags & SND_FLAG_STEREO)
@@ -698,6 +699,20 @@ static gint write_samples(gfloat *buf, gint count)
 //		snderr(_("write_samples: write: %m"));
 //
 //	return i;
+	err = snd_pcm_writei(alsa_dev_tx, p, count);
+
+	if (err == -EPIPE) {
+		snderr(_("Underrun"));
+		snd_pcm_prepare(alsa_dev_tx);
+	} else if (err < 0) {
+		snderr(_("Read error"));
+	} else if (err != count) {
+		snderr(_("Short read, read %d frames"), err);
+	} else {
+		/*hlog(LOG_DEBUG, LOGPREFIX "Read %d samples", err); */
+	}
+
+	count /= sizeof(gint16);
 	return count;
 }
 
