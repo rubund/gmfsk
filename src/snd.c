@@ -664,8 +664,9 @@ gint sound_read(gfloat **buffer, gint *count)
 //	}
 //
 //	n = floor(*count / rx_src_data->src_ratio / 512 + 0.5) * 512;
+	//n = read_samples(src_buffer, n);
 	n = *count; //FIXME
-	n = read_samples(src_buffer, n);
+	n = read_samples(snd_buffer, n);
 //
 //	rx_src_data->data_in = src_buffer;
 //	rx_src_data->input_frames = n;
@@ -688,7 +689,7 @@ gint sound_read(gfloat **buffer, gint *count)
 
 static gint read_samples(gfloat *buf, gint count)
 {
-	gint len, i, j;
+	gint len, i, j, err;
 
 #if SND_DEBUG > 1
 	dprintf("read_samples(%d)\n", count);
@@ -732,29 +733,33 @@ static gint read_samples(gfloat *buf, gint count)
 //		if ((len = read(snd_fd, snd_w_buffer, count)) < 0)
 //			goto error;
 //
+//	}
+// To remove:
+
+	err = snd_pcm_readi(alsa_dev, snd_w_buffer, count);
+	len = count;
+
+	if (err == -EPIPE) {
+		snderr(_("Overrun"));
+		snd_pcm_prepare(alsa_dev);
+	} else if (err < 0) {
+		snderr(_("Read error"));
+	} else if (err != count) {
+		snderr(_("Short read, read %d frames"), err);
+	} else {
+		/*hlog(LOG_DEBUG, LOGPREFIX "Read %d samples", err); */
+	}
+
 //		len /= sizeof(gint16);
 //
 //		if (config.flags & SND_FLAG_STEREO)
 //			len /= 2;
 //
-//		for (i = j = 0; i < len; i++) {
-//			buf[i] = snd_w_buffer[j++] / 32768.0;
+		for (i = j = 0; i < len; i++) {
+			buf[i] = snd_w_buffer[j++] / 32768.0;
 //			if (config.flags & SND_FLAG_STEREO)
 //				j++;
-//		}
-//	}
-
-// To remove:
-	static float phase = 0;
-	int n;
-	for(n=0;n<(count);n++){
-		snd_buffer[n] = 0.1*cos(phase);
-		phase += 2*M_PI*10000.0/48000.0;
-		if(phase > 2*M_PI) phase -= 2*M_PI;
-	}
-	len = count;
-//
-
+		}
 
 	return len;
 
