@@ -322,9 +322,13 @@ gint sound_open_for_write(gint rate)
 //
 //	if (snd_fd < 0)
 //		return -1;
-	char *sound_device = "default";
-	if ((err = snd_pcm_open(&alsa_dev_tx, sound_device, SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
-		snderr(_("Error opening sound device (%s)"), sound_device);
+	if (!config.device) {
+		snderr(_("opensnd: device not set"));
+		return -1;
+	}
+
+	if ((err = snd_pcm_open(&alsa_dev_tx, config.device, SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
+		snderr(_("Error opening sound device (%s)"), config.device);
 		return -1;
 	}
 
@@ -458,9 +462,13 @@ gint sound_open_for_read(gint rate)
 //	if (snd_fd < 0)
 //		return -1;
 
-	char *sound_device = "default";
-	if ((err = snd_pcm_open(&alsa_dev_rx, sound_device, SND_PCM_STREAM_CAPTURE, 0)) < 0) {
-		snderr(_("Error opening sound device (%s)"), sound_device);
+	if (!config.device) {
+		snderr(_("opensnd: device not set"));
+		return -1;
+	}
+
+	if ((err = snd_pcm_open(&alsa_dev_rx, config.device, SND_PCM_STREAM_CAPTURE, 0)) < 0) {
+		snderr(_("Error opening sound device (%s)"), config.device);
 		return -1;
 	}
 
