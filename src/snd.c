@@ -405,7 +405,7 @@ gint sound_open_for_read(gint rate)
 		return -1;
 	}
 
-	snd_pcm_uframes_t size = 4096; /* number of frames */
+	snd_pcm_uframes_t size = 64; /* number of frames */
 	
 	dir = 0;
 	if ((err = snd_pcm_hw_params_set_period_size_near(alsa_dev, hwparams, &size, &dir)) < 0) {
